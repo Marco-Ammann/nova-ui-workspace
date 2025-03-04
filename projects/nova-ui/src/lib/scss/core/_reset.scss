@@ -1,4 +1,4 @@
-﻿// CSS Reset for Nova UI
+﻿@use 'variables' as vars;
 
 *,
 *::before,
@@ -9,7 +9,7 @@
 }
 
 html {
-  font-family: var(--nova-font-family, $nova-font-family-sans);
+  font-family: var(--nova-font-family, vars.$nova-font-family-sans);
   line-height: 1.5;
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
@@ -18,7 +18,7 @@ html {
 
 body {
   margin: 0;
-  font-family: var(--nova-font-family, $nova-font-family-sans);
+  font-family: var(--nova-font-family, vars.$nova-font-family-sans);
   font-size: var(--nova-font-size-base, 1rem);
   font-weight: 400;
   line-height: var(--nova-line-height, 1.5);

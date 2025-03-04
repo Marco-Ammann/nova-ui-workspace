@@ -5,3 +5,8 @@
 
 // Apply the default theme
 @include themes.apply-supernova-theme();
+
+// Add to nova-ui.scss
+body {
+    border: 5px solid red !important;
+  }

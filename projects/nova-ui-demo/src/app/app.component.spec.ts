@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'nova-ui-demo' title`, () => {
+  it(`should have the 'Nova UI Demo' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('nova-ui-demo');
+    expect(app.title).toEqual('Nova UI Demo');
   });
-
+  
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, nova-ui-demo');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Nova UI - Supernova Theme');
   });
 });

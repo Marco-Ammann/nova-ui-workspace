@@ -1,5 +1,5 @@
 ﻿/* Import Nova UI styles with the correct relative path */
-@import '../../nova-ui/src/lib/scss/nova-ui';
+@use '../../nova-ui/src/lib/scss/nova-ui' as *;
 
 /* Add global styles for the demo application */
 html, body {

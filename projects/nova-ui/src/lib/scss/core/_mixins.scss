@@ -1,35 +1,36 @@
 ﻿/* SCSS mixins for Nova UI */
+@use 'functions' as functions;
 
 // Generate CSS variables for a theme
 @mixin nova-css-vars($theme-name, $primary, $secondary, $accent1, $accent2, $accent3, $background, $surface, $surface-alt) {
-  --nova-primary: $primary;
-  --nova-primary-rgb: #{nova-hex-to-rgb($primary)};
+  --nova-primary: #{$primary};
+  --nova-primary-rgb: #{functions.nova-hex-to-rgb($primary)};
   
-  --nova-secondary: $secondary;
-  --nova-secondary-rgb: #{nova-hex-to-rgb($secondary)};
+  --nova-secondary: #{$secondary};
+  --nova-secondary-rgb: #{functions.nova-hex-to-rgb($secondary)};
   
-  --nova-accent1: $accent1;
-  --nova-accent1-rgb: #{nova-hex-to-rgb($accent1)};
+  --nova-accent1: #{$accent1};
+  --nova-accent1-rgb: #{functions.nova-hex-to-rgb($accent1)};
 
-  --nova-accent2: $accent2;
-  --nova-accent2-rgb: #{nova-hex-to-rgb($accent2)};
+  --nova-accent2: #{$accent2};
+  --nova-accent2-rgb: #{functions.nova-hex-to-rgb($accent2)};
 
-  --nova-accent3: $accent3;
-  --nova-accent3-rgb: #{nova-hex-to-rgb($accent3)};
+  --nova-accent3: #{$accent3};
+  --nova-accent3-rgb: #{functions.nova-hex-to-rgb($accent3)};
 
-  --nova-background: $background;
-  --nova-background-rgb: #{nova-hex-to-rgb($background)};
+  --nova-background: #{$background};
+  --nova-background-rgb: #{functions.nova-hex-to-rgb($background)};
 
-  --nova-surface: $surface;
-  --nova-surface-rgb: #{nova-hex-to-rgb($surface)};
+  --nova-surface: #{$surface};
+  --nova-surface-rgb: #{functions.nova-hex-to-rgb($surface)};
 
-  --nova-surface-alt: $surface-alt;
-  --nova-surface-alt-rgb: #{nova-hex-to-rgb($surface-alt)};
+  --nova-surface-alt: #{$surface-alt};
+  --nova-surface-alt-rgb: #{functions.nova-hex-to-rgb($surface-alt)};
 
-  --nova-on-primary: #{nova-contrast-color($primary)};
-  --nova-on-secondary: #{nova-contrast-color($secondary)};
-  --nova-on-background: #{nova-contrast-color($background)};
-  --nova-on-surface: #{nova-contrast-color($surface)};
+  --nova-on-primary: #{functions.nova-contrast-color($primary)};
+  --nova-on-secondary: #{functions.nova-contrast-color($secondary)};
+  --nova-on-background: #{functions.nova-contrast-color($background)};
+  --nova-on-surface: #{functions.nova-contrast-color($surface)};
 }
 
 // Glow effect mixin

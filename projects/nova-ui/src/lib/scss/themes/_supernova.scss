@@ -1,6 +1,7 @@
 ﻿/* Supernova Theme for Nova UI */
 @use '../core/functions' as functions;
 @use '../core/mixins' as mixins;
+@use '../core/variables' as vars; // Add this
 
 // Theme colors
 $supernova-primary: #ff7b25;    // Bright orange core
@@ -54,9 +55,9 @@ $supernova-info: $supernova-secondary; // Blue info
     --nova-accent3-glow: $supernova-accent3;
     
     // Typography
-    --nova-font-family: $nova-font-family-sans;
-    --nova-font-family-display: $nova-font-family-display;
-    --nova-font-family-mono: $nova-font-family-mono;
+    --nova-font-family: vars.$nova-font-family-sans;
+    --nova-font-family-display: vars.$nova-font-family-display;
+    --nova-font-family-mono: vars.$nova-font-family-mono;
   }
 }
 

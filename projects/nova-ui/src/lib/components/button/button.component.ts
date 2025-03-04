@@ -6,6 +6,8 @@ import { CommonModule } from '@angular/common';
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [CommonModule]  // Required for *ngIf directives in your template
 })
 export class NovaButtonComponent {
   @Input() variant: 'primary' | 'secondary' | 'text' = 'primary';
