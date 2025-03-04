@@ -2,42 +2,44 @@
 @use 'functions' as functions;
 
 // Generate CSS variables for a theme
+
 @mixin nova-css-vars($theme-name, $primary, $secondary, $accent1, $accent2, $accent3, $background, $surface, $surface-alt) {
   --nova-primary: #{$primary};
-  --nova-primary-rgb: #{functions.nova-hex-to-rgb($primary)};
+  --nova-primary-rgb: #{red($primary)}, #{green($primary)}, #{blue($primary)};
   
   --nova-secondary: #{$secondary};
-  --nova-secondary-rgb: #{functions.nova-hex-to-rgb($secondary)};
+  --nova-secondary-rgb: #{red($secondary)}, #{green($secondary)}, #{blue($secondary)};
   
   --nova-accent1: #{$accent1};
-  --nova-accent1-rgb: #{functions.nova-hex-to-rgb($accent1)};
-
+  --nova-accent1-rgb: #{red($accent1)}, #{green($accent1)}, #{blue($accent1)};
+  
   --nova-accent2: #{$accent2};
-  --nova-accent2-rgb: #{functions.nova-hex-to-rgb($accent2)};
-
+  --nova-accent2-rgb: #{red($accent2)}, #{green($accent2)}, #{blue($accent2)};
+  
   --nova-accent3: #{$accent3};
-  --nova-accent3-rgb: #{functions.nova-hex-to-rgb($accent3)};
-
+  --nova-accent3-rgb: #{red($accent3)}, #{green($accent3)}, #{blue($accent3)};
+  
   --nova-background: #{$background};
-  --nova-background-rgb: #{functions.nova-hex-to-rgb($background)};
-
+  --nova-background-rgb: #{red($background)}, #{green($background)}, #{blue($background)};
+  
   --nova-surface: #{$surface};
-  --nova-surface-rgb: #{functions.nova-hex-to-rgb($surface)};
-
+  --nova-surface-rgb: #{red($surface)}, #{green($surface)}, #{blue($surface)};
+  
   --nova-surface-alt: #{$surface-alt};
-  --nova-surface-alt-rgb: #{functions.nova-hex-to-rgb($surface-alt)};
-
-  --nova-on-primary: #{functions.nova-contrast-color($primary)};
-  --nova-on-secondary: #{functions.nova-contrast-color($secondary)};
-  --nova-on-background: #{functions.nova-contrast-color($background)};
-  --nova-on-surface: #{functions.nova-contrast-color($surface)};
+  --nova-surface-alt-rgb: #{red($surface-alt)}, #{green($surface-alt)}, #{blue($surface-alt)};
+  
+  --nova-on-primary: #{if(lightness($primary) > 50%, #000000, #ffffff)};
+  --nova-on-secondary: #{if(lightness($secondary) > 50%, #000000, #ffffff)};
+  --nova-on-background: #{if(lightness($background) > 50%, #000000, #ffffff)};
+  --nova-on-surface: #{if(lightness($surface) > 50%, #000000, #ffffff)};
 }
 
 // Glow effect mixin
+
 @mixin nova-glow($color, $intensity: 'medium') {
   $glow-opacity: 0.6;
   $glow-spread: 0px;
-
+  
   @if $intensity == 'subtle' {
     $glow-opacity: 0.4;
     $glow-spread: 1px;
@@ -45,13 +47,27 @@
     $glow-opacity: 0.8;
     $glow-spread: 4px;
   }
-
-  box-shadow: 0 0 8px $glow-spread rgba($color, $glow-opacity);
-  border: 1px solid rgba($color, $glow-opacity + 0.1);
+  
+  // Convert CSS variable to a usable color value if needed
+  $color-value: #{$color};
+  @if type-of($color) == 'string' and str-index($color, 'var(--') != null {
+    // Use rgba function with the CSS variable and opacity
+    box-shadow: 0 0 8px #{$glow-spread} #{$color};
+    border: 1px solid #{$color};
+  } @else {
+    // Use SCSS color functions if it's an actual color value
+    box-shadow: 0 0 8px #{$glow-spread} rgba(#{$color}, #{$glow-opacity});
+    border: 1px solid rgba(#{$color}, #{$glow-opacity + 0.1});
+  }
+  
   transition: box-shadow 0.3s ease, border 0.3s ease;
-
+  
   &:hover {
-    box-shadow: 0 0 12px ($glow-spread + 2px) rgba($color, $glow-opacity + 0.2);
+    @if type-of($color) == 'string' and str-index($color, 'var(--') != null {
+      box-shadow: 0 0 12px #{$glow-spread + 2px} #{$color};
+    } @else {
+      box-shadow: 0 0 12px #{$glow-spread + 2px} rgba(#{$color}, #{$glow-opacity + 0.2});
+    }
   }
 }
 

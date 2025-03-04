@@ -20,7 +20,6 @@ $supernova-warning: #ffb427;    // Amber warning
 $supernova-info: $supernova-secondary; // Blue info
 
 @mixin apply-supernova-theme() {
-  :root {
     // Apply the theme CSS variables
     @include mixins.nova-css-vars(
       'supernova',
@@ -59,7 +58,14 @@ $supernova-info: $supernova-secondary; // Blue info
     --nova-font-family-display: vars.$nova-font-family-display;
     --nova-font-family-mono: vars.$nova-font-family-mono;
   }
+
+  
+// Apply the supernova theme by default to :root
+:root {
+  @include apply-supernova-theme();
 }
 
-// Apply the supernova theme by default
-@include apply-supernova-theme();
+// Also apply it to the theme-supernova class for consistency
+body.theme-supernova {
+  @include apply-supernova-theme();
+}

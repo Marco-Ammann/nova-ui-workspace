@@ -1,0 +1,160 @@
+/* input.component.scss */
+.nova-input {
+    margin-bottom: 1.5rem;
+    
+    &__label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--nova-on-surface);
+      transition: color 0.2s ease;
+    }
+    
+    &__required-marker {
+      color: var(--nova-error);
+      margin-left: 0.25rem;
+    }
+    
+    &__field-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    
+    &__field {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background-color: rgba(var(--nova-surface-alt-rgb), 0.3);
+      border: 1px solid rgba(var(--nova-on-surface-rgb), 0.2);
+      border-radius: 0.375rem;
+      font-family: var(--nova-font-family);
+      font-size: 1rem;
+      color: var(--nova-on-surface);
+      transition: all 0.3s ease;
+      
+      &::placeholder {
+        color: rgba(var(--nova-on-surface-rgb), 0.4);
+      }
+      
+      &:focus {
+        outline: none;
+        background-color: rgba(var(--nova-surface-alt-rgb), 0.4);
+      }
+    }
+    
+    &__icon {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(var(--nova-on-surface-rgb), 0.5);
+      transition: color 0.3s ease;
+      
+      &--left {
+        left: 1rem;
+      }
+      
+      &--right {
+        right: 1rem;
+      }
+    }
+    
+    &__bottom-container {
+      min-height: 1.5rem;
+      margin-top: 0.25rem;
+      font-size: 0.75rem;
+    }
+    
+    &__error {
+      color: var(--nova-error);
+    }
+    
+    &__hint {
+      color: rgba(var(--nova-on-surface-rgb), 0.6);
+    }
+    
+    // States
+    &--focused {
+      .nova-input__label {
+        color: var(--nova-primary);
+      }
+      
+      .nova-input__field {
+        border-color: var(--nova-primary);
+        box-shadow: 0 0 0 1px var(--nova-primary), 0 0 8px rgba(var(--nova-primary-rgb), 0.3);
+      }
+      
+      .nova-input__icon {
+        color: var(--nova-primary);
+      }
+    }
+    
+    &--with-error {
+      .nova-input__field {
+        border-color: var(--nova-error);
+      }
+      
+      &.nova-input--focused .nova-input__field {
+        box-shadow: 0 0 0 1px var(--nova-error), 0 0 8px rgba(var(--nova-error-rgb), 0.3);
+      }
+    }
+    
+    &--disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      
+      .nova-input__field {
+        cursor: not-allowed;
+        background-color: rgba(var(--nova-surface-alt-rgb), 0.2);
+      }
+    }
+    
+    &--readonly {
+      .nova-input__field {
+        background-color: rgba(var(--nova-surface-alt-rgb), 0.1);
+        border-style: dashed;
+      }
+    }
+    
+    &--with-left-icon {
+      .nova-input__field {
+        padding-left: 2.5rem;
+      }
+    }
+    
+    &--with-right-icon {
+      .nova-input__field {
+        padding-right: 2.5rem;
+      }
+    }
+    
+    // Cosmic animation effect on focus
+    &--focused .nova-input__field {
+      &::after {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(90deg, var(--nova-primary), var(--nova-secondary));
+        z-index: -1;
+        filter: blur(8px);
+        opacity: 0.4;
+        border-radius: 0.5rem;
+        animation: nova-input-glow 2s ease-in-out infinite alternate;
+      }
+    }
+  }
+  
+  @keyframes nova-input-glow {
+    0% {
+      opacity: 0.3;
+      filter: blur(8px);
+    }
+    100% {
+      opacity: 0.5;
+      filter: blur(12px);
+    }
+  }

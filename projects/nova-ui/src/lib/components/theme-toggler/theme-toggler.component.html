@@ -1,0 +1,15 @@
+﻿<div class="nova-theme-toggler">
+  <h3 class="nova-theme-toggler__title">Theme</h3>
+  
+  <div class="nova-theme-toggler__themes">
+    <div 
+      *ngFor="let theme of themes" 
+      class="nova-theme-toggler__theme"
+      [class.nova-theme-toggler__theme--active]="(currentTheme$ | async) === theme.value"
+      (click)="setTheme(theme.value)">
+      
+      <div class="nova-theme-toggler__sample theme-{{theme.value}}"></div>
+      <span class="nova-theme-toggler__label">{{theme.label}}</span>
+    </div>
+  </div>
+</div>

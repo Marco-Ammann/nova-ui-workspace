@@ -1,0 +1,60 @@
+﻿/* Cosmic Blue Theme for Nova UI */
+@use '../core/functions' as functions;
+@use '../core/mixins' as mixins;
+@use '../core/variables' as vars; // Add this
+
+// Theme colors
+$cosmic-blue-primary: #3E64FF;       // Bright blue, similar to hot blue stars
+$cosmic-blue-secondary: #536DFE;     // Slightly purple-blue, like blue giant stars
+$cosmic-blue-accent1: #6C63FF;       // Vivid indigo, representing cosmic radiation
+$cosmic-blue-accent2: #00B0FF;       // Bright cyan blue, like blue dwarfs
+$cosmic-blue-accent3: #304FFE;       // Deep blue, like the center of galaxies
+$cosmic-blue-background: #0F1129;    // Deep space blue-black
+$cosmic-blue-surface: #1A1B36;       // Dark blue surface
+$cosmic-blue-surface-alt: #232443;   // Slightly lighter surface
+
+// Semantic colors
+$cosmic-blue-success: #00E5FF;       // Bright cyan success
+$cosmic-blue-error: #FF5252;         // Red error
+$cosmic-blue-warning: #FFAB40;       // Amber warning
+$cosmic-blue-info: $cosmic-blue-secondary;  // Blue info
+
+@mixin apply-cosmic-blue-theme() {
+  // Apply the theme CSS variables
+  @include mixins.nova-css-vars(
+    'cosmic-blue',
+    $cosmic-blue-primary,
+    $cosmic-blue-secondary,
+    $cosmic-blue-accent1,
+    $cosmic-blue-accent2,
+    $cosmic-blue-accent3,
+    $cosmic-blue-background,
+    $cosmic-blue-surface,
+    $cosmic-blue-surface-alt
+  );
+    
+    // Semantic colors
+    --nova-success: $cosmic-blue-success;
+    --nova-success-rgb: #{functions.nova-hex-to-rgb($cosmic-blue-success)};
+    
+    --nova-error: $cosmic-blue-error;
+    --nova-error-rgb: #{functions.nova-hex-to-rgb($cosmic-blue-error)};
+    
+    --nova-warning: $cosmic-blue-warning;
+    --nova-warning-rgb: #{functions.nova-hex-to-rgb($cosmic-blue-warning)};
+    
+    --nova-info: $cosmic-blue-info;
+    --nova-info-rgb: #{functions.nova-hex-to-rgb($cosmic-blue-info)};
+    
+    // Glow colors
+    --nova-primary-glow: $cosmic-blue-primary;
+    --nova-secondary-glow: $cosmic-blue-secondary;
+    --nova-accent1-glow: $cosmic-blue-accent1;
+    --nova-accent2-glow: $cosmic-blue-accent2;
+    --nova-accent3-glow: $cosmic-blue-accent3;
+    
+    // Typography
+    --nova-font-family: vars.$nova-font-family-sans;
+    --nova-font-family-display: vars.$nova-font-family-display;
+    --nova-font-family-mono: vars.$nova-font-family-mono;
+  }

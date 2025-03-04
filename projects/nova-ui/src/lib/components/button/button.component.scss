@@ -1,4 +1,5 @@
-﻿@use '../../scss/core/mixins' as mixins;
+﻿// button.component.scss
+@use '../../scss/core/mixins' as mixins;
 
 .nova-button {
   // Base button styles
@@ -7,58 +8,183 @@
   justify-content: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  border-radius: var(--nova-border-radius, 0.375rem);
+  border-radius: 0.375rem;
   font-weight: 500;
   font-size: 1rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   border: none;
   position: relative;
   overflow: hidden;
   
-  // Primary variant
+  // Enhanced focus state for accessibility
+  &:focus-visible {
+    outline: 2px solid var(--nova-accent1);
+    outline-offset: 2px;
+  }
+  
+  // Primary variant - updated with better transitions
   &--primary {
     background-color: var(--nova-primary);
     color: var(--nova-on-primary);
-    @include mixins.nova-glow(var(--nova-primary), 'subtle');
+    box-shadow: 0 0 8px 1px rgba(var(--nova-primary-rgb), 0.4);
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.1);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
     
     &:hover:not(.nova-button--disabled) {
-      @include mixins.nova-glow(var(--nova-primary), 'medium');
+      box-shadow: 0 0 12px 3px rgba(var(--nova-primary-rgb), 0.6);
+      transform: translateY(-1px);
+      
+      &::before {
+        opacity: 1;
+      }
     }
     
     &:active:not(.nova-button--disabled) {
       transform: translateY(1px);
-      @include mixins.nova-glow(var(--nova-primary), 'intense');
+      box-shadow: 0 0 16px 4px rgba(var(--nova-primary-rgb), 0.8);
+      
+      &::before {
+        opacity: 0.2;
+        background: rgba(0, 0, 0, 0.1);
+      }
     }
   }
   
-  // Secondary variant
+  // NEW: CTA variant - most prominent button
+  &--cta {
+    background: linear-gradient(135deg, var(--nova-primary), var(--nova-accent1));
+    color: var(--nova-on-primary);
+    box-shadow: 
+      0 4px 12px rgba(var(--nova-primary-rgb), 0.5),
+      0 0 0 1px rgba(var(--nova-primary-rgb), 0.3);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+    
+    // Gradient overlay for hover effect
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--nova-accent1), var(--nova-primary));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: -1;
+      border-radius: inherit;
+    }
+    
+    // Subtle glow animation
+    &::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      background: radial-gradient(circle at center, 
+        rgba(var(--nova-primary-rgb), 0.5) 0%, 
+        rgba(var(--nova-primary-rgb), 0) 60%);
+      opacity: 0.5;
+      z-index: -2;
+      border-radius: inherit;
+      animation: pulse 2s infinite;
+    }
+    
+    &:hover:not(.nova-button--disabled) {
+      transform: translateY(-2px);
+      box-shadow: 
+        0 6px 16px rgba(var(--nova-primary-rgb), 0.6),
+        0 0 0 1px rgba(var(--nova-primary-rgb), 0.3);
+      
+      &::before {
+        opacity: 1;
+      }
+      
+      &::after {
+        opacity: 0.8;
+      }
+    }
+    
+    &:active:not(.nova-button--disabled) {
+      transform: translateY(1px);
+      box-shadow: 
+        0 2px 8px rgba(var(--nova-primary-rgb), 0.7),
+        0 0 0 1px rgba(var(--nova-primary-rgb), 0.3);
+    }
+  }
+  
+  // Secondary variant - updated with enhanced hover state
   &--secondary {
     background-color: transparent;
     color: var(--nova-secondary);
-    border: 1px solid var(--nova-secondary);
-    @include mixins.nova-glow(var(--nova-secondary), 'subtle');
+    border: 1px solid rgba(var(--nova-secondary-rgb), 0.5);
+    box-shadow: 0 0 8px 1px rgba(var(--nova-secondary-rgb), 0.2);
+    
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: rgba(var(--nova-secondary-rgb), 0.08);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      border-radius: inherit;
+    }
     
     &:hover:not(.nova-button--disabled) {
-      background-color: rgba(var(--nova-secondary-rgb), 0.1);
-      @include mixins.nova-glow(var(--nova-secondary), 'medium');
+      box-shadow: 0 0 12px 3px rgba(var(--nova-secondary-rgb), 0.3);
+      transform: translateY(-1px);
+      
+      &::before {
+        opacity: 1;
+      }
     }
     
     &:active:not(.nova-button--disabled) {
       transform: translateY(1px);
-      @include mixins.nova-glow(var(--nova-secondary), 'intense');
+      box-shadow: 0 0 16px 4px rgba(var(--nova-secondary-rgb), 0.4);
+      
+      &::before {
+        opacity: 0.6;
+      }
     }
   }
   
-  // Text button variant
+  // Text button variant - with subtle hover effect
   &--text {
     background-color: transparent;
     color: var(--nova-primary);
     padding: 0.5rem 0.75rem;
+    position: relative;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0.75rem;
+      right: 0.75rem;
+      height: 1px;
+      background-color: var(--nova-primary);
+      transform: scaleX(0);
+      transition: transform 0.25s ease;
+      opacity: 0.7;
+    }
     
     &:hover:not(.nova-button--disabled) {
-      background-color: rgba(var(--nova-primary-rgb), 0.1);
-      @include mixins.nova-glow(var(--nova-primary), 'subtle');
+      background-color: rgba(var(--nova-primary-rgb), 0.08);
+      
+      &::before {
+        transform: scaleX(1);
+      }
     }
     
     &:active:not(.nova-button--disabled) {
@@ -66,31 +192,39 @@
     }
   }
   
-  // Size variations
+  // Size variations - slightly adjusted
   &--small {
-    padding: 0.25rem 0.5rem;
+    padding: 0.3rem 0.75rem;
     font-size: 0.875rem;
+    border-radius: 0.25rem;
   }
   
   &--medium {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1.25rem;
     font-size: 1rem;
+    border-radius: 0.375rem;
   }
   
   &--large {
-    padding: 0.75rem 1.5rem;
+    padding: 0.75rem 1.75rem;
     font-size: 1.125rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
   }
   
-  // Disabled state
+  // Disabled state - consistent across variants
   &--disabled {
     opacity: 0.5;
     cursor: not-allowed;
     box-shadow: none !important;
     
     &:hover, &:active {
-      transform: none;
+      transform: none !important;
       box-shadow: none !important;
+      
+      &::before {
+        opacity: 0 !important;
+      }
     }
   }
   
@@ -99,7 +233,7 @@
     width: 1rem;
     height: 1rem;
     border-radius: 50%;
-    border: 2px solid var(--nova-on-primary);
+    border: 2px solid currentColor;
     border-top-color: transparent;
     animation: nova-spin 0.8s linear infinite;
   }
@@ -107,6 +241,22 @@
   &__content {
     position: relative;
     z-index: 1;
+  }
+}
+
+// Pulsing animation for CTA button
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
   }
 }
 

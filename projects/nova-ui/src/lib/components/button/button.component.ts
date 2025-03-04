@@ -1,4 +1,5 @@
-﻿import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+﻿// button.component.ts
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -7,10 +8,10 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule]  // Required for *ngIf directives in your template
+  imports: [CommonModule]
 })
 export class NovaButtonComponent {
-  @Input() variant: 'primary' | 'secondary' | 'text' = 'primary';
+  @Input() variant: 'primary' | 'secondary' | 'text' | 'cta' = 'primary';
   @Input() size: 'small' | 'medium' | 'large' = 'medium';
   @Input() disabled = false;
   @Input() loading = false;

@@ -1,0 +1,90 @@
+/* card.component.scss */
+.nova-card {
+    background-color: var(--nova-surface);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+    
+    // Default card has a subtle border
+    border: 1px solid rgba(var(--nova-surface-alt-rgb), 0.3);
+    
+    // Before pseudo-element for glowing border effects
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px; // Thickness of the glow
+      background: linear-gradient(
+        135deg, 
+        transparent, 
+        rgba(var(--nova-primary-rgb), 0.2),
+        rgba(var(--nova-secondary-rgb), 0.2),
+        transparent
+      );
+      -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    // Primary variant
+    &--primary {
+      border-color: rgba(var(--nova-primary-rgb), 0.2);
+      
+      &::before {
+        background: linear-gradient(
+          135deg, 
+          transparent, 
+          rgba(var(--nova-primary-rgb), 0.6),
+          rgba(var(--nova-accent1-rgb), 0.6),
+          transparent
+        );
+        opacity: 0.5;
+      }
+    }
+    
+    // Accent variant
+    &--accent {
+      border-color: rgba(var(--nova-secondary-rgb), 0.2);
+      
+      &::before {
+        background: linear-gradient(
+          135deg, 
+          transparent, 
+          rgba(var(--nova-secondary-rgb), 0.6),
+          rgba(var(--nova-accent2-rgb), 0.6),
+          transparent
+        );
+        opacity: 0.5;
+      }
+    }
+    
+    // Elevated style
+    &--elevated {
+      border: none;
+      box-shadow: 
+        0 4px 20px -2px rgba(0, 0, 0, 0.2),
+        0 0 8px rgba(var(--nova-primary-rgb), 0.2);
+    }
+    
+    // Hoverable style
+    &--hoverable {
+      cursor: pointer;
+      
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 
+          0 12px 24px -4px rgba(0, 0, 0, 0.2),
+          0 0 12px rgba(var(--nova-primary-rgb), 0.3);
+          
+        &::before {
+          opacity: 1;
+        }
+      }
+    }
+  }

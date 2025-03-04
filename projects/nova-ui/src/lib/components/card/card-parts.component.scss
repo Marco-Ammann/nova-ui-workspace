@@ -1,0 +1,61 @@
+/* card-parts.component.scss */
+// Card header styles
+.nova-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem 0.75rem;
+    
+    &__content {
+      flex: 1;
+    }
+    
+    &__title {
+      font-family: var(--nova-font-family-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--nova-on-surface);
+      margin: 0;
+      background: linear-gradient(90deg, var(--nova-primary), var(--nova-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    &__subtitle {
+      font-size: 0.875rem;
+      color: rgba(var(--nova-on-surface-rgb), 0.7);
+      margin: 0.25rem 0 0 0;
+    }
+    
+    &__actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+  }
+  
+  // Card content styles
+  .nova-card-content {
+    padding: 0.75rem 1.5rem 1.25rem;
+    color: var(--nova-on-surface);
+    
+    p {
+      margin-top: 0;
+      line-height: 1.6;
+    }
+    
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  // Card footer styles
+  .nova-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    border-top: 1px solid rgba(var(--nova-surface-alt-rgb), 0.3);
+    background-color: rgba(var(--nova-surface-alt-rgb), 0.15);
+  }

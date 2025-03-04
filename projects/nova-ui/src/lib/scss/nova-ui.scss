@@ -1,12 +1,25 @@
 ﻿// Nova UI main SCSS entry point
-@use 'core' as core;
-@use 'themes' as themes;
-@use 'utilities' as utilities;
+@use "core" as core;
+@use "themes" as themes;
+@use "utilities" as utilities;
+@use "themes/cosmic-blue";
+@use "themes/nebula";
+@use "themes/dark-matter";
+@use "themes/supernova";
 
 // Apply the default theme
-@include themes.apply-supernova-theme();
+// @include themes.apply-supernova-theme();
+// @include themes.apply-cosmic-blue-theme();
+// @include themes.apply-nebula-theme();
+// @include themes.apply-dark-matter-theme();
+body.theme-cosmic-blue {
+  @include cosmic-blue.apply-cosmic-blue-theme();
+}
 
-// Add to nova-ui.scss
-body {
-    border: 5px solid red !important;
-  }
+body.theme-nebula {
+  @include nebula.apply-nebula-theme();
+}
+
+body.theme-dark-matter {
+  @include dark-matter.apply-dark-matter-theme();
+}

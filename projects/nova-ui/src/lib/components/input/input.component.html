@@ -1,0 +1,44 @@
+<!-- input.component.html -->
+<div class="nova-input" 
+     [class.nova-input--focused]="focused"
+     [class.nova-input--disabled]="disabled"
+     [class.nova-input--readonly]="readonly"
+     [class.nova-input--with-error]="errorMessage"
+     [class.nova-input--with-left-icon]="iconLeft"
+     [class.nova-input--with-right-icon]="iconRight"
+     [class.nova-input--required]="required">
+  
+  <label *ngIf="label" class="nova-input__label">
+    {{ label }}
+    <span *ngIf="required" class="nova-input__required-marker">*</span>
+  </label>
+  
+  <div class="nova-input__field-container">
+    <div *ngIf="iconLeft" class="nova-input__icon nova-input__icon--left">
+      {{ iconLeft }}
+    </div>
+    
+    <input
+      class="nova-input__field"
+      [type]="type"
+      [placeholder]="placeholder"
+      [disabled]="disabled"
+      [readonly]="readonly"
+      [required]="required"
+      [attr.autocomplete]="autocomplete"
+      [value]="value"
+      (input)="onInputChange($event)"
+      (focus)="onInputFocus($event)"
+      (blur)="onInputBlur($event)"
+    />
+    
+    <div *ngIf="iconRight" class="nova-input__icon nova-input__icon--right">
+      {{ iconRight }}
+    </div>
+  </div>
+  
+  <div class="nova-input__bottom-container">
+    <div *ngIf="errorMessage" class="nova-input__error">{{ errorMessage }}</div>
+    <div *ngIf="hint && !errorMessage" class="nova-input__hint">{{ hint }}</div>
+  </div>
+</div>

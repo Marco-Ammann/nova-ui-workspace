@@ -1,0 +1,60 @@
+﻿/* Nebula Theme for Nova UI - Cool Variant */
+@use '../core/functions' as functions;
+@use '../core/mixins' as mixins;
+@use '../core/variables' as vars;
+
+// Theme colors - inspired by oxygen/nitrogen-rich nebulae
+$nebula-primary: #00BCD4;           // Bright cyan like ionized oxygen
+$nebula-secondary: #3F51B5;         // Indigo like distant nebula regions
+$nebula-accent1: #80DEEA;           // Light cyan for brightest parts
+$nebula-accent2: #7986CB;           // Periwinkle like diffuse gas clouds
+$nebula-accent3: #4DB6AC;           // Teal like nitrogen-rich regions
+$nebula-background: #0A192F;        // Deep blue-black space background
+$nebula-surface: #172A45;           // Navy blue surface
+$nebula-surface-alt: #243B55;       // Slightly lighter surface
+
+// Semantic colors
+$nebula-success: #4CAF50;           // Green success
+$nebula-error: #FF5252;             // Red error
+$nebula-warning: #FFC107;           // Amber warning
+$nebula-info: $nebula-secondary;    // Indigo info
+
+@mixin apply-nebula-theme() {
+  // Apply the theme CSS variables
+  @include mixins.nova-css-vars(
+    'nebula',
+    $nebula-primary,
+    $nebula-secondary,
+    $nebula-accent1,
+    $nebula-accent2,
+    $nebula-accent3,
+    $nebula-background,
+    $nebula-surface,
+    $nebula-surface-alt
+  );
+  
+  // Semantic colors
+  --nova-success: #{$nebula-success};
+  --nova-success-rgb: #{functions.nova-hex-to-rgb($nebula-success)};
+  
+  --nova-error: #{$nebula-error};
+  --nova-error-rgb: #{functions.nova-hex-to-rgb($nebula-error)};
+  
+  --nova-warning: #{$nebula-warning};
+  --nova-warning-rgb: #{functions.nova-hex-to-rgb($nebula-warning)};
+  
+  --nova-info: #{$nebula-info};
+  --nova-info-rgb: #{functions.nova-hex-to-rgb($nebula-info)};
+  
+  // Glow colors
+  --nova-primary-glow: #{$nebula-primary};
+  --nova-secondary-glow: #{$nebula-secondary};
+  --nova-accent1-glow: #{$nebula-accent1};
+  --nova-accent2-glow: #{$nebula-accent2};
+  --nova-accent3-glow: #{$nebula-accent3};
+  
+  // Typography
+  --nova-font-family: #{vars.$nova-font-family-sans};
+  --nova-font-family-display: #{vars.$nova-font-family-display};
+  --nova-font-family-mono: #{vars.$nova-font-family-mono};
+}

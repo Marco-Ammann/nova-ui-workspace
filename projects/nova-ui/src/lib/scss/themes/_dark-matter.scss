@@ -1,0 +1,60 @@
+﻿/* Dark Matter Theme for Nova UI */
+@use '../core/functions' as functions;
+@use '../core/mixins' as mixins;
+@use '../core/variables' as vars; // Add this
+
+// Theme colors - inspired by the mysterious dark matter
+$dark-matter-primary: #8A9FFF;      // Subtle blue, like distant stars seen through dark matter
+$dark-matter-secondary: #4D5C9E;    // Deeper blue, representing gravity wells
+$dark-matter-accent1: #A5B4FF;      // Lighter blue, like diffuse cosmic radiation
+$dark-matter-accent2: #506885;      // Gray-blue, like shadowy cosmic structures
+$dark-matter-accent3: #36467B;      // Deep navy, like concentrated dark matter
+$dark-matter-background: #0A0A14;   // Nearly black space
+$dark-matter-surface: #111122;      // Very dark blue-black surface
+$dark-matter-surface-alt: #181830;  // Slightly lighter surface
+
+// Semantic colors
+$dark-matter-success: #57B894;      // Muted teal success
+$dark-matter-error: #D35D6E;        // Muted red error
+$dark-matter-warning: #D6B15A;      // Muted gold warning
+$dark-matter-info: $dark-matter-secondary; // Blue info
+
+@mixin apply-dark-matter-theme() {
+    // Apply the theme CSS variables
+    @include mixins.nova-css-vars(
+      'dark-matter',
+      $dark-matter-primary,
+      $dark-matter-secondary,
+      $dark-matter-accent1,
+      $dark-matter-accent2,
+      $dark-matter-accent3,
+      $dark-matter-background,
+      $dark-matter-surface,
+      $dark-matter-surface-alt
+    );
+    
+    // Semantic colors
+    --nova-success: $dark-matter-success;
+    --nova-success-rgb: #{functions.nova-hex-to-rgb($dark-matter-success)};
+    
+    --nova-error: $dark-matter-error;
+    --nova-error-rgb: #{functions.nova-hex-to-rgb($dark-matter-error)};
+    
+    --nova-warning: $dark-matter-warning;
+    --nova-warning-rgb: #{functions.nova-hex-to-rgb($dark-matter-warning)};
+    
+    --nova-info: $dark-matter-info;
+    --nova-info-rgb: #{functions.nova-hex-to-rgb($dark-matter-info)};
+    
+    // Glow colors - intentionally subtle
+    --nova-primary-glow: $dark-matter-primary;
+    --nova-secondary-glow: $dark-matter-secondary;
+    --nova-accent1-glow: $dark-matter-accent1;
+    --nova-accent2-glow: $dark-matter-accent2;
+    --nova-accent3-glow: $dark-matter-accent3;
+    
+    // Typography
+    --nova-font-family: vars.$nova-font-family-sans;
+    --nova-font-family-display: vars.$nova-font-family-display;
+    --nova-font-family-mono: vars.$nova-font-family-mono;
+  }

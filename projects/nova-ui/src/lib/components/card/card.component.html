@@ -1,0 +1,8 @@
+<!-- card.component.html -->
+<div class="nova-card" 
+     [class.nova-card--primary]="variant === 'primary'"
+     [class.nova-card--accent]="variant === 'accent'"
+     [class.nova-card--elevated]="elevated"
+     [class.nova-card--hoverable]="hoverable">
+  <ng-content></ng-content>
+</div>

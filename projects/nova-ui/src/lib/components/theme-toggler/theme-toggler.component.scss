@@ -1,0 +1,122 @@
+﻿.nova-theme-toggler {
+  padding: 1rem;
+  background-color: var(--nova-surface);
+  box-shadow: inset 0 0 7px rgba(var(--nova-primary-rgb), 0.5);
+  border-radius: 0.5rem;
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow:inset  0 0 15px rgba(var(--nova-primary-rgb), 0.5);
+  }
+  
+  &__title {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--nova-on-surface);
+  }
+  
+  &__themes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  &__theme {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+    }
+    
+    &--active {
+      .nova-theme-toggler__sample {
+        border: 2px solid var(--nova-primary);
+        box-shadow: 0 0 10px rgba(var(--nova-primary-rgb), 0.5);
+      }
+      
+      .nova-theme-toggler__label {
+        color: var(--nova-primary);
+        font-weight: 500;
+      }
+    }
+  }
+  
+  &__sample {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    margin-bottom: 0.5rem;
+    border: 2px solid transparent;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    
+    // Theme-specific colors shown in the samples
+    &.theme-supernova {
+      background: linear-gradient(135deg, #ff7b25 0%, #0a0a14 100%);
+      
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at 30% 30%, rgba(255, 231, 76, 0.8) 0%, rgba(255, 123, 37, 0.4) 25%, transparent 60%);
+      }
+    }
+    
+    &.theme-cosmic-blue {
+      background: linear-gradient(135deg, #3E64FF 0%, #0F1129 100%);
+      
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at 30% 30%, rgba(0, 176, 255, 0.8) 0%, rgba(62, 100, 255, 0.4) 25%, transparent 60%);
+      }
+    }
+    
+    &.theme-nebula {
+      background: linear-gradient(135deg, #00BCD4 0%, #0A192F 100%);
+      
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at 30% 30%, rgba(128, 222, 234, 0.8) 0%, rgba(0, 188, 212, 0.4) 25%, transparent 60%);
+      }
+    }
+    
+    &.theme-dark-matter {
+      background: linear-gradient(135deg, #8A9FFF 0%, #0A0A14 100%);
+      
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at 30% 30%, rgba(165, 180, 255, 0.5) 0%, rgba(138, 159, 255, 0.2) 25%, transparent 60%);
+      }
+    }
+  }
+  
+  &__label {
+    font-size: 0.875rem;
+    color: var(--nova-on-surface);
+    transition: color 0.2s ease;
+  }
+}
