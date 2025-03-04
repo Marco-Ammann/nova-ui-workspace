@@ -1,0 +1,49 @@
+﻿// CSS Reset for Nova UI
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--nova-font-family, $nova-font-family-sans);
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  font-family: var(--nova-font-family, $nova-font-family-sans);
+  font-size: var(--nova-font-size-base, 1rem);
+  font-weight: 400;
+  line-height: var(--nova-line-height, 1.5);
+  color: var(--nova-on-background);
+  background-color: var(--nova-background);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button, input, optgroup, select, textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+
+button, [type='button'], [type='reset'], [type='submit'] {
+  appearance: button;
+  -webkit-appearance: button;
+}
+
+:focus {
+  outline: 0;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}

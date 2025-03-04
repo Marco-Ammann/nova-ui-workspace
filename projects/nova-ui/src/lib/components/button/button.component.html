@@ -1,0 +1,17 @@
+﻿<button 
+  class="nova-button"
+  [class.nova-button--primary]="variant === 'primary'"
+  [class.nova-button--secondary]="variant === 'secondary'"
+  [class.nova-button--text]="variant === 'text'"
+  [class.nova-button--small]="size === 'small'"
+  [class.nova-button--medium]="size === 'medium'"
+  [class.nova-button--large]="size === 'large'"
+  [class.nova-button--disabled]="disabled"
+  [disabled]="disabled || loading"
+  (click)="onClick($event)">
+  
+  <span *ngIf="iconLeft" class="nova-button__icon-left">{{ iconLeft }}</span>
+  <span *ngIf="loading" class="nova-button__loader"></span>
+  <span class="nova-button__content"><ng-content></ng-content></span>
+  <span *ngIf="iconRight" class="nova-button__icon-right">{{ iconRight }}</span>
+</button>

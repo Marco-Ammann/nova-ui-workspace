@@ -1,0 +1,7 @@
+﻿// Nova UI main SCSS entry point
+@use 'core' as core;
+@use 'themes' as themes;
+@use 'utilities' as utilities;
+
+// Apply the default theme
+@include themes.apply-supernova-theme();

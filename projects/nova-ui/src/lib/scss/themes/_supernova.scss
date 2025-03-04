@@ -1,0 +1,64 @@
+﻿/* Supernova Theme for Nova UI */
+@use '../core/functions' as functions;
+@use '../core/mixins' as mixins;
+
+// Theme colors
+$supernova-primary: #ff7b25;    // Bright orange core
+$supernova-secondary: #4b56ff;  // Electric blue shock wave
+$supernova-accent1: #ff2d55;    // Hot pink/red areas
+$supernova-accent2: #18f0f0;    // Ionized gas (cyan)
+$supernova-accent3: #ffe74c;    // Bright stellar matter
+$supernova-background: #0a0a14; // Deep space
+$supernova-surface: #141428;    // Near-void surface
+$supernova-surface-alt: #1e1e36; // Lighter surface
+
+// Semantic colors
+$supernova-success: #36f1cd;    // Teal success
+$supernova-error: #ff3b5d;      // Red error
+$supernova-warning: #ffb427;    // Amber warning
+$supernova-info: $supernova-secondary; // Blue info
+
+@mixin apply-supernova-theme() {
+  :root {
+    // Apply the theme CSS variables
+    @include mixins.nova-css-vars(
+      'supernova',
+      $supernova-primary,
+      $supernova-secondary,
+      $supernova-accent1,
+      $supernova-accent2,
+      $supernova-accent3,
+      $supernova-background,
+      $supernova-surface,
+      $supernova-surface-alt
+    );
+    
+    // Semantic colors
+    --nova-success: $supernova-success;
+    --nova-success-rgb: #{functions.nova-hex-to-rgb($supernova-success)};
+    
+    --nova-error: $supernova-error;
+    --nova-error-rgb: #{functions.nova-hex-to-rgb($supernova-error)};
+    
+    --nova-warning: $supernova-warning;
+    --nova-warning-rgb: #{functions.nova-hex-to-rgb($supernova-warning)};
+    
+    --nova-info: $supernova-info;
+    --nova-info-rgb: #{functions.nova-hex-to-rgb($supernova-info)};
+    
+    // Glow colors
+    --nova-primary-glow: $supernova-primary;
+    --nova-secondary-glow: $supernova-secondary;
+    --nova-accent1-glow: $supernova-accent1;
+    --nova-accent2-glow: $supernova-accent2;
+    --nova-accent3-glow: $supernova-accent3;
+    
+    // Typography
+    --nova-font-family: $nova-font-family-sans;
+    --nova-font-family-display: $nova-font-family-display;
+    --nova-font-family-mono: $nova-font-family-mono;
+  }
+}
+
+// Apply the supernova theme by default
+@include apply-supernova-theme();

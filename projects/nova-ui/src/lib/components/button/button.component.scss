@@ -1,0 +1,115 @@
+﻿@use '../../scss/core/mixins' as mixins;
+
+.nova-button {
+  // Base button styles
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--nova-border-radius, 0.375rem);
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  
+  // Primary variant
+  &--primary {
+    background-color: var(--nova-primary);
+    color: var(--nova-on-primary);
+    @include mixins.nova-glow(var(--nova-primary), 'subtle');
+    
+    &:hover:not(.nova-button--disabled) {
+      @include mixins.nova-glow(var(--nova-primary), 'medium');
+    }
+    
+    &:active:not(.nova-button--disabled) {
+      transform: translateY(1px);
+      @include mixins.nova-glow(var(--nova-primary), 'intense');
+    }
+  }
+  
+  // Secondary variant
+  &--secondary {
+    background-color: transparent;
+    color: var(--nova-secondary);
+    border: 1px solid var(--nova-secondary);
+    @include mixins.nova-glow(var(--nova-secondary), 'subtle');
+    
+    &:hover:not(.nova-button--disabled) {
+      background-color: rgba(var(--nova-secondary-rgb), 0.1);
+      @include mixins.nova-glow(var(--nova-secondary), 'medium');
+    }
+    
+    &:active:not(.nova-button--disabled) {
+      transform: translateY(1px);
+      @include mixins.nova-glow(var(--nova-secondary), 'intense');
+    }
+  }
+  
+  // Text button variant
+  &--text {
+    background-color: transparent;
+    color: var(--nova-primary);
+    padding: 0.5rem 0.75rem;
+    
+    &:hover:not(.nova-button--disabled) {
+      background-color: rgba(var(--nova-primary-rgb), 0.1);
+      @include mixins.nova-glow(var(--nova-primary), 'subtle');
+    }
+    
+    &:active:not(.nova-button--disabled) {
+      background-color: rgba(var(--nova-primary-rgb), 0.15);
+    }
+  }
+  
+  // Size variations
+  &--small {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  &--medium {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+  
+  &--large {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.125rem;
+  }
+  
+  // Disabled state
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none !important;
+    
+    &:hover, &:active {
+      transform: none;
+      box-shadow: none !important;
+    }
+  }
+  
+  // Component parts
+  &__loader {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    border: 2px solid var(--nova-on-primary);
+    border-top-color: transparent;
+    animation: nova-spin 0.8s linear infinite;
+  }
+  
+  &__content {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+@keyframes nova-spin {
+  to { transform: rotate(360deg); }
+}

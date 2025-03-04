@@ -1,0 +1,76 @@
+﻿/* SCSS mixins for Nova UI */
+
+// Generate CSS variables for a theme
+@mixin nova-css-vars($theme-name, $primary, $secondary, $accent1, $accent2, $accent3, $background, $surface, $surface-alt) {
+  --nova-primary: $primary;
+  --nova-primary-rgb: #{nova-hex-to-rgb($primary)};
+  
+  --nova-secondary: $secondary;
+  --nova-secondary-rgb: #{nova-hex-to-rgb($secondary)};
+  
+  --nova-accent1: $accent1;
+  --nova-accent1-rgb: #{nova-hex-to-rgb($accent1)};
+
+  --nova-accent2: $accent2;
+  --nova-accent2-rgb: #{nova-hex-to-rgb($accent2)};
+
+  --nova-accent3: $accent3;
+  --nova-accent3-rgb: #{nova-hex-to-rgb($accent3)};
+
+  --nova-background: $background;
+  --nova-background-rgb: #{nova-hex-to-rgb($background)};
+
+  --nova-surface: $surface;
+  --nova-surface-rgb: #{nova-hex-to-rgb($surface)};
+
+  --nova-surface-alt: $surface-alt;
+  --nova-surface-alt-rgb: #{nova-hex-to-rgb($surface-alt)};
+
+  --nova-on-primary: #{nova-contrast-color($primary)};
+  --nova-on-secondary: #{nova-contrast-color($secondary)};
+  --nova-on-background: #{nova-contrast-color($background)};
+  --nova-on-surface: #{nova-contrast-color($surface)};
+}
+
+// Glow effect mixin
+@mixin nova-glow($color, $intensity: 'medium') {
+  $glow-opacity: 0.6;
+  $glow-spread: 0px;
+
+  @if $intensity == 'subtle' {
+    $glow-opacity: 0.4;
+    $glow-spread: 1px;
+  } @else if $intensity == 'intense' {
+    $glow-opacity: 0.8;
+    $glow-spread: 4px;
+  }
+
+  box-shadow: 0 0 8px $glow-spread rgba($color, $glow-opacity);
+  border: 1px solid rgba($color, $glow-opacity + 0.1);
+  transition: box-shadow 0.3s ease, border 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 0 12px ($glow-spread + 2px) rgba($color, $glow-opacity + 0.2);
+  }
+}
+
+// Screen size breakpoints
+@mixin nova-screen-sm {
+  @media (min-width: 640px) { @content; }
+}
+
+@mixin nova-screen-md {
+  @media (min-width: 768px) { @content; }
+}
+
+@mixin nova-screen-lg {
+  @media (min-width: 1024px) { @content; }
+}
+
+@mixin nova-screen-xl {
+  @media (min-width: 1280px) { @content; }
+}
+
+@mixin nova-screen-2xl {
+  @media (min-width: 1536px) { @content; }
+}
