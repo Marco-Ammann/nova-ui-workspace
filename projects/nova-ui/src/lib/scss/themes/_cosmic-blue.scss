@@ -1,24 +1,24 @@
 ﻿/* Cosmic Blue Theme for Nova UI 
- * Inspired by hot young blue stars and interstellar nebulae 
+ * Inspired by celestial ice and deep space nebulae
  */
  @use '../core/functions' as functions;
  @use '../core/mixins' as mixins;
  @use '../core/variables' as vars;
  
  // Theme colors
- $cosmic-blue-primary: #4B7BFF;       // Vibrant blue like O-type stars
- $cosmic-blue-secondary: #7165FF;     // Violet-blue like B-type stars
- $cosmic-blue-accent1: #59CBFF;       // Bright cyan like hottest star surfaces
- $cosmic-blue-accent2: #2E5EFF;       // Deep blue like stellar cores
- $cosmic-blue-accent3: #8A9EFF;       // Periwinkle blue like diffuse nebulae
- $cosmic-blue-background: #08101F;    // Deepest space blue-black
- $cosmic-blue-surface: #111E36;       // Dark blue surface
- $cosmic-blue-surface-alt: #1C2C4C;   // Slightly lighter surface
+ $cosmic-blue-primary: #3DD9FF;       // Electric ice blue like young blue stars
+ $cosmic-blue-secondary: #5271FF;     // Deep cobalt blue like cosmic dust clouds
+ $cosmic-blue-accent1: #26EEFF;       // Bright neon blue like stellar cores
+ $cosmic-blue-accent2: #A6CFFF;       // Pale blue like distant galaxies
+ $cosmic-blue-accent3: #497BE8;       // Royal blue like cosmic background radiation
+ $cosmic-blue-background: #050E21;    // Deep space abyss 
+ $cosmic-blue-surface: #0D1A38;       // Dark blue surface with depth
+ $cosmic-blue-surface-alt: #162A4F;   // Slightly lighter cosmic surface
  
  // Semantic colors
- $cosmic-blue-success: #01DFDF;       // Bright turquoise success
- $cosmic-blue-error: #FF4863;         // Hot stellar red for errors
- $cosmic-blue-warning: #FFB829;       // Amber warning like binary star
+ $cosmic-blue-success: #00FFD0;       // Cryogenic mint success
+ $cosmic-blue-error: #FF5678;         // Warm red contrast for errors
+ $cosmic-blue-warning: #FFD25F;       // Bright star gold for warnings
  $cosmic-blue-info: $cosmic-blue-secondary;  // Blue info
  
  @mixin apply-cosmic-blue-theme() {

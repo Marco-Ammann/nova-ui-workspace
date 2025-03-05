@@ -1,0 +1,254 @@
+/* toggle.component.scss */
+.nova-toggle {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    
+    &__input-container {
+      position: relative;
+      margin: 0 0.75rem;
+    }
+    
+    &__input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+      margin: 0;
+    }
+    
+    &__track {
+      position: relative;
+      width: 2.5rem;
+      height: 1.25rem;
+      border-radius: 1rem;
+      background-color: rgba(var(--nova-surface-alt-rgb), 0.5);
+      border: 1px solid rgba(var(--nova-on-surface-rgb), 0.3);
+      transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+      overflow: hidden;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        inset: -3px;
+        border-radius: 1.25rem;
+        background: linear-gradient(
+          135deg, 
+          rgba(var(--nova-primary-rgb), 0.8),
+          rgba(var(--nova-secondary-rgb), 0.8)
+        );
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: -1;
+      }
+    }
+    
+    &__thumb {
+      position: absolute;
+      top: 0.125rem;
+      left: 0.125rem;
+      width: 0.875rem;
+      height: 0.875rem;
+      border-radius: 50%;
+      background-color: var(--nova-on-surface);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    &__stars {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8) 0.1rem, transparent 0.2rem),
+        radial-gradient(circle at 70% 65%, rgba(255, 255, 255, 0.6) 0.05rem, transparent 0.1rem),
+        radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.7) 0.075rem, transparent 0.15rem),
+        radial-gradient(circle at 20% 60%, rgba(255, 255, 255, 0.5) 0.05rem, transparent 0.1rem),
+        radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.7) 0.05rem, transparent 0.1rem);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    
+    // Add nebula effect
+    &__nebula {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        transparent, 
+        rgba(var(--nova-primary-rgb), 0.2),
+        rgba(var(--nova-accent1-rgb), 0.3),
+        rgba(var(--nova-accent2-rgb), 0.2),
+        transparent
+      );
+      border-radius: 1rem;
+      opacity: 0;
+      transform: translateX(-100%);
+      transition: opacity 0.5s ease;
+    }
+    
+    &__label {
+      font-size: 0.9375rem;
+      line-height: 1.25rem;
+      color: var(--nova-on-surface);
+      user-select: none;
+      transition: color 0.3s ease;
+    }
+    
+    &__required-marker {
+      color: var(--nova-error);
+      margin-left: 0.25rem;
+    }
+    
+    &__hint {
+      font-size: 0.75rem;
+      margin-top: 0.25rem;
+      color: rgba(var(--nova-on-surface-rgb), 0.6);
+      margin-left: auto;
+    }
+    
+    // Label position
+    &--label-before {
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+      
+      .nova-toggle__input-container {
+        margin-left: 0;
+      }
+    }
+    
+    // States
+    &--checked {
+      .nova-toggle__track {
+        background-color: rgba(var(--nova-primary-rgb), 0.2);
+        border-color: var(--nova-primary);
+        box-shadow: 0 0 5px rgba(var(--nova-primary-rgb), 0.5) inset;
+      }
+      
+      .nova-toggle__thumb {
+        left: calc(100% - 1rem);
+        background-color: var(--nova-primary);
+        box-shadow: 0 0 8px rgba(var(--nova-primary-rgb), 0.8);
+      }
+      
+      .nova-toggle__stars {
+        opacity: 0.7;
+        animation: nova-toggle-twinkle 4s infinite alternate;
+      }
+      
+      .nova-toggle__nebula {
+        opacity: 1;
+        animation: nova-toggle-nebula-flow 5s infinite;
+      }
+    }
+    
+    &--focused {
+      .nova-toggle__track {
+        border-color: var(--nova-primary);
+        
+        &::before {
+          opacity: 0.15;
+          animation: nova-toggle-pulse 2s infinite alternate;
+        }
+      }
+    }
+    
+    &--disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      
+      .nova-toggle__track {
+        background-color: rgba(var(--nova-surface-alt-rgb), 0.3);
+        border-color: rgba(var(--nova-on-surface-rgb), 0.2);
+        box-shadow: none;
+      }
+      
+      .nova-toggle__label {
+        color: rgba(var(--nova-on-surface-rgb), 0.6);
+      }
+      
+      .nova-toggle__stars, .nova-toggle__nebula {
+        animation: none;
+      }
+    }
+    
+    // Hover effects (not disabled)
+    &:not(.nova-toggle--disabled):hover {
+      .nova-toggle__track {
+        border-color: var(--nova-primary);
+        box-shadow: 0 0 7px rgba(var(--nova-primary-rgb), 0.3);
+        
+        &::before {
+          opacity: 0.1;
+        }
+      }
+      
+      .nova-toggle__label {
+        color: var(--nova-primary);
+      }
+    }
+    
+    // Animation for checked state
+    &.nova-toggle--checked:not(.nova-toggle--disabled) {
+      .nova-toggle__thumb {
+        animation: nova-toggle-glow 2s infinite alternate;
+      }
+    }
+  }
+  
+  // Animations
+  @keyframes nova-toggle-glow {
+    0% {
+      box-shadow: 0 0 8px rgba(var(--nova-primary-rgb), 0.8);
+    }
+    50% {
+      box-shadow: 0 0 15px rgba(var(--nova-primary-rgb), 0.9), 
+                  0 0 20px rgba(var(--nova-accent2-rgb), 0.4);
+    }
+    100% {
+      box-shadow: 0 0 12px rgba(var(--nova-primary-rgb), 1), 
+                  0 0 18px rgba(var(--nova-secondary-rgb), 0.6);
+    }
+  }
+  
+  @keyframes nova-toggle-twinkle {
+    0%, 100% {
+      opacity: 0.7;
+      transform: scale(0.95);
+    }
+    25% {
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 0.9;
+      transform: scale(1.05);
+    }
+    75% {
+      opacity: 0.5;
+    }
+  }
+  
+  @keyframes nova-toggle-nebula-flow {
+    0% {
+      transform: translateX(-100%) scaleX(1.5);
+      opacity: 0;
+    }
+    30%, 70% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(100%) scaleX(1.5);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes nova-toggle-pulse {
+    0% {
+      opacity: 0.15;
+    }
+    100% {
+      opacity: 0.3;
+    }
+  }

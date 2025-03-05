@@ -1,25 +1,25 @@
 ﻿/* Nebula Theme for Nova UI 
- * Inspired by emission nebulae with ionized gases
+ * Inspired by colorful stellar nurseries and gas clouds
  */
  @use '../core/functions' as functions;
  @use '../core/mixins' as mixins;
  @use '../core/variables' as vars;
  
- // Theme colors - inspired by emission nebulae
- $nebula-primary: #00D4FF;           // Bright cyan like ionized oxygen
- $nebula-secondary: #5E68EB;         // Vivid blue-purple like hydrogen/nitrogen mix
- $nebula-accent1: #64FFDA;           // Mint green like OIII emissions
- $nebula-accent2: #56ABFF;           // Light blue like hydrogen beta emissions
- $nebula-accent3: #BF7BFF;           // Light purple like hydrogen alpha with nitrogen
- $nebula-background: #071424;        // Deep space background
- $nebula-surface: #0F2137;           // Navy blue surface
- $nebula-surface-alt: #1A324C;       // Slightly lighter surface
+ // Theme colors - inspired by vibrant nebulae
+ $nebula-primary: #25E6FF;           // Brilliant cyan like ionized oxygen
+ $nebula-secondary: #7B4CFF;         // Rich purple like hydrogen/helium mix
+ $nebula-accent1: #3DFFC4;           // Seafoam green like OIII emissions
+ $nebula-accent2: #FF89BB;           // Rose pink like hydrogen regions
+ $nebula-accent3: #60A1FF;           // Serene blue like nitrogen regions
+ $nebula-background: #061019;        // Darkest cosmic background
+ $nebula-surface: #0E1C2A;           // Deep space surface
+ $nebula-surface-alt: #18293D;       // Slightly lighter surface with blue tone
  
  // Semantic colors
- $nebula-success: #12D3A9;           // Teal success
- $nebula-error: #FF5D8F;             // Magenta error like hydrogen alpha
- $nebula-warning: #FFAB2F;           // Amber warning
- $nebula-info: $nebula-secondary;    // Blueish info
+ $nebula-success: #00F5BB;           // Electric teal success
+ $nebula-error: #FF5376;             // Rose red error like stellar hot spots
+ $nebula-warning: #FFB946;           // Sunburst amber warning
+ $nebula-info: $nebula-secondary;    // Purple info
  
  @mixin apply-nebula-theme() {
    // Apply the theme CSS variables

@@ -1,0 +1,32 @@
+<!-- radio-button.component.html - Updated event handling -->
+<div class="nova-radio" 
+     [class.nova-radio--checked]="checked"
+     [class.nova-radio--focused]="focused"
+     [class.nova-radio--disabled]="disabled"
+     (click)="selectRadio($event)">
+  
+  <div class="nova-radio__input-container">
+    <input type="radio"
+           class="nova-radio__input"
+           [id]="inputId"
+           [name]="name"
+           [value]="value"
+           [checked]="checked"
+           [disabled]="disabled"
+           [required]="required"
+           (change)="onInputChange($event)"
+           (focus)="onInputFocus()"
+           (blur)="onInputBlur()">
+    
+    <div class="nova-radio__circle">
+      <div class="nova-radio__dot"></div>
+    </div>
+  </div>
+  
+  <label *ngIf="label" class="nova-radio__label">
+    {{ label }}
+    <span *ngIf="required" class="nova-radio__required-marker">*</span>
+  </label>
+  
+  <div *ngIf="hint" class="nova-radio__hint">{{ hint }}</div>
+</div>

@@ -1,5 +1,4 @@
-﻿// button.component.ts
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+﻿import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -17,6 +16,7 @@ export class NovaButtonComponent {
   @Input() loading = false;
   @Input() iconLeft?: string;
   @Input() iconRight?: string;
+  @Input() type: 'button' | 'submit' | 'reset' = 'button';
   
   @Output() clicked = new EventEmitter<Event>();
   

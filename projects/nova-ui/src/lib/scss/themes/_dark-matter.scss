@@ -1,24 +1,24 @@
 ﻿/* Dark Matter Theme for Nova UI 
- * Inspired by the mysterious dark matter and gravitational lensing effects
+ * Inspired by void space and invisible cosmic forces
  */
  @use '../core/functions' as functions;
  @use '../core/mixins' as mixins;
  @use '../core/variables' as vars;
  
  // Theme colors - inspired by the mysterious dark matter
- $dark-matter-primary: #735CFF;      // Purple-blue like gravitational lensing
- $dark-matter-secondary: #485C9E;    // Subtle blue like distant galaxies
- $dark-matter-accent1: #8D7DDB;      // Dusty purple like cosmic filaments
- $dark-matter-accent2: #384778;      // Deep navy like dark matter halos
- $dark-matter-accent3: #A396D8;      // Light purple like distorted space
- $dark-matter-background: #070810;   // Nearly black void
- $dark-matter-surface: #0E0E1A;      // Very dark blue-black surface
- $dark-matter-surface-alt: #141428;  // Slightly lighter surface
+ $dark-matter-primary: #9D71FF;      // Enigmatic violet like gravitational distortion
+ $dark-matter-secondary: #515FC4;    // Subtle midnight blue like cosmic filaments
+ $dark-matter-accent1: #B69DF6;      // Soft lavender like space distortions
+ $dark-matter-accent2: #3E4676;      // Deep indigo like hidden mass
+ $dark-matter-accent3: #7A87D9;      // Celestial blue-purple like cosmic web
+ $dark-matter-background: #050508;   // Almost perfect void
+ $dark-matter-surface: #0C0C14;      // Deep void with subtle texture
+ $dark-matter-surface-alt: #121220;  // Slightly lighter cosmic void
  
  // Semantic colors
- $dark-matter-success: #4ECCA3;      // Muted teal success
- $dark-matter-error: #E64667;        // Subtle red error
- $dark-matter-warning: #E6BA48;      // Muted gold warning
+ $dark-matter-success: #44E6B5;      // Aurora green success
+ $dark-matter-error: #FF4673;        // Clear red error that cuts through darkness
+ $dark-matter-warning: #F9CB54;      // Gold dust warning
  $dark-matter-info: $dark-matter-secondary; // Blue info
  
  @mixin apply-dark-matter-theme() {

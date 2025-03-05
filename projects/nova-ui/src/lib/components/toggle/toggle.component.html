@@ -1,0 +1,38 @@
+<div class="nova-toggle" 
+     [class.nova-toggle--checked]="checked"
+     [class.nova-toggle--focused]="focused"
+     [class.nova-toggle--disabled]="disabled"
+     [class.nova-toggle--label-before]="labelPosition === 'before'"
+     (click)="toggleChecked($event)">
+  
+  <label *ngIf="label && labelPosition === 'before'" class="nova-toggle__label">
+    {{ label }}
+    <span *ngIf="required" class="nova-toggle__required-marker">*</span>
+  </label>
+  
+  <div class="nova-toggle__input-container">
+    <input type="checkbox"
+           class="nova-toggle__input"
+           [id]="name || inputId"
+           [name]="name"
+           [checked]="checked"
+           [disabled]="disabled"
+           [required]="required"
+           (change)="onInputChange($event)"
+           (focus)="onInputFocus()"
+           (blur)="onInputBlur()">
+    
+    <div class="nova-toggle__track">
+      <div class="nova-toggle__thumb"></div>
+      <div class="nova-toggle__stars"></div>
+      <div class="nova-toggle__nebula"></div>
+    </div>
+  </div>
+  
+  <label *ngIf="label && labelPosition === 'after'" class="nova-toggle__label">
+    {{ label }}
+    <span *ngIf="required" class="nova-toggle__required-marker">*</span>
+  </label>
+  
+  <div *ngIf="hint" class="nova-toggle__hint">{{ hint }}</div>
+</div>

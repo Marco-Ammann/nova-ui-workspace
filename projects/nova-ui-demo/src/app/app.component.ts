@@ -1,27 +1,50 @@
-﻿import { Component } from '@angular/core';
-import { NovaButtonComponent } from 'nova-ui';
-import { NovaThemeTogglerComponent } from '../../../nova-ui/src/lib/components/theme-toggler/theme-toggler.component';
+﻿// app.component.ts - UPDATED WITH CONSISTENT IMPORTS
+import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NovaCardComponent, NovaCardHeaderComponent, NovaCardContentComponent, NovaCardFooterComponent } from 'projects/nova-ui/src/lib/components/card/card.component';
-import { NovaInputComponent } from 'projects/nova-ui/src/lib/components/input/input.component';
+import { 
+  NovaButtonComponent,
+  NovaThemeTogglerComponent,
+  NovaCardComponent,
+  NovaCardHeaderComponent, 
+  NovaCardContentComponent, 
+  NovaCardFooterComponent,
+  NovaInputComponent,
+  NovaCheckboxComponent,
+  NovaRadioButtonComponent,
+  NovaToggleComponent
+} from 'nova-ui';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   standalone: true,
-  imports: [NovaButtonComponent, NovaThemeTogglerComponent,
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    NovaButtonComponent,
+    NovaThemeTogglerComponent,
     NovaCardComponent,
     NovaCardHeaderComponent,
     NovaCardContentComponent,
     NovaCardFooterComponent,
     NovaInputComponent,
-    FormsModule,
-    ReactiveFormsModule
-  ],
+    NovaCheckboxComponent,
+    NovaRadioButtonComponent,
+    NovaToggleComponent
+  ]
 })
 export class AppComponent {
   title = 'Nova UI Demo';
   userName = '';
   email = '';
+  
+  // Form control states
+  termsAccepted = false;
+  notifications = true;
+  newsletter = false;
+  themePreference = 'dark';
+  darkMode = true;
+  notificationsToggle = true;
+  soundEnabled = false;
 }

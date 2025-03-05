@@ -100,3 +100,11 @@ p {
   gap: 1.5rem 2rem;
   margin-top: 1.5rem;
 }
+
+/* Add to app.component.scss */
+.form-controls-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}

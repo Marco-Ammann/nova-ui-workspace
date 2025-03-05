@@ -88,77 +88,111 @@
     </div>
   </section>
 
-
-
   <section class="demo-section">
     <h2>Card Component</h2>
-    
+
     <div class="card-grid">
       <!-- Default Card -->
       <nova-card>
-        <nova-card-header title="Default Card" subtitle="Basic card without variants"></nova-card-header>
+        <nova-card-header
+          title="Default Card"
+          subtitle="Basic card without variants"
+        ></nova-card-header>
         <nova-card-content>
-          <p>This is a standard card component for displaying related content. It has no special variants applied.</p>
+          <p>
+            This is a standard card component for displaying related content. It
+            has no special variants applied.
+          </p>
         </nova-card-content>
         <nova-card-footer>
           <nova-button variant="text">Cancel</nova-button>
           <nova-button>Action</nova-button>
         </nova-card-footer>
       </nova-card>
-      
+
       <!-- Primary Card -->
       <nova-card variant="primary">
-        <nova-card-header title="Primary Card" subtitle="With primary color accents"></nova-card-header>
+        <nova-card-header
+          title="Primary Card"
+          subtitle="With primary color accents"
+        ></nova-card-header>
         <nova-card-content>
-          <p>This card uses the primary color for accents and borders, creating a stronger visual hierarchy.</p>
+          <p>
+            This card uses the primary color for accents and borders, creating a
+            stronger visual hierarchy.
+          </p>
         </nova-card-content>
         <nova-card-footer>
           <nova-button variant="text">Cancel</nova-button>
           <nova-button>Action</nova-button>
         </nova-card-footer>
       </nova-card>
-      
+
       <!-- Accent Card -->
       <nova-card variant="accent">
-        <nova-card-header title="Accent Card" subtitle="With secondary color accents"></nova-card-header>
+        <nova-card-header
+          title="Accent Card"
+          subtitle="With secondary color accents"
+        ></nova-card-header>
         <nova-card-content>
-          <p>This card uses the secondary color for accents and borders, creating an alternative visual style.</p>
+          <p>
+            This card uses the secondary color for accents and borders, creating
+            an alternative visual style.
+          </p>
         </nova-card-content>
         <nova-card-footer>
           <nova-button variant="text">Cancel</nova-button>
           <nova-button>Action</nova-button>
         </nova-card-footer>
       </nova-card>
-      
+
       <!-- Elevated Card -->
       <nova-card [elevated]="true">
-        <nova-card-header title="Elevated Card" subtitle="With shadow effect"></nova-card-header>
+        <nova-card-header
+          title="Elevated Card"
+          subtitle="With shadow effect"
+        ></nova-card-header>
         <nova-card-content>
-          <p>This card uses elevation (shadow) to appear floating above the surface, creating depth in the UI.</p>
+          <p>
+            This card uses elevation (shadow) to appear floating above the
+            surface, creating depth in the UI.
+          </p>
         </nova-card-content>
         <nova-card-footer>
           <nova-button variant="text">Cancel</nova-button>
           <nova-button>Action</nova-button>
         </nova-card-footer>
       </nova-card>
-      
+
       <!-- Hoverable Card -->
       <nova-card [hoverable]="true">
-        <nova-card-header title="Hoverable Card" subtitle="Interactive on hover"></nova-card-header>
+        <nova-card-header
+          title="Hoverable Card"
+          subtitle="Interactive on hover"
+        ></nova-card-header>
         <nova-card-content>
-          <p>This card has hover effects and indicates interactivity. Hover over it to see the animation.</p>
+          <p>
+            This card has hover effects and indicates interactivity. Hover over
+            it to see the animation.
+          </p>
         </nova-card-content>
         <nova-card-footer>
           <nova-button variant="text">Cancel</nova-button>
           <nova-button variant="cta">Details</nova-button>
         </nova-card-footer>
       </nova-card>
-      
+
       <!-- Combined Card -->
       <nova-card variant="primary" [elevated]="true" [hoverable]="true">
-        <nova-card-header title="Combined Features" subtitle="Primary + Elevated + Hoverable"></nova-card-header>
+        <nova-card-header
+          title="Combined Features"
+          subtitle="Primary + Elevated + Hoverable"
+        ></nova-card-header>
         <nova-card-content>
-          <p>This card combines all features: primary variant styling, elevation, and hover effects.</p>
+          <p>
+            This card combines all features: primary variant styling, elevation,
+            and hover effects.
+          </p>
         </nova-card-content>
         <nova-card-footer>
           <nova-button variant="text">Cancel</nova-button>
@@ -168,61 +202,145 @@
     </div>
   </section>
 
-
   <section class="demo-section">
     <h2>Input Fields</h2>
-    
+
     <div class="form-grid">
       <!-- Basic Input -->
-      <nova-input 
+      <nova-input
         label="Username"
         placeholder="Enter your username"
-        [(ngModel)]="userName">
+        [(ngModel)]="userName"
+      >
       </nova-input>
-      
+
       <!-- Email Input with Validation -->
-      <nova-input 
+      <nova-input
         label="Email Address"
         placeholder="name@example.com"
         type="email"
         [(ngModel)]="email"
-        [required]="true">
+        [required]="true"
+      >
       </nova-input>
-      
+
       <!-- Password Input -->
-      <nova-input 
+      <nova-input
         label="Password"
         placeholder="Enter your password"
-        type="password">
+        type="password"
+      >
       </nova-input>
-      
+
       <!-- Input with Icon -->
-      <nova-input 
+      <nova-input
         label="Search"
         placeholder="Search for anything..."
-        iconLeft="🔍">
+        iconLeft="🔍"
+      >
       </nova-input>
-      
+
       <!-- Disabled Input -->
-      <nova-input 
+      <nova-input
         label="Disabled Field"
         placeholder="Cannot be edited"
-        [disabled]="true">
+        [disabled]="true"
+      >
       </nova-input>
-      
+
       <!-- Read-only Input -->
-      <nova-input 
+      <nova-input
         label="Read-only Field"
         value="System generated value"
-        [readonly]="true">
+        [readonly]="true"
+      >
       </nova-input>
-      
+
       <!-- Input with Hint -->
-      <nova-input 
+      <nova-input
         label="Display Name"
         placeholder="How you'll appear to others"
-        hint="This will be visible to all users">
+        hint="This will be visible to all users"
+      >
       </nova-input>
+    </div>
+  </section>
+
+  <section class="demo-section">
+    <h2>Form Controls</h2>
+
+    <div class="section-title">Checkboxes</div>
+    <div class="form-controls-grid">
+      <nova-checkbox
+        label="Accept terms and conditions"
+        [required]="true"
+        hint="You must accept to continue"
+        [(ngModel)]="termsAccepted"
+      >
+      </nova-checkbox>
+
+      <nova-checkbox label="Send me notifications" [(ngModel)]="notifications">
+      </nova-checkbox>
+
+      <nova-checkbox label="Subscribe to newsletter" [(ngModel)]="newsletter">
+      </nova-checkbox>
+
+      <nova-checkbox label="Disabled checkbox" [disabled]="true">
+      </nova-checkbox>
+
+      <nova-checkbox label="Indeterminate state" [indeterminate]="true">
+      </nova-checkbox>
+    </div>
+
+    <div class="section-title">Radio Buttons</div>
+    <div class="form-controls-grid">
+      <nova-radio-button
+        name="theme-preference"
+        label="Dark theme"
+        value="dark"
+        [(ngModel)]="themePreference"
+      >
+      </nova-radio-button>
+
+      <nova-radio-button
+        name="theme-preference"
+        label="Light theme"
+        value="light"
+        [(ngModel)]="themePreference"
+      >
+      </nova-radio-button>
+
+      <nova-radio-button
+        name="theme-preference"
+        label="System default"
+        value="system"
+        [(ngModel)]="themePreference"
+      >
+      </nova-radio-button>
+
+      <nova-radio-button
+        name="disabled-example"
+        label="Disabled option"
+        [disabled]="true"
+      >
+      </nova-radio-button>
+    </div>
+
+    <div class="section-title">Toggle Switches</div>
+    <div class="form-controls-grid">
+      <nova-toggle label="Dark mode" [(ngModel)]="darkMode"> </nova-toggle>
+
+      <nova-toggle label="Notifications" [(ngModel)]="notificationsToggle">
+      </nova-toggle>
+
+      <nova-toggle
+        label="Sound enabled"
+        labelPosition="before"
+        [(ngModel)]="soundEnabled"
+      >
+      </nova-toggle>
+
+      <nova-toggle label="Disabled toggle" [disabled]="true"> </nova-toggle>
     </div>
   </section>
 </div>

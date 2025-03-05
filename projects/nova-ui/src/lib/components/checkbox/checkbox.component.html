@@ -1,0 +1,38 @@
+<!-- checkbox.component.html - Updated event handling -->
+<div class="nova-checkbox" 
+     [class.nova-checkbox--checked]="checked"
+     [class.nova-checkbox--focused]="focused"
+     [class.nova-checkbox--disabled]="disabled"
+     [class.nova-checkbox--indeterminate]="indeterminate"
+     (click)="toggleChecked($event)">
+  
+  <div class="nova-checkbox__input-container">
+    <input type="checkbox"
+           class="nova-checkbox__input"
+           [id]="name || inputId"
+           [name]="name"
+           [checked]="checked"
+           [disabled]="disabled"
+           [required]="required"
+           [indeterminate]="indeterminate"
+           (change)="onInputChange($event)"
+           (focus)="onInputFocus()"
+           (blur)="onInputBlur()">
+    
+    <div class="nova-checkbox__box">
+      <svg class="nova-checkbox__check-mark" viewBox="0 0 24 24" *ngIf="checked && !indeterminate">
+        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path>
+      </svg>
+      
+      <div class="nova-checkbox__indeterminate-mark" *ngIf="indeterminate"></div>
+    </div>
+  </div>
+  
+  <label *ngIf="label" 
+         class="nova-checkbox__label">
+    {{ label }}
+    <span *ngIf="required" class="nova-checkbox__required-marker">*</span>
+  </label>
+  
+  <div *ngIf="hint" class="nova-checkbox__hint">{{ hint }}</div>
+</div>
