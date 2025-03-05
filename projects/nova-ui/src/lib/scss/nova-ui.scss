@@ -7,11 +7,7 @@
 @use "themes/dark-matter";
 @use "themes/supernova";
 
-// Apply the default theme
-// @include themes.apply-supernova-theme();
-// @include themes.apply-cosmic-blue-theme();
-// @include themes.apply-nebula-theme();
-// @include themes.apply-dark-matter-theme();
+
 body.theme-cosmic-blue {
   @include cosmic-blue.apply-cosmic-blue-theme();
 }

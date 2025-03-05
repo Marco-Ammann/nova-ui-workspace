@@ -1,71 +1,72 @@
-﻿/* Supernova Theme for Nova UI */
-@use '../core/functions' as functions;
-@use '../core/mixins' as mixins;
-@use '../core/variables' as vars; // Add this
-
-// Theme colors
-$supernova-primary: #ff7b25;    // Bright orange core
-$supernova-secondary: #4b56ff;  // Electric blue shock wave
-$supernova-accent1: #ff2d55;    // Hot pink/red areas
-$supernova-accent2: #18f0f0;    // Ionized gas (cyan)
-$supernova-accent3: #ffe74c;    // Bright stellar matter
-$supernova-background: #0a0a14; // Deep space
-$supernova-surface: #141428;    // Near-void surface
-$supernova-surface-alt: #1e1e36; // Lighter surface
-
-// Semantic colors
-$supernova-success: #36f1cd;    // Teal success
-$supernova-error: #ff3b5d;      // Red error
-$supernova-warning: #ffb427;    // Amber warning
-$supernova-info: $supernova-secondary; // Blue info
-
-@mixin apply-supernova-theme() {
-    // Apply the theme CSS variables
-    @include mixins.nova-css-vars(
-      'supernova',
-      $supernova-primary,
-      $supernova-secondary,
-      $supernova-accent1,
-      $supernova-accent2,
-      $supernova-accent3,
-      $supernova-background,
-      $supernova-surface,
-      $supernova-surface-alt
-    );
-    
-    // Semantic colors
-    --nova-success: $supernova-success;
-    --nova-success-rgb: #{functions.nova-hex-to-rgb($supernova-success)};
-    
-    --nova-error: $supernova-error;
-    --nova-error-rgb: #{functions.nova-hex-to-rgb($supernova-error)};
-    
-    --nova-warning: $supernova-warning;
-    --nova-warning-rgb: #{functions.nova-hex-to-rgb($supernova-warning)};
-    
-    --nova-info: $supernova-info;
-    --nova-info-rgb: #{functions.nova-hex-to-rgb($supernova-info)};
-    
-    // Glow colors
-    --nova-primary-glow: $supernova-primary;
-    --nova-secondary-glow: $supernova-secondary;
-    --nova-accent1-glow: $supernova-accent1;
-    --nova-accent2-glow: $supernova-accent2;
-    --nova-accent3-glow: $supernova-accent3;
-    
-    // Typography
-    --nova-font-family: vars.$nova-font-family-sans;
-    --nova-font-family-display: vars.$nova-font-family-display;
-    --nova-font-family-mono: vars.$nova-font-family-mono;
-  }
-
-  
-// Apply the supernova theme by default to :root
-:root {
-  @include apply-supernova-theme();
-}
-
-// Also apply it to the theme-supernova class for consistency
-body.theme-supernova {
-  @include apply-supernova-theme();
-}
+﻿/* Supernova Theme for Nova UI 
+ * Inspired by explosive stellar events and high-energy phenomena
+ */
+ @use '../core/functions' as functions;
+ @use '../core/mixins' as mixins;
+ @use '../core/variables' as vars;
+ 
+ // Theme colors
+ $supernova-primary: #FF5A3D;         // Fiery orange-red like core explosion
+ $supernova-secondary: #3B3CFF;       // Electric blue like shock waves
+ $supernova-accent1: #FF2D76;         // Hot pink/red like radioactive decay
+ $supernova-accent2: #00ECE2;         // Bright cyan like ionized gases
+ $supernova-accent3: #FFD740;         // Brilliant gold like ejecta
+ $supernova-background: #09090F;      // Deep void
+ $supernova-surface: #10101E;         // Near-void surface
+ $supernova-surface-alt: #191930;     // Lighter surface
+ 
+ // Semantic colors
+ $supernova-success: #23FFBC;         // Bright teal success
+ $supernova-error: #FF3355;           // Hot stellar red error
+ $supernova-warning: #FFAD21;         // Bright amber warning
+ $supernova-info: $supernova-secondary; // Blue info
+ 
+ @mixin apply-supernova-theme() {
+   // Apply the theme CSS variables
+   @include mixins.nova-css-vars(
+     'supernova',
+     $supernova-primary,
+     $supernova-secondary,
+     $supernova-accent1,
+     $supernova-accent2,
+     $supernova-accent3,
+     $supernova-background,
+     $supernova-surface,
+     $supernova-surface-alt
+   );
+   
+   // Semantic colors
+   --nova-success: #{$supernova-success};
+   --nova-success-rgb: #{functions.nova-hex-to-rgb($supernova-success)};
+   
+   --nova-error: #{$supernova-error};
+   --nova-error-rgb: #{functions.nova-hex-to-rgb($supernova-error)};
+   
+   --nova-warning: #{$supernova-warning};
+   --nova-warning-rgb: #{functions.nova-hex-to-rgb($supernova-warning)};
+   
+   --nova-info: #{$supernova-info};
+   --nova-info-rgb: #{functions.nova-hex-to-rgb($supernova-info)};
+   
+   // Glow colors
+   --nova-primary-glow: #{$supernova-primary};
+   --nova-secondary-glow: #{$supernova-secondary};
+   --nova-accent1-glow: #{$supernova-accent1};
+   --nova-accent2-glow: #{$supernova-accent2};
+   --nova-accent3-glow: #{$supernova-accent3};
+   
+   // Typography
+   --nova-font-family: #{vars.$nova-font-family-sans};
+   --nova-font-family-display: #{vars.$nova-font-family-display};
+   --nova-font-family-mono: #{vars.$nova-font-family-mono};
+ }
+ 
+ // Apply the supernova theme by default to :root
+ :root {
+   @include apply-supernova-theme();
+ }
+ 
+ // Also apply it to the theme-supernova class for consistency
+ body.theme-supernova {
+   @include apply-supernova-theme();
+ }
