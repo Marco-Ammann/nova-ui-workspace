@@ -1,41 +1,56 @@
 ﻿/* SCSS mixins for Nova UI */
 @use 'functions' as functions;
+@use "sass:color";
 
 // Generate CSS variables for a theme
-
 @mixin nova-css-vars($theme-name, $primary, $secondary, $accent1, $accent2, $accent3, $background, $surface, $surface-alt) {
   --nova-primary: #{$primary};
-  --nova-primary-rgb: #{red($primary)}, #{green($primary)}, #{blue($primary)};
+  --nova-primary-rgb: #{color.channel($primary, "red", $space: rgb)}, 
+                      #{color.channel($primary, "green", $space: rgb)}, 
+                      #{color.channel($primary, "blue", $space: rgb)};
   
   --nova-secondary: #{$secondary};
-  --nova-secondary-rgb: #{red($secondary)}, #{green($secondary)}, #{blue($secondary)};
+  --nova-secondary-rgb: #{color.channel($secondary, "red", $space: rgb)}, 
+                        #{color.channel($secondary, "green", $space: rgb)}, 
+                        #{color.channel($secondary, "blue", $space: rgb)};
   
   --nova-accent1: #{$accent1};
-  --nova-accent1-rgb: #{red($accent1)}, #{green($accent1)}, #{blue($accent1)};
+  --nova-accent1-rgb: #{color.channel($accent1, "red", $space: rgb)}, 
+                      #{color.channel($accent1, "green", $space: rgb)}, 
+                      #{color.channel($accent1, "blue", $space: rgb)};
   
   --nova-accent2: #{$accent2};
-  --nova-accent2-rgb: #{red($accent2)}, #{green($accent2)}, #{blue($accent2)};
+  --nova-accent2-rgb: #{color.channel($accent2, "red", $space: rgb)}, 
+                      #{color.channel($accent2, "green", $space: rgb)}, 
+                      #{color.channel($accent2, "blue", $space: rgb)};
   
   --nova-accent3: #{$accent3};
-  --nova-accent3-rgb: #{red($accent3)}, #{green($accent3)}, #{blue($accent3)};
+  --nova-accent3-rgb: #{color.channel($accent3, "red", $space: rgb)}, 
+                      #{color.channel($accent3, "green", $space: rgb)}, 
+                      #{color.channel($accent3, "blue", $space: rgb)};
   
   --nova-background: #{$background};
-  --nova-background-rgb: #{red($background)}, #{green($background)}, #{blue($background)};
+  --nova-background-rgb: #{color.channel($background, "red", $space: rgb)}, 
+                        #{color.channel($background, "green", $space: rgb)}, 
+                        #{color.channel($background, "blue", $space: rgb)};
   
   --nova-surface: #{$surface};
-  --nova-surface-rgb: #{red($surface)}, #{green($surface)}, #{blue($surface)};
+  --nova-surface-rgb: #{color.channel($surface, "red", $space: rgb)}, 
+                      #{color.channel($surface, "green", $space: rgb)}, 
+                      #{color.channel($surface, "blue", $space: rgb)};
   
   --nova-surface-alt: #{$surface-alt};
-  --nova-surface-alt-rgb: #{red($surface-alt)}, #{green($surface-alt)}, #{blue($surface-alt)};
+  --nova-surface-alt-rgb: #{color.channel($surface-alt, "red", $space: rgb)}, 
+                          #{color.channel($surface-alt, "green", $space: rgb)}, 
+                          #{color.channel($surface-alt, "blue", $space: rgb)};
   
-  --nova-on-primary: #{if(lightness($primary) > 50%, #000000, #ffffff)};
-  --nova-on-secondary: #{if(lightness($secondary) > 50%, #000000, #ffffff)};
-  --nova-on-background: #{if(lightness($background) > 50%, #000000, #ffffff)};
-  --nova-on-surface: #{if(lightness($surface) > 50%, #000000, #ffffff)};
+  --nova-on-primary: #{if(color.lightness($primary) > 50%, #000000, #ffffff)};
+  --nova-on-secondary: #{if(color.lightness($secondary) > 50%, #000000, #ffffff)};
+  --nova-on-background: #{if(color.lightness($background) > 50%, #000000, #ffffff)};
+  --nova-on-surface: #{if(color.lightness($surface) > 50%, #000000, #ffffff)};
 }
 
 // Glow effect mixin
-
 @mixin nova-glow($color, $intensity: 'medium') {
   $glow-opacity: 0.6;
   $glow-spread: 0px;

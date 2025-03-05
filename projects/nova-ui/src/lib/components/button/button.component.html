@@ -1,35 +1,33 @@
-﻿<button 
-  class="nova-button"
-  [class.nova-button--primary]="variant === 'primary'"
-  [class.nova-button--secondary]="variant === 'secondary'"
-  [class.nova-button--cta]="variant === 'cta'"
-  [class.nova-button--text]="variant === 'text'"
-  [class.nova-button--small]="size === 'small'"
-  [class.nova-button--medium]="size === 'medium'" 
-  [class.nova-button--large]="size === 'large'"
-  [class.nova-button--disabled]="disabled"
-  [class.nova-button--loading]="loading"
+﻿<button
+  class="nova-button__element"
   [disabled]="disabled || loading"
-  [attr.type]="type"
   [attr.aria-disabled]="disabled || loading"
   [attr.aria-busy]="loading"
   (click)="onClick($event)">
   
-  <!-- Loader -->
+  <!-- Loading spinner -->
   <div *ngIf="loading" class="nova-button__loader">
-    <div class="nova-button__loader-ring"></div>
+    <div class="nova-button__spinner"></div>
   </div>
   
-  <!-- Button Content -->
-  <span class="nova-button__content">
-    <span *ngIf="iconLeft" class="nova-button__icon-left">
-      {{ iconLeft }}
+  <!-- Button content -->
+  <div class="nova-button__content" [class.nova-button__content--hidden]="loading">
+    <!-- Left icon -->
+    <span *ngIf="icon && iconPosition === 'left'" class="nova-button__icon nova-button__icon--left">
+      {{icon}}
     </span>
     
-    <ng-content></ng-content>
-    
-    <span *ngIf="iconRight" class="nova-button__icon-right">
-      {{ iconRight }}
+    <!-- Label -->
+    <span class="nova-button__label">
+      <ng-content></ng-content>
     </span>
-  </span>
+    
+    <!-- Right icon -->
+    <span *ngIf="icon && iconPosition === 'right'" class="nova-button__icon nova-button__icon--right">
+      {{icon}}
+    </span>
+  </div>
+  
+  <!-- Animation effects -->
+  <span *ngIf="animation !== 'none'" class="nova-button__bg-effect"></span>
 </button>

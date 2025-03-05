@@ -1,9 +1,10 @@
 ﻿.container {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 2rem;
 }
 
+// Header
 .header {
   display: flex;
   justify-content: space-between;
@@ -11,100 +12,153 @@
   margin-bottom: 2rem;
   flex-wrap: wrap;
   gap: 1rem;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 h1 {
   font-family: var(--nova-font-family-display);
-  color: var(--nova-primary);
   margin: 0;
-  background: linear-gradient(
-    90deg,
-    var(--nova-primary),
-    var(--nova-secondary)
-  );
+  background: linear-gradient(90deg, var(--nova-primary), var(--nova-secondary));
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 2rem;
+  
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
 }
 
-.theme-toggler {
-  flex-shrink: 0;
-}
-
+// Demo sections
 .demo-section {
   background-color: var(--nova-surface);
-  border-radius: 0.5rem;
-  padding: 1.5rem;
+  border-radius: 0.75rem;
+  padding: 1.75rem;
   margin-bottom: 2rem;
-  box-shadow: 0 0 15px rgba(var(--nova-primary-rgb), 0.3);
+  box-shadow: 0 0 15px rgba(var(--nova-primary-rgb), 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--nova-primary), var(--nova-secondary));
+    opacity: 0.7;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 1.25rem;
+  }
 }
-.button-group {
-  display: flex;
-  gap: 0.75rem;
-  margin-top: 1.5rem;
-  padding: 1rem;
-  background-color: var(--nova-surface-alt);
-  border-radius: 0.5rem;
-}
+
 h2 {
   margin-top: 0;
-  margin-bottom: 1.5rem;
-  color: var(--nova-on-surface);
-  font-family: var(--nova-font-family-display);
-}
-
-.section-title {
-  font-weight: 500;
   margin-bottom: 0.75rem;
   color: var(--nova-primary);
+  font-family: var(--nova-font-family-display);
+  font-size: 1.5rem;
 }
 
+h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--nova-on-surface);
+  font-family: var(--nova-font-family-display);
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.section-description {
+  margin-bottom: 1.5rem;
+  color: var(--nova-on-surface);
+  opacity: 0.8;
+  max-width: 800px;
+  line-height: 1.5;
+}
+
+// Button display
 .button-row {
   display: flex;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
   flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 1.25rem;
+  align-items: flex-end;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
-p {
-  line-height: 1.6;
+.button-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 120px;
+}
+
+.button-label {
+  font-size: 0.8rem;
   color: var(--nova-on-surface);
-  margin-bottom: 1rem;
+  opacity: 0.7;
 }
 
-.theme-list {
-  padding-left: 1.5rem;
-  margin-bottom: 1.5rem;
-
-  li {
-    margin-bottom: 0.75rem;
-    color: var(--nova-on-surface);
-    line-height: 1.6;
-
-    strong {
-      color: var(--nova-primary);
+// Theme buttons
+.theme-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  
+  nova-button {
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: currentColor;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    
+    &:hover::after {
+      opacity: 0.5;
     }
   }
 }
-/* Add these styles to app.component.scss */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 350px), 1fr));
-  gap: 1.5rem;
-  margin-top: 1.5rem;
+
+// Dialog example styling
+.dialog-example {
+  background-color: rgba(var(--nova-surface-alt-rgb), 0.3);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  justify-content: flex-end;
 }
 
+// Form section
 .form-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
-  gap: 1.5rem 2rem;
-  margin-top: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
-/* Add to app.component.scss */
-.form-controls-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
   gap: 1rem;
-  margin: 1.5rem 0;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(var(--nova-surface-alt-rgb), 0.3);
 }

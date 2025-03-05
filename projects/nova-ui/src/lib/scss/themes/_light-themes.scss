@@ -1,0 +1,242 @@
+// projects/nova-ui/src/lib/scss/themes/_light-themes.scss
+// Light Theme Versions of the Nova UI themes
+
+@use '../core/functions' as functions;
+@use '../core/mixins' as mixins;
+@use '../core/variables' as vars;
+
+/*
+ * Supernova Light Theme
+ * A bright, energetic light theme inspired by stellar flares
+ */
+$supernova-light-primary: #FF3D51;         // Solar flare red core color
+$supernova-light-secondary: #424AFF;       // Electric arc blue
+$supernova-light-accent1: #FF6D2E;         // Fierce orange
+$supernova-light-accent2: #14F4E5;         // Intense cyan
+$supernova-light-accent3: #FFD132;         // Brilliant yellow
+$supernova-light-background: #FFF8F0;      // Warm white background
+$supernova-light-surface: #FFFFFF;         // White surface
+$supernova-light-surface-alt: #FFF0E8;     // Warm off-white
+
+// Semantic colors
+$supernova-light-success: #08C096;         // Emerald green success
+$supernova-light-error: #FF2B45;           // Plasma red error
+$supernova-light-warning: #FF8C00;         // Solar warning
+$supernova-light-info: $supernova-light-secondary;
+
+@mixin apply-supernova-light-theme() {
+  // Apply the theme CSS variables
+  @include mixins.nova-css-vars(
+    'supernova-light',
+    $supernova-light-primary,
+    $supernova-light-secondary,
+    $supernova-light-accent1,
+    $supernova-light-accent2,
+    $supernova-light-accent3,
+    $supernova-light-background,
+    $supernova-light-surface,
+    $supernova-light-surface-alt
+  );
+  
+  // Semantic colors
+  --nova-success: #{$supernova-light-success};
+  --nova-success-rgb: #{functions.nova-hex-to-rgb($supernova-light-success)};
+  
+  --nova-error: #{$supernova-light-error};
+  --nova-error-rgb: #{functions.nova-hex-to-rgb($supernova-light-error)};
+  
+  --nova-warning: #{$supernova-light-warning};
+  --nova-warning-rgb: #{functions.nova-hex-to-rgb($supernova-light-warning)};
+  
+  --nova-info: #{$supernova-light-info};
+  --nova-info-rgb: #{functions.nova-hex-to-rgb($supernova-light-info)};
+  
+  // Glow colors
+  --nova-primary-glow: #{$supernova-light-primary};
+  --nova-secondary-glow: #{$supernova-light-secondary};
+  --nova-accent1-glow: #{$supernova-light-accent1};
+  --nova-accent2-glow: #{$supernova-light-accent2};
+  --nova-accent3-glow: #{$supernova-light-accent3};
+  
+  // Typography
+  --nova-font-family: #{vars.$nova-font-family-sans};
+  --nova-font-family-display: #{vars.$nova-font-family-display};
+  --nova-font-family-mono: #{vars.$nova-font-family-mono};
+}
+
+/*
+ * Cosmic Blue Light Theme
+ * A serene, cool light theme inspired by stellar ice and distant galaxies
+ */
+$cosmic-blue-light-primary: #3563FA;       // Royal blue
+$cosmic-blue-light-secondary: #0099CC;     // Crisp sky blue
+$cosmic-blue-light-accent1: #26EEFF;       // Bright neon blue
+$cosmic-blue-light-accent2: #4C8BFE;       // Medium blue
+$cosmic-blue-light-accent3: #A6BFFF;       // Pale blue
+$cosmic-blue-light-background: #F0F8FF;    // Sky blue background
+$cosmic-blue-light-surface: #FFFFFF;       // White surface
+$cosmic-blue-light-surface-alt: #EDF5FF;   // Cool off-white
+
+// Semantic colors
+$cosmic-blue-light-success: #00B0A0;       // Teal success
+$cosmic-blue-light-error: #FF5678;         // Warm red contrast for errors
+$cosmic-blue-light-warning: #FF9F45;       // Orange warning
+$cosmic-blue-light-info: $cosmic-blue-light-secondary;
+
+@mixin apply-cosmic-blue-light-theme() {
+  // Apply the theme CSS variables
+  @include mixins.nova-css-vars(
+    'cosmic-blue-light',
+    $cosmic-blue-light-primary,
+    $cosmic-blue-light-secondary,
+    $cosmic-blue-light-accent1,
+    $cosmic-blue-light-accent2,
+    $cosmic-blue-light-accent3,
+    $cosmic-blue-light-background,
+    $cosmic-blue-light-surface,
+    $cosmic-blue-light-surface-alt
+  );
+  
+  // Semantic colors
+  --nova-success: #{$cosmic-blue-light-success};
+  --nova-success-rgb: #{functions.nova-hex-to-rgb($cosmic-blue-light-success)};
+  
+  --nova-error: #{$cosmic-blue-light-error};
+  --nova-error-rgb: #{functions.nova-hex-to-rgb($cosmic-blue-light-error)};
+  
+  --nova-warning: #{$cosmic-blue-light-warning};
+  --nova-warning-rgb: #{functions.nova-hex-to-rgb($cosmic-blue-light-warning)};
+  
+  --nova-info: #{$cosmic-blue-light-info};
+  --nova-info-rgb: #{functions.nova-hex-to-rgb($cosmic-blue-light-info)};
+  
+  // Glow colors
+  --nova-primary-glow: #{$cosmic-blue-light-primary};
+  --nova-secondary-glow: #{$cosmic-blue-light-secondary};
+  --nova-accent1-glow: #{$cosmic-blue-light-accent1};
+  --nova-accent2-glow: #{$cosmic-blue-light-accent2};
+  --nova-accent3-glow: #{$cosmic-blue-light-accent3};
+  
+  // Typography
+  --nova-font-family: #{vars.$nova-font-family-sans};
+  --nova-font-family-display: #{vars.$nova-font-family-display};
+  --nova-font-family-mono: #{vars.$nova-font-family-mono};
+}
+
+/*
+ * Nebula Light Theme
+ * A vibrant light theme inspired by colorful stellar nurseries
+ */
+$nebula-light-primary: #7B4CFF;           // Rich purple
+$nebula-light-secondary: #25E6FF;         // Brilliant cyan
+$nebula-light-accent1: #2DE6A8;           // Seafoam green
+$nebula-light-accent2: #F564A9;           // Rose pink
+$nebula-light-accent3: #47A0FF;           // Serene blue
+$nebula-light-background: #F0F5FF;        // Soft lavender background
+$nebula-light-surface: #FFFFFF;           // White surface
+$nebula-light-surface-alt: #F5F0FF;       // Pale purple tint
+
+// Semantic colors
+$nebula-light-success: #00CD96;           // Green success
+$nebula-light-error: #FF5376;             // Rose red error
+$nebula-light-warning: #FFA030;           // Amber warning
+$nebula-light-info: $nebula-light-primary;
+
+@mixin apply-nebula-light-theme() {
+  // Apply the theme CSS variables
+  @include mixins.nova-css-vars(
+    'nebula-light',
+    $nebula-light-primary,
+    $nebula-light-secondary,
+    $nebula-light-accent1,
+    $nebula-light-accent2,
+    $nebula-light-accent3,
+    $nebula-light-background,
+    $nebula-light-surface,
+    $nebula-light-surface-alt
+  );
+  
+  // Semantic colors
+  --nova-success: #{$nebula-light-success};
+  --nova-success-rgb: #{functions.nova-hex-to-rgb($nebula-light-success)};
+  
+  --nova-error: #{$nebula-light-error};
+  --nova-error-rgb: #{functions.nova-hex-to-rgb($nebula-light-error)};
+  
+  --nova-warning: #{$nebula-light-warning};
+  --nova-warning-rgb: #{functions.nova-hex-to-rgb($nebula-light-warning)};
+  
+  --nova-info: #{$nebula-light-info};
+  --nova-info-rgb: #{functions.nova-hex-to-rgb($nebula-light-info)};
+  
+  // Glow colors
+  --nova-primary-glow: #{$nebula-light-primary};
+  --nova-secondary-glow: #{$nebula-light-secondary};
+  --nova-accent1-glow: #{$nebula-light-accent1};
+  --nova-accent2-glow: #{$nebula-light-accent2};
+  --nova-accent3-glow: #{$nebula-light-accent3};
+  
+  // Typography
+  --nova-font-family: #{vars.$nova-font-family-sans};
+  --nova-font-family-display: #{vars.$nova-font-family-display};
+  --nova-font-family-mono: #{vars.$nova-font-family-mono};
+}
+
+/*
+ * Dark Matter Light Theme
+ * A subtle, elegant light theme with mysterious cosmic accents
+ */
+$dark-matter-light-primary: #515FC4;      // Midnight blue
+$dark-matter-light-secondary: #8A68E8;    // Lavender purple
+$dark-matter-light-accent1: #A08BE3;      // Soft lavender
+$dark-matter-light-accent2: #394282;      // Deep indigo
+$dark-matter-light-accent3: #7A87D9;      // Celestial blue-purple
+$dark-matter-light-background: #F8F9FF;   // Almost white background
+$dark-matter-light-surface: #FFFFFF;      // Pure white surface
+$dark-matter-light-surface-alt: #F0F2FF;  // Pale blue-lavender surface
+
+// Semantic colors
+$dark-matter-light-success: #3DB894;      // Sage green success
+$dark-matter-light-error: #FF4673;        // Clear red error
+$dark-matter-light-warning: #FFAA45;      // Gold dust warning
+$dark-matter-light-info: $dark-matter-light-primary;
+
+@mixin apply-dark-matter-light-theme() {
+  // Apply the theme CSS variables
+  @include mixins.nova-css-vars(
+    'dark-matter-light',
+    $dark-matter-light-primary,
+    $dark-matter-light-secondary,
+    $dark-matter-light-accent1,
+    $dark-matter-light-accent2,
+    $dark-matter-light-accent3,
+    $dark-matter-light-background,
+    $dark-matter-light-surface,
+    $dark-matter-light-surface-alt
+  );
+  
+  // Semantic colors
+  --nova-success: #{$dark-matter-light-success};
+  --nova-success-rgb: #{functions.nova-hex-to-rgb($dark-matter-light-success)};
+  
+  --nova-error: #{$dark-matter-light-error};
+  --nova-error-rgb: #{functions.nova-hex-to-rgb($dark-matter-light-error)};
+  
+  --nova-warning: #{$dark-matter-light-warning};
+  --nova-warning-rgb: #{functions.nova-hex-to-rgb($dark-matter-light-warning)};
+  
+  --nova-info: #{$dark-matter-light-info};
+  --nova-info-rgb: #{functions.nova-hex-to-rgb($dark-matter-light-info)};
+  
+  // Glow colors
+  --nova-primary-glow: #{$dark-matter-light-primary};
+  --nova-secondary-glow: #{$dark-matter-light-secondary};
+  --nova-accent1-glow: #{$dark-matter-light-accent1};
+  --nova-accent2-glow: #{$dark-matter-light-accent2};
+  --nova-accent3-glow: #{$dark-matter-light-accent3};
+  
+  // Typography
+  --nova-font-family: #{vars.$nova-font-family-sans};
+  --nova-font-family-display: #{vars.$nova-font-family-display};
+  --nova-font-family-mono: #{vars.$nova-font-family-mono};
+}

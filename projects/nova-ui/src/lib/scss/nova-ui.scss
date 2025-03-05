@@ -1,21 +1,52 @@
 ﻿// Nova UI main SCSS entry point
-@use "core" as core;
-@use "themes" as themes;
-@use "utilities" as utilities;
+@use "core";
+@use "utilities";
+@use "themes/supernova";
 @use "themes/cosmic-blue";
 @use "themes/nebula";
 @use "themes/dark-matter";
-@use "themes/supernova";
+@use "themes/light-themes";
 
+// Apply dark themes
+body.theme-supernova.theme-dark {
+  @include supernova.apply-supernova-theme();
+}
 
-body.theme-cosmic-blue {
+body.theme-cosmic-blue.theme-dark {
   @include cosmic-blue.apply-cosmic-blue-theme();
 }
 
-body.theme-nebula {
+body.theme-nebula.theme-dark {
   @include nebula.apply-nebula-theme();
 }
 
-body.theme-dark-matter {
+body.theme-dark-matter.theme-dark {
   @include dark-matter.apply-dark-matter-theme();
+}
+
+// Apply light themes
+body.theme-supernova.theme-light {
+  @include light-themes.apply-supernova-light-theme();
+}
+
+body.theme-cosmic-blue.theme-light {
+  @include light-themes.apply-cosmic-blue-light-theme();
+}
+
+body.theme-nebula.theme-light {
+  @include light-themes.apply-nebula-light-theme();
+}
+
+body.theme-dark-matter.theme-light {
+  @include light-themes.apply-dark-matter-light-theme();
+}
+
+// Default theme is supernova dark
+:root {
+  @include supernova.apply-supernova-theme();
+}
+
+// Apply default theme also to body without classes for initial rendering
+body:not([class*="theme-"]) {
+  @include supernova.apply-supernova-theme();
 }

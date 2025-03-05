@@ -1,17 +1,14 @@
-﻿// app.component.ts - UPDATED WITH CONSISTENT IMPORTS
-import { Component } from '@angular/core';
+﻿import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { 
   NovaButtonComponent,
   NovaThemeTogglerComponent,
-  NovaCardComponent,
-  NovaCardHeaderComponent, 
-  NovaCardContentComponent, 
-  NovaCardFooterComponent,
   NovaInputComponent,
   NovaCheckboxComponent,
-  NovaRadioButtonComponent,
-  NovaToggleComponent
+  NovaToggleComponent,
+  NovaThemeService,
+  NovaThemeBase
 } from 'nova-ui';
 
 @Component({
@@ -20,31 +17,46 @@ import {
   styleUrls: ['./app.component.scss'],
   standalone: true,
   imports: [
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     NovaButtonComponent,
     NovaThemeTogglerComponent,
-    NovaCardComponent,
-    NovaCardHeaderComponent,
-    NovaCardContentComponent,
-    NovaCardFooterComponent,
     NovaInputComponent,
     NovaCheckboxComponent,
-    NovaRadioButtonComponent,
     NovaToggleComponent
   ]
 })
 export class AppComponent {
-  title = 'Nova UI Demo';
-  userName = '';
-  email = '';
+  title = 'Nova UI - Button Demo';
+  loadingDemo = false;
+  
+  // Button demo states
+  loadingStates: { [key: string]: boolean } = {
+    basic: false,
+    cta: false,
+    link: false
+  };
   
   // Form control states
+  userName = '';
+  email = '';
   termsAccepted = false;
   notifications = true;
   newsletter = false;
   themePreference = 'dark';
-  darkMode = true;
   notificationsToggle = true;
-  soundEnabled = false;
+  
+  constructor(private themeService: NovaThemeService) {}
+  
+  toggleLoading(key: string): void {
+    this.loadingStates[key] = true;
+    setTimeout(() => {
+      this.loadingStates[key] = false;
+    }, 2000);
+  }
+  
+  setTheme(theme: NovaThemeBase): void {
+    this.themeService.setThemeBase(theme);
+  }
 }

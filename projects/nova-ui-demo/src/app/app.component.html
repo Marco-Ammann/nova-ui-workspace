@@ -1,346 +1,271 @@
 ﻿<div class="container">
   <header class="header">
-    <h1>Nova UI - Cosmic Library</h1>
+    <h1>{{ title }}</h1>
     <nova-theme-toggler class="theme-toggler"></nova-theme-toggler>
   </header>
+
+  <!-- Basic Buttons -->
   <section class="demo-section">
-    <h2>Theme Overview</h2>
-    <p>
-      Nova UI features four space-inspired themes, each designed to create a
-      unique experience:
+    <h2>Button Appearances</h2>
+    <p class="section-description">
+      Nova UI offers eight different button appearances to match your design needs.
     </p>
-
-    <ul class="theme-list">
-      <li>
-        <strong>Supernova:</strong> Vibrant theme with explosive orange energy
-        and electric blue accents, inspired by the dramatic stellar explosions.
-      </li>
-      <li>
-        <strong>Cosmic Blue:</strong> Cool blue theme reminiscent of hot blue
-        stars and galaxies, with a serene and professional feel.
-      </li>
-      <li>
-        <strong>Nebula:</strong> Colorful and vibrant theme with pinks, purples,
-        and blues inspired by the beautiful cosmic nebulae.
-      </li>
-      <li>
-        <strong>Dark Matter:</strong> Subtle and mysterious theme with a focus
-        on light blue accents against a very dark background, representing the
-        enigmatic dark matter.
-      </li>
-    </ul>
-
-    <p>
-      All themes feature subtle glow effects to evoke the luminosity of cosmic
-      phenomena and come with dark mode as standard.
+    
+    <div class="button-row">
+      <div class="button-item">
+        <span class="button-label">Basic</span>
+        <nova-button appearance="basic">Basic</nova-button>
+      </div>
+      
+      <div class="button-item">
+        <span class="button-label">Raised</span>
+        <nova-button appearance="raised">Raised</nova-button>
+      </div>
+      
+      <div class="button-item">
+        <span class="button-label">Stroked</span>
+        <nova-button appearance="stroked">Stroked</nova-button>
+      </div>
+      
+      <div class="button-item">
+        <span class="button-label">Flat</span>
+        <nova-button appearance="flat">Flat</nova-button>
+      </div>
+    </div>
+    
+    <div class="button-row">
+      <div class="button-item">
+        <span class="button-label">Icon</span>
+        <nova-button appearance="icon" icon="★"></nova-button>
+      </div>
+      
+      <div class="button-item">
+        <span class="button-label">FAB</span>
+        <nova-button appearance="fab" icon="+"></nova-button>
+      </div>
+      
+      <div class="button-item">
+        <span class="button-label">Mini FAB</span>
+        <nova-button appearance="mini-fab" icon="-"></nova-button>
+      </div>
+      
+      <div class="button-item">
+        <span class="button-label">Extended FAB</span>
+        <nova-button appearance="extended-fab" icon="→">Extended</nova-button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Button Variants -->
+  <section class="demo-section">
+    <h2>Button Variants</h2>
+    <p class="section-description">
+      Variants provide different emphasis levels for button actions.
     </p>
-  </section>
-  <section class="demo-section">
-    <h2>Button Component</h2>
-
-    <div class="section-title">CTA Variant</div>
+    
     <div class="button-row">
-      <nova-button variant="cta">Get Started</nova-button>
-      <nova-button variant="cta" size="small">Subscribe</nova-button>
-      <nova-button variant="cta" size="large">Download Now</nova-button>
-      <nova-button variant="cta" [disabled]="true">Unavailable</nova-button>
-      <nova-button variant="cta" [loading]="true">Processing</nova-button>
-    </div>
-
-    <div class="section-title">Button Combinations</div>
-    <div class="button-row">
-      <nova-button iconLeft="→">With Icon</nova-button>
-      <nova-button variant="secondary" iconRight="↓">Icon Right</nova-button>
-      <nova-button variant="cta" iconLeft="★">Star Feature</nova-button>
-    </div>
-
-    <div class="button-group">
-      <nova-button variant="secondary">Cancel</nova-button>
-      <nova-button>Save</nova-button>
-      <nova-button variant="cta">Publish</nova-button>
-    </div>
-
-    <div class="section-title">Primary Variant</div>
-    <div class="button-row">
-      <nova-button>Default</nova-button>
-      <nova-button size="small">Small</nova-button>
-      <nova-button size="large">Large</nova-button>
-      <nova-button [disabled]="true">Disabled</nova-button>
-      <nova-button [loading]="true">Loading</nova-button>
-    </div>
-
-    <div class="section-title">Secondary Variant</div>
-    <div class="button-row">
-      <nova-button variant="secondary">Default</nova-button>
-      <nova-button variant="secondary" size="small">Small</nova-button>
-      <nova-button variant="secondary" size="large">Large</nova-button>
-      <nova-button variant="secondary" [disabled]="true">Disabled</nova-button>
-      <nova-button variant="secondary" [loading]="true">Loading</nova-button>
-    </div>
-
-    <div class="section-title">Text Variant</div>
-    <div class="button-row">
-      <nova-button variant="text">Default</nova-button>
-      <nova-button variant="text" size="small">Small</nova-button>
-      <nova-button variant="text" size="large">Large</nova-button>
-      <nova-button variant="text" [disabled]="true">Disabled</nova-button>
-      <nova-button variant="text" [loading]="true">Loading</nova-button>
+      <div class="button-item">
+        <span class="button-label">Basic Variant</span>
+        <nova-button 
+          variant="basic" 
+          [loading]="loadingStates['basic']"
+          (clicked)="toggleLoading('basic')">
+          Basic
+        </nova-button>
+      </div>
+      
+      <div class="button-item">
+        <span class="button-label">CTA Variant</span>
+        <nova-button 
+          variant="cta" 
+          [loading]="loadingStates['cta']"
+          (clicked)="toggleLoading('cta')">
+          CTA
+        </nova-button>
+      </div>
+      
+      <div class="button-item">
+        <span class="button-label">Link Variant</span>
+        <nova-button 
+          variant="link" 
+          [loading]="loadingStates['link']"
+          (clicked)="toggleLoading('link')">
+          Link
+        </nova-button>
+      </div>
     </div>
   </section>
-
+  
+  <!-- Button Sizes -->
   <section class="demo-section">
-    <h2>Card Component</h2>
-
-    <div class="card-grid">
-      <!-- Default Card -->
-      <nova-card>
-        <nova-card-header
-          title="Default Card"
-          subtitle="Basic card without variants"
-        ></nova-card-header>
-        <nova-card-content>
-          <p>
-            This is a standard card component for displaying related content. It
-            has no special variants applied.
-          </p>
-        </nova-card-content>
-        <nova-card-footer>
-          <nova-button variant="text">Cancel</nova-button>
-          <nova-button>Action</nova-button>
-        </nova-card-footer>
-      </nova-card>
-
-      <!-- Primary Card -->
-      <nova-card variant="primary">
-        <nova-card-header
-          title="Primary Card"
-          subtitle="With primary color accents"
-        ></nova-card-header>
-        <nova-card-content>
-          <p>
-            This card uses the primary color for accents and borders, creating a
-            stronger visual hierarchy.
-          </p>
-        </nova-card-content>
-        <nova-card-footer>
-          <nova-button variant="text">Cancel</nova-button>
-          <nova-button>Action</nova-button>
-        </nova-card-footer>
-      </nova-card>
-
-      <!-- Accent Card -->
-      <nova-card variant="accent">
-        <nova-card-header
-          title="Accent Card"
-          subtitle="With secondary color accents"
-        ></nova-card-header>
-        <nova-card-content>
-          <p>
-            This card uses the secondary color for accents and borders, creating
-            an alternative visual style.
-          </p>
-        </nova-card-content>
-        <nova-card-footer>
-          <nova-button variant="text">Cancel</nova-button>
-          <nova-button>Action</nova-button>
-        </nova-card-footer>
-      </nova-card>
-
-      <!-- Elevated Card -->
-      <nova-card [elevated]="true">
-        <nova-card-header
-          title="Elevated Card"
-          subtitle="With shadow effect"
-        ></nova-card-header>
-        <nova-card-content>
-          <p>
-            This card uses elevation (shadow) to appear floating above the
-            surface, creating depth in the UI.
-          </p>
-        </nova-card-content>
-        <nova-card-footer>
-          <nova-button variant="text">Cancel</nova-button>
-          <nova-button>Action</nova-button>
-        </nova-card-footer>
-      </nova-card>
-
-      <!-- Hoverable Card -->
-      <nova-card [hoverable]="true">
-        <nova-card-header
-          title="Hoverable Card"
-          subtitle="Interactive on hover"
-        ></nova-card-header>
-        <nova-card-content>
-          <p>
-            This card has hover effects and indicates interactivity. Hover over
-            it to see the animation.
-          </p>
-        </nova-card-content>
-        <nova-card-footer>
-          <nova-button variant="text">Cancel</nova-button>
-          <nova-button variant="cta">Details</nova-button>
-        </nova-card-footer>
-      </nova-card>
-
-      <!-- Combined Card -->
-      <nova-card variant="primary" [elevated]="true" [hoverable]="true">
-        <nova-card-header
-          title="Combined Features"
-          subtitle="Primary + Elevated + Hoverable"
-        ></nova-card-header>
-        <nova-card-content>
-          <p>
-            This card combines all features: primary variant styling, elevation,
-            and hover effects.
-          </p>
-        </nova-card-content>
-        <nova-card-footer>
-          <nova-button variant="text">Cancel</nova-button>
-          <nova-button variant="cta">Action</nova-button>
-        </nova-card-footer>
-      </nova-card>
+    <h2>Button Sizes</h2>
+    <p class="section-description">
+      Three size options to fit your interface needs.
+    </p>
+    
+    <div class="button-row">
+      <div class="button-item">
+        <span class="button-label">Small</span>
+        <nova-button size="small">Small</nova-button>
+      </div>
+      
+      <div class="button-item">
+        <span class="button-label">Medium (Default)</span>
+        <nova-button size="medium">Medium</nova-button>
+      </div>
+      
+      <div class="button-item">
+        <span class="button-label">Large</span>
+        <nova-button size="large">Large</nova-button>
+      </div>
     </div>
   </section>
-
+  
+  <!-- Button States -->
   <section class="demo-section">
-    <h2>Input Fields</h2>
-
+    <h2>Button States</h2>
+    <p class="section-description">
+      Buttons display different states based on interaction and process status.
+    </p>
+    
+    <div class="button-row">
+      <div class="button-item">
+        <span class="button-label">Normal</span>
+        <nova-button>Normal</nova-button>
+      </div>
+      
+      <div class="button-item">
+        <span class="button-label">Disabled</span>
+        <nova-button [disabled]="true">Disabled</nova-button>
+      </div>
+      
+      <div class="button-item">
+        <span class="button-label">Loading</span>
+        <nova-button [loading]="true">Loading</nova-button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Button Animation Levels -->
+  <section class="demo-section">
+    <h2>Animation Levels</h2>
+    <p class="section-description">
+      Choose how much animation to apply to buttons.
+    </p>
+    
+    <div class="button-row">
+      <div class="button-item">
+        <span class="button-label">None</span>
+        <nova-button animation="none" variant="cta">No Animation</nova-button>
+      </div>
+      
+      <div class="button-item">
+        <span class="button-label">Normal</span>
+        <nova-button animation="normal" variant="cta">Normal Animation</nova-button>
+      </div>
+      
+      <div class="button-item">
+        <span class="button-label">Extra</span>
+        <nova-button animation="extra" variant="cta">Extra Animation</nova-button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Combination Examples -->
+  <section class="demo-section">
+    <h2>Combinations & Real-world Examples</h2>
+    <p class="section-description">
+      Buttons can be combined in different ways for various interface scenarios.
+    </p>
+    
+    <h3>Form Actions</h3>
+    <div class="button-row">
+      <nova-button variant="link">Cancel</nova-button>
+      <nova-button>Save Draft</nova-button>
+      <nova-button variant="cta">Submit</nova-button>
+    </div>
+    
+    <h3>Dialog Buttons</h3>
+    <div class="button-row dialog-example">
+      <nova-button variant="link">Cancel</nova-button>
+      <nova-button variant="cta">Confirm</nova-button>
+    </div>
+    
+    <h3>Icon Buttons Group</h3>
+    <div class="button-row">
+      <nova-button appearance="icon" icon="←"></nova-button>
+      <nova-button appearance="icon" icon="↑"></nova-button>
+      <nova-button appearance="icon" icon="↓"></nova-button>
+      <nova-button appearance="icon" icon="→"></nova-button>
+    </div>
+    
+    <h3>Different Appearances with CTA Variant</h3>
+    <div class="button-row">
+      <nova-button appearance="basic" variant="cta">Basic CTA</nova-button>
+      <nova-button appearance="stroked" variant="cta">Stroked CTA</nova-button>
+      <nova-button appearance="raised" variant="cta">Raised CTA</nova-button>
+    </div>
+  </section>
+  
+  <!-- Theme Selection -->
+  <section class="demo-section">
+    <h2>Theme Selection</h2>
+    <p class="section-description">
+      Try the button components with different cosmic themes.
+    </p>
+    
+    <div class="theme-buttons">
+      <nova-button appearance="raised" (clicked)="setTheme('supernova')">
+        Supernova
+      </nova-button>
+      <nova-button appearance="raised" (clicked)="setTheme('cosmic-blue')">
+        Cosmic Blue
+      </nova-button>
+      <nova-button appearance="raised" (clicked)="setTheme('nebula')">
+        Nebula
+      </nova-button>
+      <nova-button appearance="raised" (clicked)="setTheme('dark-matter')">
+        Dark Matter
+      </nova-button>
+    </div>
+  </section>
+  
+  <!-- Form Components -->
+  <section class="demo-section">
+    <h2>Form Components</h2>
+    <p class="section-description">
+      Buttons work seamlessly with other Nova UI form components.
+    </p>
+    
     <div class="form-grid">
-      <!-- Basic Input -->
       <nova-input
         label="Username"
         placeholder="Enter your username"
-        [(ngModel)]="userName"
-      >
+        [(ngModel)]="userName">
       </nova-input>
-
-      <!-- Email Input with Validation -->
+      
       <nova-input
         label="Email Address"
         placeholder="name@example.com"
         type="email"
         [(ngModel)]="email"
-        [required]="true"
-      >
+        [required]="true">
       </nova-input>
-
-      <!-- Password Input -->
-      <nova-input
-        label="Password"
-        placeholder="Enter your password"
-        type="password"
-      >
-      </nova-input>
-
-      <!-- Input with Icon -->
-      <nova-input
-        label="Search"
-        placeholder="Search for anything..."
-        iconLeft="🔍"
-      >
-      </nova-input>
-
-      <!-- Disabled Input -->
-      <nova-input
-        label="Disabled Field"
-        placeholder="Cannot be edited"
-        [disabled]="true"
-      >
-      </nova-input>
-
-      <!-- Read-only Input -->
-      <nova-input
-        label="Read-only Field"
-        value="System generated value"
-        [readonly]="true"
-      >
-      </nova-input>
-
-      <!-- Input with Hint -->
-      <nova-input
-        label="Display Name"
-        placeholder="How you'll appear to others"
-        hint="This will be visible to all users"
-      >
-      </nova-input>
-    </div>
-  </section>
-
-  <section class="demo-section">
-    <h2>Form Controls</h2>
-
-    <div class="section-title">Checkboxes</div>
-    <div class="form-controls-grid">
+      
       <nova-checkbox
-        label="Accept terms and conditions"
-        [required]="true"
-        hint="You must accept to continue"
-        [(ngModel)]="termsAccepted"
-      >
+        label="Subscribe to newsletter"
+        [(ngModel)]="newsletter">
       </nova-checkbox>
-
-      <nova-checkbox label="Send me notifications" [(ngModel)]="notifications">
-      </nova-checkbox>
-
-      <nova-checkbox label="Subscribe to newsletter" [(ngModel)]="newsletter">
-      </nova-checkbox>
-
-      <nova-checkbox label="Disabled checkbox" [disabled]="true">
-      </nova-checkbox>
-
-      <nova-checkbox label="Indeterminate state" [indeterminate]="true">
-      </nova-checkbox>
-    </div>
-
-    <div class="section-title">Radio Buttons</div>
-    <div class="form-controls-grid">
-      <nova-radio-button
-        name="theme-preference"
-        label="Dark theme"
-        value="dark"
-        [(ngModel)]="themePreference"
-      >
-      </nova-radio-button>
-
-      <nova-radio-button
-        name="theme-preference"
-        label="Light theme"
-        value="light"
-        [(ngModel)]="themePreference"
-      >
-      </nova-radio-button>
-
-      <nova-radio-button
-        name="theme-preference"
-        label="System default"
-        value="system"
-        [(ngModel)]="themePreference"
-      >
-      </nova-radio-button>
-
-      <nova-radio-button
-        name="disabled-example"
-        label="Disabled option"
-        [disabled]="true"
-      >
-      </nova-radio-button>
-    </div>
-
-    <div class="section-title">Toggle Switches</div>
-    <div class="form-controls-grid">
-      <nova-toggle label="Dark mode" [(ngModel)]="darkMode"> </nova-toggle>
-
-      <nova-toggle label="Notifications" [(ngModel)]="notificationsToggle">
-      </nova-toggle>
-
+      
       <nova-toggle
-        label="Sound enabled"
-        labelPosition="before"
-        [(ngModel)]="soundEnabled"
-      >
+        label="Enable notifications"
+        [(ngModel)]="notificationsToggle">
       </nova-toggle>
-
-      <nova-toggle label="Disabled toggle" [disabled]="true"> </nova-toggle>
+    </div>
+    
+    <div class="form-actions">
+      <nova-button variant="link">Reset</nova-button>
+      <nova-button variant="cta">Submit</nova-button>
     </div>
   </section>
 </div>
