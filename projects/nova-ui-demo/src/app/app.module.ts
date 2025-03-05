@@ -1,17 +1,13 @@
-﻿// app.module.ts
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppComponent } from './app.component';
+﻿// projects/nova-ui-demo/src/app/app.module.ts or app.config.ts (for standalone apps)
 
-@NgModule({
-  // declarations: [
-  //   AppComponent
-  // ],
-  // imports: [
-  //   BrowserModule,
-  //   NovaButtonComponent // Import standalone component instead of module
-  // ],
-  // providers: [],
-  // bootstrap: [AppComponent]
-})
-export class AppModule { }
+import { importProvidersFrom } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { provideRouter } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+
+export const appConfig = {
+  providers: [
+    importProvidersFrom(BrowserModule, FormsModule),
+    provideRouter([/* your routes */])
+  ]
+};

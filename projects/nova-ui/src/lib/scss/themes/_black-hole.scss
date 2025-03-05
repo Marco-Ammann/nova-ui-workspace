@@ -1,0 +1,67 @@
+/* Black Hole Theme for Nova UI 
+ * Inspired by the most extreme gravitational objects in the universe
+ */
+ @use '../core/functions' as functions;
+ @use '../core/mixins' as mixins;
+ @use '../core/variables' as vars;
+ 
+ // Theme colors
+ // Black holes are defined by their event horizon and accretion disks
+ $black-hole-primary: #FF6B00;      // Orange from accretion disk heat
+ $black-hole-secondary: #01C2FF;    // Blue X-rays from superheated matter
+ $black-hole-accent1: #FFD500;      // Yellow from thermal radiation
+ $black-hole-accent2: #9A4CFF;      // Purple from relativistic effects
+ $black-hole-accent3: #FF2975;      // Pink from magnetic field interactions
+ $black-hole-background: #040405;   // Near-absolute darkness of event horizon
+ $black-hole-surface: #0A0A0D;      // Just beyond event horizon
+ $black-hole-surface-alt: #14141A;  // Space distortion near black hole
+ 
+ // Semantic colors
+ $black-hole-success: #00E899;      // Green success
+ $black-hole-error: #FF3333;        // Red error
+ $black-hole-warning: #FFB300;      // Amber warning
+ $black-hole-info: $black-hole-secondary; // Blue info
+ 
+ @mixin apply-black-hole-theme() {
+   // Apply the theme CSS variables
+   @include mixins.nova-css-vars(
+     'black-hole',
+     $black-hole-primary,
+     $black-hole-secondary,
+     $black-hole-accent1,
+     $black-hole-accent2,
+     $black-hole-accent3,
+     $black-hole-background,
+     $black-hole-surface,
+     $black-hole-surface-alt
+   );
+   
+   // Semantic colors
+   --nova-success: #{$black-hole-success};
+   --nova-success-rgb: #{functions.nova-hex-to-rgb($black-hole-success)};
+   
+   --nova-error: #{$black-hole-error};
+   --nova-error-rgb: #{functions.nova-hex-to-rgb($black-hole-error)};
+   
+   --nova-warning: #{$black-hole-warning};
+   --nova-warning-rgb: #{functions.nova-hex-to-rgb($black-hole-warning)};
+   
+   --nova-info: #{$black-hole-info};
+   --nova-info-rgb: #{functions.nova-hex-to-rgb($black-hole-info)};
+   
+   // Glow colors
+   --nova-primary-glow: #{$black-hole-primary};
+   --nova-secondary-glow: #{$black-hole-secondary};
+   --nova-accent1-glow: #{$black-hole-accent1};
+   --nova-accent2-glow: #{$black-hole-accent2};
+   --nova-accent3-glow: #{$black-hole-accent3};
+   
+   // Special effects for black hole theme
+   --nova-gravity-distortion: 4px;
+   --nova-event-horizon-opacity: 0.95;
+   
+   // Typography
+   --nova-font-family: #{vars.$nova-font-family-sans};
+   --nova-font-family-display: #{vars.$nova-font-family-display};
+   --nova-font-family-mono: #{vars.$nova-font-family-mono};
+ }

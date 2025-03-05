@@ -1,0 +1,532 @@
+<div class="page-container">
+    <h1 class="page-title">Radio Buttons</h1>
+    <p class="page-description">
+      Radio button components allow users to select a single option from a set. Nova UI radio buttons feature cosmic-themed styling with subtle animations and visual feedback.
+    </p>
+    
+    <!-- Basic usage -->
+    <section class="demo-section">
+      <h2 class="section-title">Basic Radio Buttons</h2>
+      <p class="section-description">
+        Basic radio button group for single selection from multiple options. Use the <code>name</code> property to group related options, and bind to the model using <code>[(ngModel)]</code>.
+      </p>
+      
+      <div class="radio-group">
+        <nova-radio-button
+          name="basicOptions"
+          label="Option 1"
+          value="option1"
+          [(ngModel)]="selectedOption">
+        </nova-radio-button>
+        
+        <nova-radio-button
+          name="basicOptions"
+          label="Option 2"
+          value="option2"
+          [(ngModel)]="selectedOption">
+        </nova-radio-button>
+        
+        <nova-radio-button
+          name="basicOptions"
+          label="Option 3"
+          value="option3"
+          [(ngModel)]="selectedOption">
+        </nova-radio-button>
+      </div>
+      
+      <div class="selected-value">
+        Selected value: <span class="value">{{ selectedOption }}</span>
+      </div>
+      
+      <div class="code-example">
+        <h3 class="code-example-title">Example</h3>
+        <div class="code-block">
+  <nova-radio-button
+    name="basicOptions"
+    label="Option 1"
+    value="option1"
+    [(ngModel)]="selectedOption">
+  </nova-radio-button>
+  
+  <nova-radio-button
+    name="basicOptions"
+    label="Option 2"
+    value="option2"
+    [(ngModel)]="selectedOption">
+  </nova-radio-button>
+  
+  <nova-radio-button
+    name="basicOptions"
+    label="Option 3"
+    value="option3"
+    [(ngModel)]="selectedOption">
+  </nova-radio-button>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Theme Selection Example -->
+    <section class="demo-section">
+      <h2 class="section-title">Theme Selection Example</h2>
+      <p class="section-description">
+        Radio buttons are ideal for theme selection or preference settings, where the user must choose exactly one option.
+      </p>
+      
+      <div class="radio-group">
+        <nova-radio-button
+          name="themePreference"
+          label="Light Mode"
+          value="light"
+          [(ngModel)]="themePreference">
+        </nova-radio-button>
+        
+        <nova-radio-button
+          name="themePreference"
+          label="Dark Mode"
+          value="dark"
+          [(ngModel)]="themePreference">
+        </nova-radio-button>
+        
+        <nova-radio-button
+          name="themePreference"
+          label="System Preference"
+          value="system"
+          [(ngModel)]="themePreference">
+        </nova-radio-button>
+      </div>
+      
+      <div class="selected-value">
+        Selected theme: <span class="value">{{ themePreference }}</span>
+      </div>
+      
+      <div class="code-example">
+        <h3 class="code-example-title">Example</h3>
+        <div class="code-block">
+  <nova-radio-button
+    name="themePreference"
+    label="Light Mode"
+    value="light"
+    [(ngModel)]="themePreference">
+  </nova-radio-button>
+  
+  <nova-radio-button
+    name="themePreference"
+    label="Dark Mode"
+    value="dark"
+    [(ngModel)]="themePreference">
+  </nova-radio-button>
+  
+  <nova-radio-button
+    name="themePreference"
+    label="System Preference"
+    value="system"
+    [(ngModel)]="themePreference">
+  </nova-radio-button>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Disabled state -->
+    <section class="demo-section">
+      <h2 class="section-title">Disabled Radio Buttons</h2>
+      <p class="section-description">
+        Radio buttons can be disabled to prevent user interaction. Use the <code>disabled</code> property to disable a radio button.
+      </p>
+      
+      <div class="radio-group">
+        <nova-radio-button
+          name="shippingMethod"
+          label="Standard Shipping (Free)"
+          value="standard"
+          [(ngModel)]="shippingMethod">
+        </nova-radio-button>
+        
+        <nova-radio-button
+          name="shippingMethod"
+          label="Express Shipping ($10)"
+          value="express"
+          [(ngModel)]="shippingMethod">
+        </nova-radio-button>
+        
+        <nova-radio-button
+          name="shippingMethod"
+          label="Next Day Delivery ($25)"
+          value="nextDay"
+          [disabled]="true"
+          [(ngModel)]="shippingMethod">
+        </nova-radio-button>
+      </div>
+      
+      <div class="code-example">
+        <h3 class="code-example-title">Example</h3>
+        <div class="code-block">
+  <nova-radio-button
+    name="shippingMethod"
+    label="Standard Shipping (Free)"
+    value="standard"
+    [(ngModel)]="shippingMethod">
+  </nova-radio-button>
+  
+  <nova-radio-button
+    name="shippingMethod"
+    label="Express Shipping ($10)"
+    value="express"
+    [(ngModel)]="shippingMethod">
+  </nova-radio-button>
+  
+  <nova-radio-button
+    name="shippingMethod"
+    label="Next Day Delivery ($25)"
+    value="nextDay"
+    [disabled]="true"
+    [(ngModel)]="shippingMethod">
+  </nova-radio-button>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Radio with hints -->
+    <section class="demo-section">
+      <h2 class="section-title">Radio Buttons with Hints</h2>
+      <p class="section-description">
+        Add helper text to radio buttons using the <code>hint</code> property. Hints provide additional context or instructions to users.
+      </p>
+      
+      <div class="radio-group">
+        <nova-radio-button
+          name="notificationPreference"
+          label="Email notifications"
+          value="email"
+          hint="Receive notifications via email"
+          [(ngModel)]="notificationPreference">
+        </nova-radio-button>
+        
+        <nova-radio-button
+          name="notificationPreference"
+          label="SMS notifications"
+          value="sms"
+          hint="Receive notifications via text message"
+          [(ngModel)]="notificationPreference">
+        </nova-radio-button>
+        
+        <nova-radio-button
+          name="notificationPreference"
+          label="Push notifications"
+          value="push"
+          hint="Receive notifications on your device"
+          [(ngModel)]="notificationPreference">
+        </nova-radio-button>
+      </div>
+      
+      <div class="code-example">
+        <h3 class="code-example-title">Example</h3>
+        <div class="code-block">
+  <nova-radio-button
+    name="notificationPreference"
+    label="Email notifications"
+    value="email"
+    hint="Receive notifications via email"
+    [(ngModel)]="notificationPreference">
+  </nova-radio-button>
+  
+  <nova-radio-button
+    name="notificationPreference"
+    label="SMS notifications"
+    value="sms"
+    hint="Receive notifications via text message"
+    [(ngModel)]="notificationPreference">
+  </nova-radio-button>
+  
+  <nova-radio-button
+    name="notificationPreference"
+    label="Push notifications"
+    value="push"
+    hint="Receive notifications on your device"
+    [(ngModel)]="notificationPreference">
+  </nova-radio-button>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Required state -->
+    <section class="demo-section">
+      <h2 class="section-title">Required Radio Buttons</h2>
+      <p class="section-description">
+        Radio buttons can be marked as required using the <code>required</code> property. This is useful for form validation.
+      </p>
+      
+      <div class="radio-group">
+        <nova-radio-button
+          name="requiredOption"
+          label="Yes, I agree"
+          value="agree"
+          [required]="true"
+          [(ngModel)]="requiredOption">
+        </nova-radio-button>
+        
+        <nova-radio-button
+          name="requiredOption"
+          label="No, I don't agree"
+          value="disagree"
+          [required]="true"
+          [(ngModel)]="requiredOption">
+        </nova-radio-button>
+      </div>
+      
+      <div class="code-example">
+        <h3 class="code-example-title">Example</h3>
+        <div class="code-block">
+  <nova-radio-button
+    name="requiredOption"
+    label="Yes, I agree"
+    value="agree"
+    [required]="true"
+    [(ngModel)]="requiredOption">
+  </nova-radio-button>
+  
+  <nova-radio-button
+    name="requiredOption"
+    label="No, I don't agree"
+    value="disagree"
+    [required]="true"
+    [(ngModel)]="requiredOption">
+  </nova-radio-button>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Reactive Forms Integration -->
+    <section class="demo-section">
+      <h2 class="section-title">Reactive Forms Integration</h2>
+      <p class="section-description">
+        Nova UI radio buttons work seamlessly with Angular's reactive forms. This example demonstrates form validation with required fields.
+      </p>
+      
+      <form [formGroup]="surveyForm" (ngSubmit)="onSubmit()" class="reactive-form">
+        <div class="form-section">
+          <h3 class="form-section-title">Age Group</h3>
+          <div class="radio-group">
+            <nova-radio-button
+              *ngFor="let ageGroup of ageGroups"
+              name="ageGroup"
+              [label]="ageGroup.label"
+              [value]="ageGroup.value"
+              formControlName="ageGroup">
+            </nova-radio-button>
+          </div>
+          <div *ngIf="submitted && f['ageGroup'].errors?.['required']" class="error-message">
+            Please select your age group
+          </div>
+        </div>
+        
+        <div class="form-section">
+          <h3 class="form-section-title">How often do you use our product?</h3>
+          <div class="radio-group">
+            <nova-radio-button
+              *ngFor="let frequency of usageFrequency"
+              name="usage"
+              [label]="frequency.label"
+              [value]="frequency.value"
+              formControlName="usage">
+            </nova-radio-button>
+          </div>
+          <div *ngIf="submitted && f['usage'].errors?.['required']" class="error-message">
+            Please select your usage frequency
+          </div>
+        </div>
+        
+        <div class="form-section">
+          <h3 class="form-section-title">Overall satisfaction</h3>
+          <div class="radio-group">
+            <nova-radio-button
+              *ngFor="let option of satisfaction"
+              name="satisfaction"
+              [label]="option.label"
+              [value]="option.value"
+              formControlName="satisfaction">
+            </nova-radio-button>
+          </div>
+          <div *ngIf="submitted && f['satisfaction'].errors?.['required']" class="error-message">
+            Please rate your satisfaction
+          </div>
+        </div>
+        
+        <div class="form-actions">
+          <nova-button type="submit" variant="cta">Submit Survey</nova-button>
+        </div>
+      </form>
+      
+      <div class="code-example">
+        <h3 class="code-example-title">Example Code</h3>
+        <div class="code-block">
+  // In your component class:
+  this.surveyForm = this.fb.group({
+    ageGroup: ['', Validators.required],
+    usage: ['', Validators.required],
+    satisfaction: ['', Validators.required]
+  });
+  
+  // Define your options arrays
+  ageGroups = [
+    { value: 'under18', label: 'Under 18' },
+    { value: '18-24', label: '18-24' },
+    // Additional options...
+  ];
+  
+  // In your template:
+  <form [formGroup]="surveyForm" (ngSubmit)="onSubmit()">
+    <div class="form-section">
+      <h3>Age Group</h3>
+      <div class="radio-group">
+        <nova-radio-button
+          *ngFor="let ageGroup of ageGroups"
+          name="ageGroup"
+          [label]="ageGroup.label"
+          [value]="ageGroup.value"
+          formControlName="ageGroup">
+        </nova-radio-button>
+      </div>
+      <div *ngIf="submitted && f['ageGroup'].errors?.['required']" class="error-message">
+        Please select your age group
+      </div>
+    </div>
+    
+    <!-- Additional form sections... -->
+    
+    <div class="form-actions">
+      <nova-button type="submit" variant="cta">Submit Survey</nova-button>
+    </div>
+  </form>
+        </div>
+      </div>
+    </section>
+    
+    <!-- API Reference -->
+    <section class="demo-section">
+      <h2 class="section-title">API Reference</h2>
+      <p class="section-description">
+        Complete reference of all properties and events available for the NovaRadioButtonComponent.
+      </p>
+      
+      <h3 class="subsection-title">Properties</h3>
+      <div class="api-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Property</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>label</td>
+              <td>string</td>
+              <td>''</td>
+              <td>Label text displayed next to the radio button</td>
+            </tr>
+            <tr>
+              <td>value</td>
+              <td>any</td>
+              <td>undefined</td>
+              <td>The value of the radio button</td>
+            </tr>
+            <tr>
+              <td>name</td>
+              <td>string</td>
+              <td>''</td>
+              <td>The name attribute of the radio button (group identifier)</td>
+            </tr>
+            <tr>
+              <td>checked</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>Whether the radio button is checked</td>
+            </tr>
+            <tr>
+              <td>disabled</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>Whether the radio button is disabled</td>
+            </tr>
+            <tr>
+              <td>required</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>Whether the radio button is required</td>
+            </tr>
+            <tr>
+              <td>hint</td>
+              <td>string</td>
+              <td>undefined</td>
+              <td>Helper text displayed below the radio button</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <h3 class="subsection-title">Events</h3>
+      <div class="api-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Event</th>
+              <th>Type</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>change</td>
+              <td>EventEmitter&lt;any&gt;</td>
+              <td>Emitted when the radio button is selected</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    
+    <!-- Customization -->
+    <section class="demo-section">
+      <h2 class="section-title">Customization</h2>
+      <p class="section-description">
+        The NovaRadioButtonComponent can be customized using CSS variables and custom styles.
+      </p>
+      
+      <h3 class="subsection-title">Using CSS Variables</h3>
+      <p>You can customize the appearance of radio buttons by overriding the following CSS variables:</p>
+      
+      <div class="code-block">
+  :root {
+    /* Radio button colors */
+    --nova-radio-unchecked-color: rgba(var(--nova-on-surface-rgb), 0.3);
+    --nova-radio-checked-color: var(--nova-primary);
+    --nova-radio-hover-color: var(--nova-primary);
+    
+    /* Radio button sizing */
+    --nova-radio-size: 1.25rem;
+    --nova-radio-dot-size: 0.625rem;
+    
+    /* Radio button animation */
+    --nova-radio-animation-duration: 0.2s;
+  }
+      </div>
+      
+      <h3 class="subsection-title">Extending with Global Styles</h3>
+      <p>You can also apply global styles to all radio buttons in your application:</p>
+      
+      <div class="code-block">
+  /* In your global styles.scss */
+  .nova-radio__label {
+    /* Custom styles for the label */
+    font-weight: 500;
+  }
+  
+  .nova-radio__dot {
+    /* Custom styles for the radio dot */
+    background-color: var(--nova-accent1);
+  }
+      </div>
+    </section>
+  </div>

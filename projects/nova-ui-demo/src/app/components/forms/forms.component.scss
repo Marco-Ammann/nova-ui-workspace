@@ -1,0 +1,245 @@
+.forms-page {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .page-title {
+    font-family: var(--nova-font-family-display);
+    font-size: 2.5rem;
+    margin: 0 0 0.5rem;
+    background: linear-gradient(90deg, var(--nova-primary), var(--nova-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .page-description {
+    font-size: 1.125rem;
+    margin: 0 0 2.5rem;
+    color: var(--nova-on-background);
+    opacity: 0.85;
+    max-width: 800px;
+    line-height: 1.6;
+  }
+  
+  .demo-section {
+    background-color: var(--nova-surface);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    
+    h2 {
+      margin-top: 0;
+      color: var(--nova-primary);
+      font-family: var(--nova-font-family-display);
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+    
+    h3 {
+      color: var(--nova-on-surface);
+      font-size: 1.25rem;
+      margin: 1.5rem 0 1rem;
+      font-family: var(--nova-font-family-display);
+    }
+    
+    h4 {
+      color: var(--nova-primary);
+      font-size: 1.125rem;
+      margin: 1.5rem 0 1rem;
+      font-weight: 500;
+    }
+    
+    p {
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+      color: var(--nova-on-surface);
+      opacity: 0.85;
+    }
+  }
+  
+  // Component list
+  .component-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+  
+  .component-item {
+    display: flex;
+    align-items: flex-start;
+    background-color: rgba(var(--nova-surface-alt-rgb), 0.3);
+    padding: 1.25rem;
+    border-radius: 0.75rem;
+    gap: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+  }
+  
+  .component-icon {
+    font-size: 1.5rem;
+    background: radial-gradient(circle at center, 
+      rgba(var(--nova-primary-rgb), 0.2),
+      transparent 70%);
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+  
+  .component-details {
+    flex: 1;
+  }
+  
+  .component-name {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--nova-primary);
+  }
+  
+  .component-description {
+    font-size: 0.9375rem;
+    opacity: 0.85;
+    line-height: 1.5;
+  }
+  
+  // Form styling
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-stacked {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 500px;
+  }
+  
+  .form-inline {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    max-width: 500px;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  .checkbox-group,
+  .radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(var(--nova-surface-alt-rgb), 0.3);
+  }
+  
+  // Template form values display
+  .template-form-values {
+    width: 100%;
+    font-family: var(--nova-font-family-mono);
+    font-size: 0.875rem;
+    background: rgba(var(--nova-background-rgb), 0.5);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    
+    span {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+  }
+  
+  // Form layouts demo
+  .form-layouts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  // Guidelines
+  .guidelines-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .guideline-card {
+    background-color: rgba(var(--nova-surface-alt-rgb), 0.3);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    border-top: 3px solid var(--nova-primary);
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+    }
+    
+    h3 {
+      margin-top: 0;
+    }
+    
+    p {
+      margin-top: 0;
+    }
+  }
+  
+  .guidelines-list {
+    margin: 0;
+    padding-left: 1.5rem;
+    
+    li {
+      margin-bottom: 0.5rem;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  
+  // Responsive adjustments
+  @media (max-width: 768px) {
+    .page-title {
+      font-size: 2rem;
+    }
+    
+    .demo-section {
+      padding: 1.5rem;
+    }
+    
+    .form-inline {
+      flex-direction: column;
+      width: 100%;
+    }
+  }

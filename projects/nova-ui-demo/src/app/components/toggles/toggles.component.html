@@ -1,0 +1,452 @@
+<div class="page-container">
+    <h1 class="page-title">Toggles</h1>
+    <p class="page-description">
+      Toggle components provide a binary choice similar to checkboxes but with a different visual representation. Nova UI toggles feature cosmic-themed styling with celestial animations and visual feedback.
+    </p>
+    
+    <!-- Basic usage -->
+    <section class="demo-section">
+      <h2 class="section-title">Basic Toggles</h2>
+      <p class="section-description">
+        Basic toggle components for binary choices. Use the <code>label</code> property to provide context, and bind to the model using <code>[(ngModel)]</code>.
+      </p>
+      
+      <div class="toggle-container">
+        <nova-toggle
+          label="Enable notifications"
+          [(ngModel)]="notificationsEnabled">
+        </nova-toggle>
+        
+        <nova-toggle
+          label="Enable dark mode"
+          [(ngModel)]="darkModeEnabled">
+        </nova-toggle>
+        
+        <nova-toggle
+          label="Enable sound effects"
+          [(ngModel)]="soundEnabled">
+        </nova-toggle>
+      </div>
+      
+      <div class="code-example">
+        <h3 class="code-example-title">Example</h3>
+        <div class="code-block">
+  <nova-toggle
+    label="Enable notifications"
+    [(ngModel)]="notificationsEnabled">
+  </nova-toggle>
+  
+  <nova-toggle
+    label="Enable dark mode"
+    [(ngModel)]="darkModeEnabled">
+  </nova-toggle>
+  
+  <nova-toggle
+    label="Enable sound effects"
+    [(ngModel)]="soundEnabled">
+  </nova-toggle>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Disabled state -->
+    <section class="demo-section">
+      <h2 class="section-title">Disabled Toggles</h2>
+      <p class="section-description">
+        Toggles can be disabled to prevent user interaction. Use the <code>disabled</code> property to disable a toggle.
+      </p>
+      
+      <div class="toggle-container">
+        <nova-toggle
+          label="Disabled toggle (unchecked)"
+          [(ngModel)]="disabledUncheckedToggle"
+          [disabled]="true">
+        </nova-toggle>
+        
+        <nova-toggle
+          label="Disabled toggle (checked)"
+          [(ngModel)]="disabledCheckedToggle"
+          [disabled]="true">
+        </nova-toggle>
+      </div>
+      
+      <div class="code-example">
+        <h3 class="code-example-title">Example</h3>
+        <div class="code-block">
+  <nova-toggle
+    label="Disabled toggle (unchecked)"
+    [(ngModel)]="disabledUncheckedToggle"
+    [disabled]="true">
+  </nova-toggle>
+  
+  <nova-toggle
+    label="Disabled toggle (checked)"
+    [(ngModel)]="disabledCheckedToggle"
+    [disabled]="true">
+  </nova-toggle>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Label position -->
+    <section class="demo-section">
+      <h2 class="section-title">Label Position</h2>
+      <p class="section-description">
+        Toggle labels can be positioned either before or after the toggle. Use the <code>labelPosition</code> property to control the position.
+      </p>
+      
+      <div class="toggle-container">
+        <nova-toggle
+          label="Label before toggle"
+          labelPosition="before"
+          [(ngModel)]="labelBeforeToggle">
+        </nova-toggle>
+        
+        <nova-toggle
+          label="Label after toggle"
+          labelPosition="after"
+          [(ngModel)]="labelAfterToggle">
+        </nova-toggle>
+      </div>
+      
+      <div class="code-example">
+        <h3 class="code-example-title">Example</h3>
+        <div class="code-block">
+  <nova-toggle
+    label="Label before toggle"
+    labelPosition="before"
+    [(ngModel)]="labelBeforeToggle">
+  </nova-toggle>
+  
+  <nova-toggle
+    label="Label after toggle"
+    labelPosition="after"
+    [(ngModel)]="labelAfterToggle">
+  </nova-toggle>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Required state -->
+    <section class="demo-section">
+      <h2 class="section-title">Required Toggles</h2>
+      <p class="section-description">
+        Toggles can be marked as required using the <code>required</code> property. This is useful for form validation.
+      </p>
+      
+      <div class="toggle-container">
+        <nova-toggle
+          label="I accept the terms and conditions"
+          [required]="true"
+          [(ngModel)]="termsAccepted">
+        </nova-toggle>
+      </div>
+      
+      <div class="code-example">
+        <h3 class="code-example-title">Example</h3>
+        <div class="code-block">
+  <nova-toggle
+    label="I accept the terms and conditions"
+    [required]="true"
+    [(ngModel)]="termsAccepted">
+  </nova-toggle>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Toggle with hints -->
+    <section class="demo-section">
+      <h2 class="section-title">Toggle with Hints</h2>
+      <p class="section-description">
+        Add helper text to toggles using the <code>hint</code> property. Hints provide additional context or instructions to users.
+      </p>
+      
+      <div class="toggle-container">
+        <nova-toggle
+          label="Enable auto-save"
+          hint="Automatically saves your work every 5 minutes"
+          [(ngModel)]="autoSaveEnabled">
+        </nova-toggle>
+        
+        <nova-toggle
+          label="Enable location tracking"
+          hint="Allows the app to access your location for better recommendations"
+          [(ngModel)]="locationTrackingEnabled">
+        </nova-toggle>
+      </div>
+      
+      <div class="code-example">
+        <h3 class="code-example-title">Example</h3>
+        <div class="code-block">
+  <nova-toggle
+    label="Enable auto-save"
+    hint="Automatically saves your work every 5 minutes"
+    [(ngModel)]="autoSaveEnabled">
+  </nova-toggle>
+  
+  <nova-toggle
+    label="Enable location tracking"
+    hint="Allows the app to access your location for better recommendations"
+    [(ngModel)]="locationTrackingEnabled">
+  </nova-toggle>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Reactive Forms Integration -->
+    <section class="demo-section">
+      <h2 class="section-title">Reactive Forms Integration</h2>
+      <p class="section-description">
+        Nova UI toggles work seamlessly with Angular's reactive forms. This example demonstrates a privacy settings form.
+      </p>
+      
+      <form [formGroup]="settingsForm" class="reactive-form">
+        <div class="toggle-group">
+          <h3 class="toggle-group-title">Privacy Settings</h3>
+          
+          <div class="toggle-container">
+            <nova-toggle
+              *ngFor="let setting of privacySettings"
+              [label]="setting.label"
+              [hint]="setting.hint"
+              [formControlName]="setting.id">
+            </nova-toggle>
+          </div>
+        </div>
+        
+        <div class="form-actions">
+          <nova-button variant="link" (clicked)="resetSettings()">Reset to Default</nova-button>
+          <nova-button variant="cta" (clicked)="saveSettings()">Save Settings</nova-button>
+        </div>
+      </form>
+      
+      <div class="code-example">
+        <h3 class="code-example-title">Example Code</h3>
+        <div class="code-block">
+  // In your component class:
+  this.settingsForm = this.fb.group({
+    cookies: [true],
+    analytics: [true],
+    marketing: [false],
+    thirdParty: [false]
+  });
+  
+  privacySettings = [
+    { id: 'cookies', label: 'Allow cookies', hint: 'Enables site functionality and personalization' },
+    { id: 'analytics', label: 'Allow analytics', hint: 'Helps us improve our website' },
+    { id: 'marketing', label: 'Allow marketing', hint: 'Enables personalized recommendations' },
+    { id: 'thirdParty', label: 'Allow third-party sharing', hint: 'Shares data with trusted partners' }
+  ];
+  
+  // In your template:
+  <form [formGroup]="settingsForm">
+    <div class="toggle-group">
+      <h3>Privacy Settings</h3>
+      
+      <div class="toggle-container">
+        <nova-toggle
+          *ngFor="let setting of privacySettings"
+          [label]="setting.label"
+          [hint]="setting.hint"
+          [formControlName]="setting.id">
+        </nova-toggle>
+      </div>
+    </div>
+    
+    <div class="form-actions">
+      <nova-button variant="link" (clicked)="resetSettings()">Reset to Default</nova-button>
+      <nova-button variant="cta" (clicked)="saveSettings()">Save Settings</nova-button>
+    </div>
+  </form>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Real-world Usage -->
+    <section class="demo-section">
+      <h2 class="section-title">Real-world Usage Examples</h2>
+      <p class="section-description">
+        Toggles are commonly used for settings panels, feature toggles, and preference controls. Here are some real-world examples.
+      </p>
+      
+      <div class="example-cards">
+        <div class="example-card">
+          <h3 class="example-card-title">App Settings Panel</h3>
+          <div class="toggle-container">
+            <nova-toggle
+              label="Dark Mode"
+              [(ngModel)]="appSettings.darkMode">
+            </nova-toggle>
+            
+            <nova-toggle
+              label="Notifications"
+              [(ngModel)]="appSettings.notifications">
+            </nova-toggle>
+            
+            <nova-toggle
+              label="Auto-update"
+              [(ngModel)]="appSettings.autoUpdate">
+            </nova-toggle>
+            
+            <nova-toggle
+              label="Background Sync"
+              [disabled]="!appSettings.notifications"
+              [(ngModel)]="appSettings.backgroundSync">
+            </nova-toggle>
+          </div>
+        </div>
+        
+        <div class="example-card">
+          <h3 class="example-card-title">Feature Flags</h3>
+          <div class="toggle-container">
+            <nova-toggle
+              label="Beta Features"
+              [(ngModel)]="featureFlags.beta">
+            </nova-toggle>
+            
+            <nova-toggle
+              label="Experimental UI"
+              [disabled]="!featureFlags.beta"
+              [(ngModel)]="featureFlags.experimentalUI">
+            </nova-toggle>
+            
+            <nova-toggle
+              label="Advanced Analytics"
+              [(ngModel)]="featureFlags.advancedAnalytics">
+            </nova-toggle>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- API Reference -->
+    <section class="demo-section">
+      <h2 class="section-title">API Reference</h2>
+      <p class="section-description">
+        Complete reference of all properties and events available for the NovaToggleComponent.
+      </p>
+      
+      <h3 class="subsection-title">Properties</h3>
+      <div class="api-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Property</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>label</td>
+              <td>string</td>
+              <td>''</td>
+              <td>Label text displayed next to the toggle</td>
+            </tr>
+            <tr>
+              <td>checked</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>Whether the toggle is checked</td>
+            </tr>
+            <tr>
+              <td>disabled</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>Whether the toggle is disabled</td>
+            </tr>
+            <tr>
+              <td>required</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>Whether the toggle is required</td>
+            </tr>
+            <tr>
+              <td>name</td>
+              <td>string</td>
+              <td>undefined</td>
+              <td>The name attribute of the toggle input</td>
+            </tr>
+            <tr>
+              <td>hint</td>
+              <td>string</td>
+              <td>undefined</td>
+              <td>Helper text displayed below the toggle</td>
+            </tr>
+            <tr>
+              <td>labelPosition</td>
+              <td>'before' | 'after'</td>
+              <td>'after'</td>
+              <td>Position of the label relative to the toggle</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <h3 class="subsection-title">Events</h3>
+      <div class="api-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Event</th>
+              <th>Type</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>change</td>
+              <td>EventEmitter&lt;boolean&gt;</td>
+              <td>Emitted when the toggle state changes</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    
+    <!-- Customization -->
+    <section class="demo-section">
+      <h2 class="section-title">Customization</h2>
+      <p class="section-description">
+        The NovaToggleComponent can be customized using CSS variables and custom styles.
+      </p>
+      
+      <h3 class="subsection-title">Using CSS Variables</h3>
+      <p>You can customize the appearance of toggles by overriding the following CSS variables:</p>
+      
+      <div class="code-block">
+  :root {
+    /* Toggle colors */
+    --nova-toggle-unchecked-color: rgba(var(--nova-on-surface-rgb), 0.3);
+    --nova-toggle-checked-color: var(--nova-primary);
+    --nova-toggle-thumb-color: white;
+    
+    /* Toggle sizing */
+    --nova-toggle-width: 2.5rem;
+    --nova-toggle-height: 1.25rem;
+    --nova-toggle-thumb-size: 0.875rem;
+    --nova-toggle-border-radius: 1rem;
+    
+    /* Toggle animation */
+    --nova-toggle-animation-duration: 0.3s;
+  }
+      </div>
+      
+      <h3 class="subsection-title">Extending with Global Styles</h3>
+      <p>You can also apply global styles to all toggles in your application:</p>
+      
+      <div class="code-block">
+  /* In your global styles.scss */
+  .nova-toggle__track {
+    /* Custom styles for the toggle track */
+    border: 1px solid rgba(var(--nova-on-surface-rgb), 0.2);
+  }
+  
+  .nova-toggle__thumb {
+    /* Custom styles for the toggle thumb */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+      </div>
+    </section>
+  </div>

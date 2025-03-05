@@ -1,0 +1,388 @@
+<div class="buttons-page">
+    <h1 class="page-title">Buttons</h1>
+    <p class="page-description">
+      Nova UI buttons are interactive elements that trigger actions or navigation. 
+      They come in various appearances, variants, and sizes to meet different design needs.
+    </p>
+    
+    <!-- Introduction Section -->
+    <section class="demo-section">
+      <h2>Introduction</h2>
+      
+      <p>The <code>NovaButtonComponent</code> is a versatile button component with cosmic-themed styling that can be customized through several properties:</p>
+      
+      <ul class="feature-list">
+        <li><strong>8 Appearances</strong> - Choose from basic, raised, stroked, flat, icon, fab, mini-fab, and extended-fab</li>
+        <li><strong>3 Semantic Variants</strong> - Basic, Call-to-Action (CTA), and Link variants for different emphasis levels</li>
+        <li><strong>3 Sizes</strong> - Small, medium, and large sizes to fit your interface needs</li>
+        <li><strong>Animation Levels</strong> - None, normal, or extra animation effects for different levels of interactivity</li>
+        <li><strong>States</strong> - Normal, disabled, and loading states</li>
+        <li><strong>Icon Support</strong> - Left or right icon positioning</li>
+      </ul>
+      
+      <div class="import-example">
+        <h3>Import</h3>
+        <div class="code-example">
+          <pre><code>import { NovaButtonComponent } from 'nova-ui';</code></pre>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Button Appearances -->
+    <section class="demo-section">
+      <h2>Button Appearances</h2>
+      <p>
+        The <code>appearance</code> property defines the visual style of the button. 
+        Nova UI offers eight different appearances to match your design needs.
+      </p>
+      
+      <div class="demo-container">
+        <div class="demo-row">
+          <div class="demo-item">
+            <span class="demo-label">Basic</span>
+            <nova-button appearance="basic">Basic</nova-button>
+            <span class="demo-code">appearance="basic"</span>
+          </div>
+          
+          <div class="demo-item">
+            <span class="demo-label">Raised</span>
+            <nova-button appearance="raised">Raised</nova-button>
+            <span class="demo-code">appearance="raised"</span>
+          </div>
+          
+          <div class="demo-item">
+            <span class="demo-label">Stroked</span>
+            <nova-button appearance="stroked">Stroked</nova-button>
+            <span class="demo-code">appearance="stroked"</span>
+          </div>
+          
+          <div class="demo-item">
+            <span class="demo-label">Flat</span>
+            <nova-button appearance="flat">Flat</nova-button>
+            <span class="demo-code">appearance="flat"</span>
+          </div>
+        </div>
+        
+        <div class="demo-row">
+          <div class="demo-item">
+            <span class="demo-label">Icon</span>
+            <nova-button appearance="icon" icon="★"></nova-button>
+            <span class="demo-code">appearance="icon" icon="★"</span>
+          </div>
+          
+          <div class="demo-item">
+            <span class="demo-label">FAB</span>
+            <nova-button appearance="fab" icon="+"></nova-button>
+            <span class="demo-code">appearance="fab" icon="+"</span>
+          </div>
+          
+          <div class="demo-item">
+            <span class="demo-label">Mini FAB</span>
+            <nova-button appearance="mini-fab" icon="-"></nova-button>
+            <span class="demo-code">appearance="mini-fab" icon="-"</span>
+          </div>
+          
+          <div class="demo-item">
+            <span class="demo-label">Extended FAB</span>
+            <nova-button appearance="extended-fab" icon="→">Extended</nova-button>
+            <span class="demo-code">appearance="extended-fab" icon="→"</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Button Variants -->
+    <section class="demo-section">
+      <h2>Button Variants</h2>
+      <p>
+        The <code>variant</code> property defines the semantic meaning of the button.
+        Use these variants to establish visual hierarchy in your interfaces.
+      </p>
+      
+      <div class="demo-container">
+        <div class="demo-row">
+          <div class="demo-item">
+            <span class="demo-label">Basic Variant</span>
+            <nova-button 
+              variant="basic" 
+              [loading]="loadingStates['basic']"
+              (clicked)="toggleLoading('basic')">
+              Basic
+            </nova-button>
+            <span class="demo-code">variant="basic"</span>
+          </div>
+          
+          <div class="demo-item">
+            <span class="demo-label">CTA Variant</span>
+            <nova-button 
+              variant="cta" 
+              [loading]="loadingStates['cta']"
+              (clicked)="toggleLoading('cta')">
+              CTA
+            </nova-button>
+            <span class="demo-code">variant="cta"</span>
+          </div>
+          
+          <div class="demo-item">
+            <span class="demo-label">Link Variant</span>
+            <nova-button 
+              variant="link" 
+              [loading]="loadingStates['link']"
+              (clicked)="toggleLoading('link')">
+              Link
+            </nova-button>
+            <span class="demo-code">variant="link"</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="usage-note">
+        <h4>Usage Guidance</h4>
+        <ul>
+          <li><strong>Basic variant</strong> - Use for standard actions that don't need to stand out</li>
+          <li><strong>CTA variant</strong> - Use for primary actions that should draw attention</li>
+          <li><strong>Link variant</strong> - Use for navigation or secondary actions</li>
+        </ul>
+      </div>
+    </section>
+    
+    <!-- Button Sizes -->
+    <section class="demo-section">
+      <h2>Button Sizes</h2>
+      <p>
+        The <code>size</code> property adjusts the size of the button.
+        Choose from three size options to fit your interface needs.
+      </p>
+      
+      <div class="demo-container">
+        <div class="demo-row">
+          <div class="demo-item">
+            <span class="demo-label">Small</span>
+            <nova-button size="small">Small</nova-button>
+            <span class="demo-code">size="small"</span>
+          </div>
+          
+          <div class="demo-item">
+            <span class="demo-label">Medium (Default)</span>
+            <nova-button size="medium">Medium</nova-button>
+            <span class="demo-code">size="medium"</span>
+          </div>
+          
+          <div class="demo-item">
+            <span class="demo-label">Large</span>
+            <nova-button size="large">Large</nova-button>
+            <span class="demo-code">size="large"</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Button States -->
+    <section class="demo-section">
+      <h2>Button States</h2>
+      <p>
+        Buttons can be in normal, disabled, or loading states. Use the <code>disabled</code> and <code>loading</code> properties to control the state.
+      </p>
+      
+      <div class="demo-container">
+        <div class="demo-row">
+          <div class="demo-item">
+            <span class="demo-label">Normal</span>
+            <nova-button variant="cta">Normal</nova-button>
+            <span class="demo-code">&lt;nova-button&gt;</span>
+          </div>
+          
+          <div class="demo-item">
+            <span class="demo-label">Disabled</span>
+            <nova-button variant="cta" [disabled]="true">Disabled</nova-button>
+            <span class="demo-code">[disabled]="true"</span>
+          </div>
+          
+          <div class="demo-item">
+            <span class="demo-label">Loading</span>
+            <nova-button variant="cta" [loading]="true">Loading</nova-button>
+            <span class="demo-code">[loading]="true"</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Button with Icons -->
+    <section class="demo-section">
+      <h2>Button with Icons</h2>
+      <p>
+        Add an icon to a button using the <code>icon</code> property. 
+        Control the icon position with <code>iconPosition</code>.
+      </p>
+      
+      <div class="demo-container">
+        <div class="demo-row">
+          <div class="demo-item">
+            <span class="demo-label">Icon Left (Default)</span>
+            <nova-button icon="←" iconPosition="left">Back</nova-button>
+            <span class="demo-code">icon="←" iconPosition="left"</span>
+          </div>
+          
+          <div class="demo-item">
+            <span class="demo-label">Icon Right</span>
+            <nova-button icon="→" iconPosition="right">Next</nova-button>
+            <span class="demo-code">icon="→" iconPosition="right"</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Animation Levels -->
+    <section class="demo-section">
+      <h2>Animation Levels</h2>
+      <p>
+        Control the amount of animation applied to buttons with the <code>animation</code> property.
+      </p>
+      
+      <div class="demo-container">
+        <div class="demo-row">
+          <div class="demo-item">
+            <span class="demo-label">None</span>
+            <nova-button animation="none" variant="cta">No Animation</nova-button>
+            <span class="demo-code">animation="none"</span>
+          </div>
+          
+          <div class="demo-item">
+            <span class="demo-label">Normal (Default)</span>
+            <nova-button animation="normal" variant="cta">Normal Animation</nova-button>
+            <span class="demo-code">animation="normal"</span>
+          </div>
+          
+          <div class="demo-item">
+            <span class="demo-label">Extra</span>
+            <nova-button animation="extra" variant="cta">Extra Animation</nova-button>
+            <span class="demo-code">animation="extra"</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Usage Examples -->
+    <section class="demo-section">
+      <h2>Common Use Cases</h2>
+      <p>
+        Here are some examples of how to combine button properties for common UI patterns.
+      </p>
+      
+      <nova-card>
+        <nova-card-header title="Form Actions"></nova-card-header>
+        <nova-card-content>
+          <p>Use a combination of link, basic, and CTA variants for form actions:</p>
+          
+          <div class="example-container">
+            <div class="example-preview">
+              <nova-button variant="link">Cancel</nova-button>
+              <nova-button>Save Draft</nova-button>
+              <nova-button variant="cta">Submit</nova-button>
+            </div>
+            
+            <div class="example-code">
+              <pre><code>&lt;nova-button variant="link"&gt;Cancel&lt;/nova-button&gt;
+  &lt;nova-button&gt;Save Draft&lt;/nova-button&gt;
+  &lt;nova-button variant="cta"&gt;Submit&lt;/nova-button&gt;</code></pre>
+            </div>
+          </div>
+        </nova-card-content>
+      </nova-card>
+      
+      <div class="spacer"></div>
+      
+      <nova-card>
+        <nova-card-header title="Dialog Buttons"></nova-card-header>
+        <nova-card-content>
+          <p>Use link and CTA variants for dialog actions:</p>
+          
+          <div class="example-container">
+            <div class="example-preview dialog-preview">
+              <nova-button variant="link">Cancel</nova-button>
+              <nova-button variant="cta">Confirm</nova-button>
+            </div>
+            
+            <div class="example-code">
+              <pre><code>&lt;nova-button variant="link"&gt;Cancel&lt;/nova-button&gt;
+  &lt;nova-button variant="cta"&gt;Confirm&lt;/nova-button&gt;</code></pre>
+            </div>
+          </div>
+        </nova-card-content>
+      </nova-card>
+      
+      <div class="spacer"></div>
+      
+      <nova-card>
+        <nova-card-header title="Icon Buttons Group"></nova-card-header>
+        <nova-card-content>
+          <p>Use icon buttons for compact controls:</p>
+          
+          <div class="example-container">
+            <div class="example-preview">
+              <nova-button appearance="icon" icon="←"></nova-button>
+              <nova-button appearance="icon" icon="↑"></nova-button>
+              <nova-button appearance="icon" icon="↓"></nova-button>
+              <nova-button appearance="icon" icon="→"></nova-button>
+            </div>
+            
+            <div class="example-code">
+              <pre><code>&lt;nova-button appearance="icon" icon="←"&gt;&lt;/nova-button&gt;
+  &lt;nova-button appearance="icon" icon="↑"&gt;&lt;/nova-button&gt;
+  &lt;nova-button appearance="icon" icon="↓"&gt;&lt;/nova-button&gt;
+  &lt;nova-button appearance="icon" icon="→"&gt;&lt;/nova-button&gt;</code></pre>
+            </div>
+          </div>
+        </nova-card-content>
+      </nova-card>
+    </section>
+    
+    <!-- API Reference -->
+    <section class="demo-section">
+      <h2>API Reference</h2>
+      <p>The NovaButtonComponent supports the following properties:</p>
+      
+      <table class="api-table">
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let prop of apiProps">
+            <td><code>{{ prop.name }}</code></td>
+            <td>{{ prop.type }}</td>
+            <td>{{ prop.default }}</td>
+            <td>{{ prop.description }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    
+    <!-- Accessibility -->
+    <section class="demo-section">
+      <h2>Accessibility</h2>
+      <p>
+        Nova UI buttons are designed with accessibility in mind. Here are some key accessibility features:
+      </p>
+      
+      <ul class="feature-list">
+        <li>Uses native <code>&lt;button&gt;</code> element for proper keyboard navigation and screen reader support</li>
+        <li>Maintains focus styles for keyboard navigation</li>
+        <li>Sets proper ARIA attributes for disabled and loading states</li>
+        <li>Provides sufficient color contrast between button text and background</li>
+        <li>Supports custom icons with appropriate labeling</li>
+      </ul>
+      
+      <div class="accessibility-tip">
+        <h4>Tip</h4>
+        <p>
+          Always provide a clear, descriptive label for buttons. For icon-only buttons, consider adding an 
+          <code>aria-label</code> attribute to the parent element that contains the button for better screen reader support.
+        </p>
+      </div>
+    </section>
+  </div>

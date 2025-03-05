@@ -1,25 +1,26 @@
 ﻿/* Dark Matter Theme for Nova UI 
- * Inspired by void space and invisible cosmic forces
+ * Inspired by the mysterious substance that makes up 27% of the universe
  */
  @use '../core/functions' as functions;
  @use '../core/mixins' as mixins;
  @use '../core/variables' as vars;
  
- // Theme colors - inspired by the mysterious dark matter
- $dark-matter-primary: #9D71FF;      // Enigmatic violet like gravitational distortion
- $dark-matter-secondary: #515FC4;    // Subtle midnight blue like cosmic filaments
- $dark-matter-accent1: #B69DF6;      // Soft lavender like space distortions
- $dark-matter-accent2: #3E4676;      // Deep indigo like hidden mass
- $dark-matter-accent3: #7A87D9;      // Celestial blue-purple like cosmic web
- $dark-matter-background: #050508;   // Almost perfect void
- $dark-matter-surface: #0C0C14;      // Deep void with subtle texture
- $dark-matter-surface-alt: #121220;  // Slightly lighter cosmic void
+ // Theme colors
+ // Dark matter is invisible but reveals itself through gravitational effects
+ $dark-matter-primary: #B085FF;     // Violet like gravitational lensing visualizations
+ $dark-matter-secondary: #6A55C2;   // Deep purple like scientific simulations
+ $dark-matter-accent1: #CDB2FF;     // Light lavender like theoretical models
+ $dark-matter-accent2: #4E4B8C;     // Navy blue like galaxy rotation visualizations
+ $dark-matter-accent3: #8C95E4;     // Periwinkle like cosmic web models
+ $dark-matter-background: #08080E;  // Almost perfect void
+ $dark-matter-surface: #101018;     // Deep void with subtle texture
+ $dark-matter-surface-alt: #1A1A2E; // Slightly lighter with gravitational effects
  
  // Semantic colors
- $dark-matter-success: #44E6B5;      // Aurora green success
- $dark-matter-error: #FF4673;        // Clear red error that cuts through darkness
- $dark-matter-warning: #F9CB54;      // Gold dust warning
- $dark-matter-info: $dark-matter-secondary; // Blue info
+ $dark-matter-success: #50E3C2;     // Teal success
+ $dark-matter-error: #FF4673;       // Red error
+ $dark-matter-warning: #FFCF53;     // Gold warning
+ $dark-matter-info: $dark-matter-secondary; // Purple info
  
  @mixin apply-dark-matter-theme() {
    // Apply the theme CSS variables
@@ -48,7 +49,7 @@
    --nova-info: #{$dark-matter-info};
    --nova-info-rgb: #{functions.nova-hex-to-rgb($dark-matter-info)};
    
-   // Glow colors - intentionally subtle
+   // Glow colors
    --nova-primary-glow: #{$dark-matter-primary};
    --nova-secondary-glow: #{$dark-matter-secondary};
    --nova-accent1-glow: #{$dark-matter-accent1};

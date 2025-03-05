@@ -5,9 +5,21 @@
 @use "themes/cosmic-blue";
 @use "themes/nebula";
 @use "themes/dark-matter";
+@use "themes/black-hole";
 @use "themes/light-themes";
 
-// Apply dark themes
+// Default theme variables (will be overridden by theme classes)
+:root {
+  // Apply default typography variables
+  --nova-font-family: #{core.$nova-font-family-sans};
+  --nova-font-family-display: #{core.$nova-font-family-display};
+  --nova-font-family-mono: #{core.$nova-font-family-mono};
+  
+  // Apply default theme (supernova dark)
+  @include supernova.apply-supernova-theme();
+}
+
+// Apply dark themes based on body classes
 body.theme-supernova.theme-dark {
   @include supernova.apply-supernova-theme();
 }
@@ -24,7 +36,11 @@ body.theme-dark-matter.theme-dark {
   @include dark-matter.apply-dark-matter-theme();
 }
 
-// Apply light themes
+body.theme-black-hole.theme-dark {
+  @include black-hole.apply-black-hole-theme();
+}
+
+// Apply light themes based on body classes
 body.theme-supernova.theme-light {
   @include light-themes.apply-supernova-light-theme();
 }
@@ -41,12 +57,41 @@ body.theme-dark-matter.theme-light {
   @include light-themes.apply-dark-matter-light-theme();
 }
 
-// Default theme is supernova dark
-:root {
+body.theme-black-hole.theme-light {
+  @include light-themes.apply-black-hole-light-theme();
+}
+
+// Default theme for body without classes for initial rendering
+body:not([class*="theme-"]) {
   @include supernova.apply-supernova-theme();
 }
 
-// Apply default theme also to body without classes for initial rendering
-body:not([class*="theme-"]) {
-  @include supernova.apply-supernova-theme();
+// Utility classes
+.nova-text-gradient {
+  background: linear-gradient(90deg, var(--nova-primary), var(--nova-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+}
+
+// Special black hole effects for elements with this class
+.nova-black-hole-effect {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: 0 0 var(--nova-gravity-distortion, 0) rgba(var(--nova-primary-rgb), 0.3);
+    z-index: -1;
+    opacity: var(--nova-event-horizon-opacity, 0);
+    transition: all 0.3s ease;
+  }
+  
+  &:hover::before {
+    opacity: 1;
+    filter: blur(3px);
+  }
 }

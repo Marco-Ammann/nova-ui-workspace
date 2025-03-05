@@ -1,10 +1,10 @@
 ﻿// projects/nova-ui/src/lib/services/theme.service.ts
 import { Injectable, PLATFORM_ID, Inject } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
 import { isPlatformBrowser } from '@angular/common';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 // Available themes
-export type NovaThemeBase = 'supernova' | 'cosmic-blue' | 'nebula' | 'dark-matter';
+export type NovaThemeBase = 'supernova' | 'cosmic-blue' | 'nebula' | 'dark-matter' | 'black-hole';
 // Mode (light or dark)
 export type NovaThemeMode = 'light' | 'dark';
 // Theme as string representation
@@ -24,7 +24,8 @@ export class NovaThemeService {
     'theme-supernova',
     'theme-cosmic-blue',
     'theme-nebula',
-    'theme-dark-matter'
+    'theme-dark-matter',
+    'theme-black-hole'
   ];
   
   // Known theme mode classes
@@ -65,7 +66,12 @@ export class NovaThemeService {
     return `${this.themeBaseSubject.value}-${this.themeModeSubject.value}` as NovaTheme;
   }
   
-  // Set the theme base (supernova, cosmic-blue, etc.)
+  // Get current theme base value
+  getThemeBase(): NovaThemeBase {
+    return this.themeBaseSubject.value;
+  }
+  
+  // Set the theme base
   setThemeBase(themeBase: NovaThemeBase): void {
     if (themeBase !== this.themeBaseSubject.value) {
       this.themeBaseSubject.next(themeBase);
@@ -111,7 +117,7 @@ export class NovaThemeService {
     }
   }
   
-  // Apply the current theme to the DOM - FIXED VERSION
+  // Apply the current theme to the DOM
   private applyCurrentTheme(): void {
     if (!isPlatformBrowser(this.platformId)) return;
     

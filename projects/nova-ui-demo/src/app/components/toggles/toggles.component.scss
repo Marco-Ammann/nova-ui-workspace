@@ -1,0 +1,129 @@
+.toggle-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.toggle-group {
+  margin-bottom: 2rem;
+
+  &-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--nova-primary);
+  }
+}
+
+.reactive-form {
+  max-width: 600px;
+  margin-bottom: 1.5rem;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(var(--nova-surface-alt-rgb), 0.3);
+}
+
+.code-example {
+  margin-top: 2rem;
+
+  &-title {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    color: var(--nova-primary);
+    font-weight: 600;
+  }
+}
+
+.example-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.example-card {
+  background-color: rgba(var(--nova-surface-alt-rgb), 0.3);
+  border-radius: 0.625rem;
+  padding: 1.5rem;
+
+  &-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    color: var(--nova-primary);
+  }
+}
+
+.api-table {
+  margin-bottom: 2rem;
+  overflow-x: auto;
+  border-radius: 0.625rem;
+  background: rgba(var(--nova-surface-alt-rgb), 0.1);
+  border: 1px solid rgba(var(--nova-surface-alt-rgb), 0.3);
+  
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.9375rem;
+    
+    th, td {
+      text-align: left;
+      padding: 1rem;
+      border-bottom: 1px solid rgba(var(--nova-surface-alt-rgb), 0.3);
+      vertical-align: top;
+      line-height: 1.4;
+      transition: background-color 0.2s ease;
+    }
+    
+    th {
+      background-color: rgba(var(--nova-surface-alt-rgb), 0.3);
+      font-weight: 600;
+      color: var(--nova-primary);
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      backdrop-filter: blur(4px);
+      
+      &:first-child {
+        border-top-left-radius: 0.625rem;
+      }
+      
+      &:last-child {
+        border-top-right-radius: 0.625rem;
+      }
+    }
+    
+    tr:nth-child(even) {
+      background-color: rgba(var(--nova-surface-alt-rgb), 0.1);
+    }
+    
+    tr:hover td {
+      background-color: rgba(var(--nova-surface-alt-rgb), 0.2);
+    }
+    
+    td:first-child {
+      font-family: var(--nova-font-family-mono);
+      color: var(--nova-primary);
+      font-weight: 500;
+    }
+  }
+}
+
+code {
+  font-family: var(--nova-font-family-mono);
+  font-size: 0.875em;
+  padding: 0.125rem 0.25rem;
+  background-color: rgba(var(--nova-surface-alt-rgb), 0.3);
+  border-radius: 0.25rem;
+}

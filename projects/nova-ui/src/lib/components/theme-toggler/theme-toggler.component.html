@@ -1,67 +1,81 @@
-﻿<!-- projects/nova-ui/src/lib/components/theme-toggler/theme-toggler.component.html -->
-<div class="nova-theme-toggler">
-  <div class="nova-theme-toggler__header">
-    <h3 class="nova-theme-toggler__title">Theme Settings</h3>
-  </div>
+﻿<div class="nova-theme-toggler" [class.nova-theme-toggler--expanded]="isExpanded">
+  <!-- Collapsed view - just shows the current theme and toggle button -->
+  <button class="nova-theme-toggler__toggle-button" 
+          (click)="toggleExpanded()" 
+          [attr.aria-expanded]="isExpanded"
+          [attr.aria-label]="isExpanded ? 'Close theme settings' : 'Open theme settings'">
+    <span class="nova-theme-toggler__current-indicator" [style.background]="getCurrentThemeColor()"></span>
+    <span class="nova-theme-toggler__current-mode" *ngIf="themeMode$ | async as mode">
+      {{ mode === 'dark' ? '🌙' : '☀️' }}
+    </span>
+    <span class="nova-theme-toggler__arrow" [class.nova-theme-toggler__arrow--up]="isExpanded">
+      ▼
+    </span>
+  </button>
   
-  <!-- Theme Base Selection -->
-  <div class="nova-theme-toggler__section">
-    <div class="nova-theme-toggler__section-title">Theme Style</div>
-    <div class="nova-theme-toggler__theme-base-grid">
-      <div 
-        *ngFor="let themeBase of themeBases" 
-        class="nova-theme-toggler__theme-base"
-        [class.nova-theme-toggler__theme-base--active]="(themeBase$ | async) === themeBase.value"
-        (click)="setThemeBase(themeBase.value)">
-        
-        <div class="nova-theme-toggler__sample" [ngClass]="'theme-sample-' + themeBase.value"></div>
-        <span class="nova-theme-toggler__label">{{themeBase.label}}</span>
+  <!-- Expanded panel with all theme options -->
+  <div class="nova-theme-toggler__panel" *ngIf="isExpanded">
+    <div class="nova-theme-toggler__header">
+      <h3 class="nova-theme-toggler__title">Theme Settings</h3>
+      <button class="nova-theme-toggler__close" (click)="closePanel()" aria-label="Close theme settings">✕</button>
+    </div>
+    
+    <!-- Theme Base Selection -->
+    <div class="nova-theme-toggler__section">
+      <div class="nova-theme-toggler__section-title">Theme Style</div>
+      <div class="nova-theme-toggler__theme-base-grid">
+        <div 
+          *ngFor="let themeBase of themeBases" 
+          class="nova-theme-toggler__theme-base"
+          [class.nova-theme-toggler__theme-base--active]="(themeBase$ | async) === themeBase.value"
+          (click)="setThemeBase(themeBase.value)">
+          
+          <div class="nova-theme-toggler__sample" 
+               [style.background]="themeBase.color"
+               [attr.aria-label]="themeBase.label + ' theme'"></div>
+          <span class="nova-theme-toggler__label">{{themeBase.label}}</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Light/Dark Mode Toggle -->
+    <div class="nova-theme-toggler__section">
+      <div class="nova-theme-toggler__section-title">Mode</div>
+      <div class="nova-theme-toggler__mode-toggle">
+        <div class="nova-theme-toggler__mode-options">
+          <button 
+            class="nova-theme-toggler__mode-button"
+            [class.nova-theme-toggler__mode-button--active]="(themeMode$ | async) === 'light' && !(useSystemPreference$ | async)"
+            (click)="setThemeMode('light')"
+            aria-label="Set light theme">
+            <span class="mode-icon">☀️</span>
+            <span>Light</span>
+          </button>
+          
+          <button 
+            class="nova-theme-toggler__mode-button"
+            [class.nova-theme-toggler__mode-button--active]="(themeMode$ | async) === 'dark' && !(useSystemPreference$ | async)"
+            (click)="setThemeMode('dark')"
+            aria-label="Set dark theme">
+            <span class="mode-icon">🌙</span>
+            <span>Dark</span>
+          </button>
+          
+          <button 
+            class="nova-theme-toggler__mode-button"
+            [class.nova-theme-toggler__mode-button--active]="(useSystemPreference$ | async)"
+            (click)="setUseSystemPreference(true)"
+            aria-label="Use system preference for light/dark mode">
+            <span class="mode-icon">💻</span>
+            <span>System</span>
+          </button>
+        </div>
       </div>
     </div>
   </div>
   
-  <!-- Light/Dark Mode Toggle -->
-  <div class="nova-theme-toggler__section">
-    <div class="nova-theme-toggler__section-title">Mode</div>
-    <div class="nova-theme-toggler__mode-toggle">
-      <div class="nova-theme-toggler__mode-options">
-        <button 
-          class="nova-theme-toggler__mode-button"
-          [class.nova-theme-toggler__mode-button--active]="(themeMode$ | async) === 'light' && !(useSystemPreference$ | async)"
-          (click)="setThemeMode('light')"
-          [attr.aria-label]="'Set light theme'">
-          <span class="mode-icon">☀️</span>
-          <span>Light</span>
-        </button>
-        
-        <button 
-          class="nova-theme-toggler__mode-button"
-          [class.nova-theme-toggler__mode-button--active]="(themeMode$ | async) === 'dark' && !(useSystemPreference$ | async)"
-          (click)="setThemeMode('dark')"
-          [attr.aria-label]="'Set dark theme'">
-          <span class="mode-icon">🌙</span>
-          <span>Dark</span>
-        </button>
-        
-        <button 
-          class="nova-theme-toggler__mode-button"
-          [class.nova-theme-toggler__mode-button--active]="(useSystemPreference$ | async)"
-          (click)="setUseSystemPreference(true)"
-          [attr.aria-label]="'Use system preference for light/dark mode'">
-          <span class="mode-icon">💻</span>
-          <span>System</span>
-        </button>
-      </div>
-    </div>
-  </div>
-  
-  <!-- Current theme information -->
-  <div class="nova-theme-toggler__current">
-    <div class="nova-theme-toggler__current-theme">
-      <span class="nova-theme-toggler__current-label">Current:</span>
-      <span class="nova-theme-toggler__current-value">
-        {{ getThemeLabel() }} {{ (themeMode$ | async) === 'dark' ? 'Dark' : 'Light' }}
-      </span>
-    </div>
-  </div>
+  <!-- Backdrop for closing when clicked outside -->
+  <div class="nova-theme-toggler__backdrop" 
+       *ngIf="isExpanded" 
+       (click)="closePanel()"></div>
 </div>

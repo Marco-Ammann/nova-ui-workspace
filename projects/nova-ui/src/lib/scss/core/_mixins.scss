@@ -1,6 +1,7 @@
 ﻿/* SCSS mixins for Nova UI */
 @use 'functions' as functions;
 @use "sass:color";
+@use "sass:map";
 
 // Generate CSS variables for a theme
 @mixin nova-css-vars($theme-name, $primary, $secondary, $accent1, $accent2, $accent3, $background, $surface, $surface-alt) {
@@ -44,16 +45,27 @@
                           #{color.channel($surface-alt, "green", $space: rgb)}, 
                           #{color.channel($surface-alt, "blue", $space: rgb)};
   
-  --nova-on-primary: #{if(color.lightness($primary) > 50%, #000000, #ffffff)};
-  --nova-on-secondary: #{if(color.lightness($secondary) > 50%, #000000, #ffffff)};
-  --nova-on-background: #{if(color.lightness($background) > 50%, #000000, #ffffff)};
-  --nova-on-surface: #{if(color.lightness($surface) > 50%, #000000, #ffffff)};
+  // Apply contrast colors automatically
+  --nova-on-primary: #{functions.nova-contrast-color($primary)};
+  --nova-on-primary-rgb: #{functions.nova-hex-to-rgb(functions.nova-contrast-color($primary))};
+  
+  --nova-on-secondary: #{functions.nova-contrast-color($secondary)};
+  --nova-on-secondary-rgb: #{functions.nova-hex-to-rgb(functions.nova-contrast-color($secondary))};
+  
+  --nova-on-background: #{functions.nova-contrast-color($background)};
+  --nova-on-background-rgb: #{functions.nova-hex-to-rgb(functions.nova-contrast-color($background))};
+  
+  --nova-on-surface: #{functions.nova-contrast-color($surface)};
+  --nova-on-surface-rgb: #{functions.nova-hex-to-rgb(functions.nova-contrast-color($surface))};
+  
+  --nova-on-surface-alt: #{functions.nova-contrast-color($surface-alt)};
+  --nova-on-surface-alt-rgb: #{functions.nova-hex-to-rgb(functions.nova-contrast-color($surface-alt))};
 }
 
 // Glow effect mixin
 @mixin nova-glow($color, $intensity: 'medium') {
   $glow-opacity: 0.6;
-  $glow-spread: 0px;
+  $glow-spread: 0;
   
   @if $intensity == 'subtle' {
     $glow-opacity: 0.4;
@@ -63,27 +75,108 @@
     $glow-spread: 4px;
   }
   
-  // Convert CSS variable to a usable color value if needed
-  $color-value: #{$color};
-  @if type-of($color) == 'string' and str-index($color, 'var(--') != null {
-    // Use rgba function with the CSS variable and opacity
+  // Handle CSS variable strings
+  @if type-of($color) == 'string' and string.index($color, 'var(--') != null {
     box-shadow: 0 0 8px #{$glow-spread} #{$color};
     border: 1px solid #{$color};
+    
+    &:hover {
+      box-shadow: 0 0 12px #{$glow-spread + 2px} #{$color};
+    }
   } @else {
-    // Use SCSS color functions if it's an actual color value
-    box-shadow: 0 0 8px #{$glow-spread} rgba(#{$color}, #{$glow-opacity});
-    border: 1px solid rgba(#{$color}, #{$glow-opacity + 0.1});
+    // Use SCSS color functions if it's a color value
+    box-shadow: 0 0 8px #{$glow-spread} rgba(#{color.channel($color, "red", $space: rgb)}, 
+                                            #{color.channel($color, "green", $space: rgb)}, 
+                                            #{color.channel($color, "blue", $space: rgb)}, 
+                                            #{$glow-opacity});
+    border: 1px solid rgba(#{color.channel($color, "red", $space: rgb)}, 
+                           #{color.channel($color, "green", $space: rgb)}, 
+                           #{color.channel($color, "blue", $space: rgb)}, 
+                           #{$glow-opacity + 0.1});
+    
+    &:hover {
+      box-shadow: 0 0 12px #{$glow-spread + 2px} rgba(#{color.channel($color, "red", $space: rgb)}, 
+                                                    #{color.channel($color, "green", $space: rgb)}, 
+                                                    #{color.channel($color, "blue", $space: rgb)}, 
+                                                    #{$glow-opacity + 0.2});
+    }
   }
   
   transition: box-shadow 0.3s ease, border 0.3s ease;
+}
+
+// Cosmos background effect
+@mixin nova-cosmos-bg($density: 'medium', $color: 'primary') {
+  $stars-opacity: 0.05;
+  $stars-size: 0.2px;
+  $color-value: var(--nova-primary-rgb);
   
-  &:hover {
-    @if type-of($color) == 'string' and str-index($color, 'var(--') != null {
-      box-shadow: 0 0 12px #{$glow-spread + 2px} #{$color};
-    } @else {
-      box-shadow: 0 0 12px #{$glow-spread + 2px} rgba(#{$color}, #{$glow-opacity + 0.2});
-    }
+  @if $density == 'sparse' {
+    $stars-opacity: 0.03;
+    $stars-size: 0.15px;
+  } @else if $density == 'dense' {
+    $stars-opacity: 0.07;
+    $stars-size: 0.25px;
   }
+  
+  @if $color == 'secondary' {
+    $color-value: var(--nova-secondary-rgb);
+  } @else if $color == 'accent1' {
+    $color-value: var(--nova-accent1-rgb);
+  } @else if $color == 'accent2' {
+    $color-value: var(--nova-accent2-rgb);
+  } @else if $color == 'accent3' {
+    $color-value: var(--nova-accent3-rgb);
+  } @else if $color == 'white' {
+    $color-value: '255, 255, 255';
+  }
+  
+  background-image: 
+    radial-gradient(circle at 10% 10%, rgba(#{$color-value}, 0.8) #{$stars-size}, transparent #{$stars-size * 1.5}),
+    radial-gradient(circle at 80% 40%, rgba(#{$color-value}, 0.5) #{$stars-size * 0.8}, transparent #{$stars-size * 1.3}),
+    radial-gradient(circle at 30% 70%, rgba(#{$color-value}, 0.7) #{$stars-size * 0.9}, transparent #{$stars-size * 1.4}),
+    radial-gradient(circle at 60% 20%, rgba(#{$color-value}, 0.8) #{$stars-size}, transparent #{$stars-size * 1.5}),
+    radial-gradient(circle at 90% 90%, rgba(#{$color-value}, 0.5) #{$stars-size * 0.7}, transparent #{$stars-size * 1.2});
+  background-size: 120px 120px;
+  opacity: $stars-opacity;
+}
+
+// Elevation mixin (with cosmic glow)
+@mixin nova-elevation($level: 1, $color: 'primary') {
+  $shadow-color: rgba(0, 0, 0, 0.2);
+  $glow-color: rgba(var(--nova-primary-rgb), 0.15);
+  
+  @if $color == 'secondary' {
+    $glow-color: rgba(var(--nova-secondary-rgb), 0.15);
+  } @else if $color == 'accent1' {
+    $glow-color: rgba(var(--nova-accent1-rgb), 0.15);
+  }
+  
+  @if $level == 0 {
+    box-shadow: none;
+  } @else if $level == 1 {
+    box-shadow: 
+      0 2px 4px -1px #{$shadow-color},
+      0 0 6px #{$glow-color};
+  } @else if $level == 2 {
+    box-shadow: 
+      0 4px 8px -2px #{$shadow-color},
+      0 0 10px #{$glow-color};
+  } @else if $level == 3 {
+    box-shadow: 
+      0 8px 16px -4px #{$shadow-color},
+      0 0 14px #{$glow-color};
+  } @else if $level == 4 {
+    box-shadow: 
+      0 12px 24px -6px #{$shadow-color},
+      0 0 18px #{$glow-color};
+  } @else if $level == 5 {
+    box-shadow: 
+      0 16px 32px -8px #{$shadow-color},
+      0 0 22px #{$glow-color};
+  }
+  
+  transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 // Screen size breakpoints
@@ -105,4 +198,78 @@
 
 @mixin nova-screen-2xl {
   @media (min-width: 1536px) { @content; }
+}
+
+// Typography presets
+@mixin nova-typography($preset: 'body') {
+  @if $preset == 'h1' {
+    font-family: var(--nova-font-family-display);
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  } @else if $preset == 'h2' {
+    font-family: var(--nova-font-family-display);
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.005em;
+  } @else if $preset == 'h3' {
+    font-family: var(--nova-font-family-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.3;
+  } @else if $preset == 'h4' {
+    font-family: var(--nova-font-family-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.4;
+  } @else if $preset == 'h5' {
+    font-family: var(--nova-font-family-display);
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 1.4;
+  } @else if $preset == 'h6' {
+    font-family: var(--nova-font-family-display);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+  } @else if $preset == 'body' {
+    font-family: var(--nova-font-family);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+  } @else if $preset == 'body-small' {
+    font-family: var(--nova-font-family);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+  } @else if $preset == 'caption' {
+    font-family: var(--nova-font-family);
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.5;
+  } @else if $preset == 'button' {
+    font-family: var(--nova-font-family-display);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+  } @else if $preset == 'display' {
+    font-family: var(--nova-font-family-display);
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+}
+
+// Gradient text
+@mixin nova-gradient-text($direction: 90deg, $color1: var(--nova-primary), $color2: var(--nova-secondary)) {
+  background: linear-gradient(#{$direction}, #{$color1}, #{$color2});
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  display: inline-block;
 }

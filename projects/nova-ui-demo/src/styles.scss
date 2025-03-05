@@ -1,6 +1,23 @@
 ﻿/* Import Nova UI styles with the correct relative path */
 @use '../../nova-ui/src/lib/scss/nova-ui';
 
+
+:root {
+  // Default theme fallback variables
+  --nova-primary: #FF3D51;
+  --nova-primary-rgb: 255, 61, 81;
+  --nova-secondary: #4D54FF;
+  --nova-secondary-rgb: 77, 84, 255;
+  --nova-accent1: #FF7A2E;
+  --nova-accent1-rgb: 255, 122, 46;
+  --nova-surface-alt: #1A1A30;
+  --nova-surface-alt-rgb: 26, 26, 48;
+  --nova-on-surface: #FFFFFF;
+  --nova-on-surface-rgb: 255, 255, 255;
+  --nova-on-primary: #FFFFFF;
+}
+
+
 /* Add global styles for the demo application */
 html, body {
   height: 100%;

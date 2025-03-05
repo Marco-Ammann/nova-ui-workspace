@@ -5,21 +5,22 @@
  @use '../core/mixins' as mixins;
  @use '../core/variables' as vars;
  
- // Theme colors - inspired by vibrant nebulae
- $nebula-primary: #25E6FF;           // Brilliant cyan like ionized oxygen
- $nebula-secondary: #7B4CFF;         // Rich purple like hydrogen/helium mix
- $nebula-accent1: #3DFFC4;           // Seafoam green like OIII emissions
- $nebula-accent2: #FF89BB;           // Rose pink like hydrogen regions
- $nebula-accent3: #60A1FF;           // Serene blue like nitrogen regions
- $nebula-background: #061019;        // Darkest cosmic background
- $nebula-surface: #0E1C2A;           // Deep space surface
- $nebula-surface-alt: #18293D;       // Slightly lighter surface with blue tone
+ // Theme colors
+ // Emission nebulae like the Orion Nebula have vibrant, complex color patterns
+ $nebula-primary: #F956C6;          // Magenta from hydrogen alpha regions
+ $nebula-secondary: #945FFB;        // Purple from hydrogen/oxygen mixture
+ $nebula-accent1: #60C6FF;          // Light blue from ionized oxygen
+ $nebula-accent2: #2DE5A7;          // Teal green from ionized oxygen
+ $nebula-accent3: #FFAF51;          // Amber from dust reflection
+ $nebula-background: #0B0A15;       // Deep space background
+ $nebula-surface: #171631;          // Deep violet surface
+ $nebula-surface-alt: #282455;      // Richer nebula gas coloring
  
  // Semantic colors
- $nebula-success: #00F5BB;           // Electric teal success
- $nebula-error: #FF5376;             // Rose red error like stellar hot spots
- $nebula-warning: #FFB946;           // Sunburst amber warning
- $nebula-info: $nebula-secondary;    // Purple info
+ $nebula-success: #00F5C0;          // Electric teal success
+ $nebula-error: #FF4777;            // Magenta error like hydrogen emission
+ $nebula-warning: #FFB147;          // Amber warning like dust reflection
+ $nebula-info: $nebula-secondary;   // Purple info from nebula gases
  
  @mixin apply-nebula-theme() {
    // Apply the theme CSS variables

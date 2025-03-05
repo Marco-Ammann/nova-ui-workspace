@@ -1,289 +1,310 @@
-﻿// projects/nova-ui/src/lib/components/theme-toggler/theme-toggler.component.scss
-
+﻿// Theme toggler container
 .nova-theme-toggler {
-  background-color: var(--nova-surface);
-  border-radius: 0.75rem;
-  overflow: hidden;
-  box-shadow: 
-    0 4px 15px -3px rgba(0, 0, 0, 0.2), 
-    0 0 0 1px rgba(var(--nova-primary-rgb), 0.1);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  position: relative;
+  font-family: var(--nova-font-family-display, sans-serif);
+  
+  // Add cosmic background glow when expanded
+  &--expanded::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(
+      circle at top right,
+      rgba(var(--nova-primary-rgb), 0.1),
+      transparent 70%
+    );
+    pointer-events: none;
+    z-index: -1;
+    animation: pulse-glow 3s infinite alternate ease-in-out;
+  }
+}
+
+// Toggle button
+.nova-theme-toggler__toggle-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(var(--nova-surface-alt-rgb), 0.3);
+  border: 1px solid rgba(var(--nova-on-surface-rgb), 0.1);
+  border-radius: 20px;
+  padding: 0.375rem 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   
   &:hover {
-    box-shadow: 
-      0 8px 20px -5px rgba(0, 0, 0, 0.3), 
-      0 0 0 1px rgba(var(--nova-primary-rgb), 0.15);
+    background-color: rgba(var(--nova-surface-alt-rgb), 0.5);
+    box-shadow: 0 0 15px rgba(var(--nova-primary-rgb), 0.1);
+  }
+  
+  .nova-theme-toggler--expanded & {
+    background-color: rgba(var(--nova-primary-rgb), 0.1);
+    border-color: rgba(var(--nova-primary-rgb), 0.3);
+  }
+}
+
+// Current theme indicator 
+.nova-theme-toggler__current-indicator {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(var(--nova-on-surface-rgb), 0.2);
+  
+  .nova-theme-toggler--expanded & {
+    box-shadow: 0 0 0 1px rgba(var(--nova-primary-rgb), 0.4),
+                0 0 10px rgba(var(--nova-primary-rgb), 0.3);
+  }
+}
+
+// Current mode indicator
+.nova-theme-toggler__current-mode {
+  font-size: 14px;
+}
+
+// Arrow icon
+.nova-theme-toggler__arrow {
+  font-size: 10px;
+  transition: transform 0.3s ease;
+  
+  &--up {
+    transform: rotate(180deg);
+  }
+}
+
+// Panel
+.nova-theme-toggler__panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 280px;
+  background-color: var(--nova-surface);
+  border-radius: 12px;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(var(--nova-primary-rgb), 0.1);
+  z-index: 1000;
+  overflow: hidden;
+  animation: panel-slide-in 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at top right,
+      rgba(var(--nova-primary-rgb), 0.03),
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+}
+
+// Panel header
+.nova-theme-toggler__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(var(--nova-on-surface-rgb), 0.1);
+}
+
+.nova-theme-toggler__title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--nova-primary);
+  background: linear-gradient(90deg, var(--nova-primary), var(--nova-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nova-theme-toggler__close {
+  background: transparent;
+  border: none;
+  color: var(--nova-on-surface);
+  font-size: 1rem;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  
+  &:hover {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+// Panel section
+.nova-theme-toggler__section {
+  padding: 1rem 1.25rem;
+  
+  &:not(:last-child) {
+    border-bottom: 1px solid rgba(var(--nova-on-surface-rgb), 0.07);
+  }
+}
+
+.nova-theme-toggler__section-title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--nova-on-surface);
+  margin-bottom: 0.875rem;
+}
+
+// Theme base grid
+.nova-theme-toggler__theme-base-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+  gap: 0.875rem;
+}
+
+.nova-theme-toggler__theme-base {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  
+  &:hover {
+    background-color: rgba(var(--nova-surface-alt-rgb), 0.5);
     transform: translateY(-2px);
   }
   
-  &__header {
-    padding: 1rem 1.25rem 0.5rem;
-    border-bottom: 1px solid rgba(var(--nova-on-surface-rgb), 0.1);
-  }
-  
-  &__title {
-    margin: 0;
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: var(--nova-primary);
-    background: linear-gradient(90deg, var(--nova-primary), var(--nova-secondary));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  
-  &__section {
-    padding: 1rem 1.25rem;
+  &--active {
+    background-color: rgba(var(--nova-primary-rgb), 0.1);
     
-    &:not(:last-child) {
-      border-bottom: 1px solid rgba(var(--nova-on-surface-rgb), 0.07);
-    }
-  }
-  
-  &__section-title {
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--nova-on-surface);
-    margin-bottom: 0.75rem;
-  }
-  
-  &__theme-base-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
-    gap: 0.75rem;
-  }
-  
-  &__theme-base {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    transition: background-color 0.2s ease, transform 0.2s ease;
-    
-    &:hover {
-      background-color: rgba(var(--nova-surface-alt-rgb), 0.5);
-      transform: translateY(-2px);
+    .nova-theme-toggler__sample {
+      box-shadow: 
+        0 0 0 2px var(--nova-primary),
+        0 0 12px rgba(var(--nova-primary-rgb), 0.4);
+      transform: scale(1.05);
     }
     
-    &--active {
-      background-color: rgba(var(--nova-primary-rgb), 0.1);
-      
-      .nova-theme-toggler__sample {
-        box-shadow: 0 0 0 2px var(--nova-primary);
-      }
-      
-      .nova-theme-toggler__label {
-        color: var(--nova-primary);
-        font-weight: 500;
-      }
-    }
-  }
-  
-  &__sample {
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 50%;
-    margin-bottom: 0.5rem;
-    box-shadow: 0 0 0 1px rgba(var(--nova-on-surface-rgb), 0.2);
-    position: relative;
-    overflow: hidden;
-    transition: box-shadow 0.2s ease, transform 0.2s ease;
-    transform-style: preserve-3d;
-    
-    &::before,
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      background-position: center;
-      background-size: cover;
-      transition: opacity 0.3s ease;
-    }
-    
-    // Dark mode preview (shown by default)
-    &::before {
-      opacity: 1;
-      z-index: 2;
-    }
-    
-    // Light mode preview (revealed on hover)
-    &::after {
-      opacity: 0;
-      z-index: 3;
-    }
-    
-    &:hover {
-      transform: rotateY(180deg);
-      
-      &::before {
-        opacity: 0;
-      }
-      
-      &::after {
-        opacity: 1;
-      }
-    }
-  }
-  
-  // Theme samples - Dark Mode
-  .theme-sample-supernova::before {
-    background: linear-gradient(135deg, #FF3D51 0%, #07070D 100%);
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 30% 30%, rgba(255, 109, 46, 0.8) 0%, rgba(255, 61, 81, 0.4) 25%, transparent 60%);
-    }
-  }
-  
-  .theme-sample-cosmic-blue::before {
-    background: linear-gradient(135deg, #3DD9FF 0%, #050E21 100%);
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 30% 30%, rgba(61, 217, 255, 0.8) 0%, rgba(82, 113, 255, 0.4) 25%, transparent 60%);
-    }
-  }
-  
-  .theme-sample-nebula::before {
-    background: linear-gradient(135deg, #25E6FF 0%, #061019 100%);
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 30% 30%, rgba(37, 230, 255, 0.8) 0%, rgba(123, 76, 255, 0.4) 25%, transparent 60%);
-    }
-  }
-  
-  .theme-sample-dark-matter::before {
-    background: linear-gradient(135deg, #9D71FF 0%, #050508 100%);
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 30% 30%, rgba(157, 113, 255, 0.8) 0%, rgba(81, 95, 196, 0.4) 25%, transparent 60%);
-    }
-  }
-  
-  // Theme samples - Light Mode
-  .theme-sample-supernova::after {
-    background: linear-gradient(135deg, #FF6D2E 0%, #FFF8F0 100%);
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 30% 30%, rgba(255, 109, 46, 0.8) 0%, rgba(255, 61, 81, 0.4) 25%, transparent 60%);
-    }
-  }
-  
-  .theme-sample-cosmic-blue::after {
-    background: linear-gradient(135deg, #5271FF 0%, #F0F8FF 100%);
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 30% 30%, rgba(61, 217, 255, 0.8) 0%, rgba(82, 113, 255, 0.4) 25%, transparent 60%);
-    }
-  }
-  
-  .theme-sample-nebula::after {
-    background: linear-gradient(135deg, #7B4CFF 0%, #F0F5FF 100%);
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 30% 30%, rgba(61, 255, 196, 0.8) 0%, rgba(123, 76, 255, 0.4) 25%, transparent 60%);
-    }
-  }
-  
-  .theme-sample-dark-matter::after {
-    background: linear-gradient(135deg, #515FC4 0%, #F8F9FF 100%);
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 30% 30%, rgba(157, 113, 255, 0.8) 0%, rgba(81, 95, 196, 0.4) 25%, transparent 60%);
-    }
-  }
-  
-  &__label {
-    font-size: 0.75rem;
-    font-weight: 400;
-    color: var(--nova-on-surface);
-    text-align: center;
-    transition: color 0.2s ease;
-  }
-  
-  // Mode toggle styling
-  &__mode-toggle {
-    width: 100%;
-  }
-  
-  &__mode-options {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: rgba(var(--nova-surface-alt-rgb), 0.5);
-    border-radius: 0.5rem;
-    padding: 0.25rem;
-    position: relative;
-  }
-  
-  &__mode-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.375rem;
-    padding: 0.5rem;
-    border-radius: 0.375rem;
-    flex: 1;
-    font-size: 0.875rem;
-    font-weight: 500;
-    background: transparent;
-    color: var(--nova-on-surface);
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    
-    .mode-icon {
-      font-size: 1rem;
-    }
-    
-    &:hover:not(&--active) {
-      background-color: rgba(var(--nova-surface-alt-rgb), 0.8);
-    }
-    
-    &--active {
-      background-color: var(--nova-surface);
+    .nova-theme-toggler__label {
       color: var(--nova-primary);
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      font-weight: 500;
     }
   }
+}
+
+.nova-theme-toggler__sample {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 0 0 1px rgba(var(--nova-on-surface-rgb), 0.2);
+  position: relative;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
   
-  // Current theme information
-  &__current {
-    padding: 0.75rem 1.25rem;
-    background-color: rgba(var(--nova-surface-alt-rgb), 0.3);
-    border-top: 1px solid rgba(var(--nova-on-surface-rgb), 0.07);
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      circle at 30% 30%,
+      rgba(255, 255, 255, 0.4),
+      transparent 60%
+    );
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
   }
   
-  &__current-theme {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.8125rem;
+  &:hover {
+    box-shadow: 
+      0 0 0 2px rgba(var(--nova-primary-rgb), 0.4),
+      0 0 15px rgba(var(--nova-primary-rgb), 0.3);
+  }
+}
+
+.nova-theme-toggler__label {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--nova-on-surface);
+  text-align: center;
+  transition: color 0.2s ease;
+}
+
+// Mode toggle styling
+.nova-theme-toggler__mode-toggle {
+  width: 100%;
+}
+
+.nova-theme-toggler__mode-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(var(--nova-surface-alt-rgb), 0.3);
+  border-radius: 0.375rem;
+  padding: 0.25rem;
+  position: relative;
+}
+
+.nova-theme-toggler__mode-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  flex: 1;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: transparent;
+  color: var(--nova-on-surface);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  .mode-icon {
+    font-size: 1rem;
   }
   
-  &__current-label {
-    color: rgba(var(--nova-on-surface-rgb), 0.6);
+  &:hover:not(&--active) {
+    background-color: rgba(var(--nova-surface-alt-rgb), 0.8);
   }
   
-  &__current-value {
+  &--active {
+    background-color: var(--nova-surface);
     color: var(--nova-primary);
-    font-weight: 500;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+}
+
+// Backdrop for closing when clicked outside
+.nova-theme-toggler__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+}
+
+// Animations
+@keyframes panel-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0% {
+    opacity: 0.4;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 0.7;
+    transform: scale(1.05);
   }
 }

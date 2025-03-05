@@ -1,0 +1,97 @@
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .selected-value {
+    font-family: var(--nova-font-family-mono);
+    background-color: rgba(var(--nova-surface-alt-rgb), 0.3);
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+    
+    .value {
+      color: var(--nova-primary);
+      font-weight: 600;
+    }
+  }
+  
+  .form-section {
+    margin-bottom: 2rem;
+    
+    &-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--nova-primary);
+    }
+  }
+  
+  .reactive-form {
+    max-width: 600px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem;
+  }
+  
+  .code-example {
+    margin-top: 2rem;
+    
+    &-title {
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      color: var(--nova-primary);
+      font-weight: 600;
+    }
+  }
+  
+  .error-message {
+    color: var(--nova-error);
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+  }
+  
+  .api-table {
+    margin-bottom: 2rem;
+    overflow-x: auto;
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9375rem;
+      
+      th, td {
+        text-align: left;
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid rgba(var(--nova-surface-alt-rgb), 0.3);
+      }
+      
+      th {
+        background-color: rgba(var(--nova-surface-alt-rgb), 0.3);
+        font-weight: 600;
+        color: var(--nova-primary);
+      }
+      
+      tr:nth-child(even) {
+        background-color: rgba(var(--nova-surface-alt-rgb), 0.1);
+      }
+      
+      tr:hover {
+        background-color: rgba(var(--nova-surface-alt-rgb), 0.2);
+      }
+    }
+  }
+  
+  code {
+    font-family: var(--nova-font-family-mono);
+    font-size: 0.875em;
+    padding: 0.125rem 0.25rem;
+    background-color: rgba(var(--nova-surface-alt-rgb), 0.3);
+    border-radius: 0.25rem;
+  }

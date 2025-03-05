@@ -1,0 +1,415 @@
+<div class="forms-page">
+    <h1 class="page-title">Form Components</h1>
+    <p class="page-description">
+      Nova UI provides form components with cosmic-themed styling for collecting user input.
+      These components work with both template-driven and reactive forms in Angular.
+    </p>
+    
+    <!-- Overview -->
+    <section class="demo-section">
+      <h2>Overview</h2>
+      <p>
+        Nova UI form components are designed to provide a consistent, accessible, and visually appealing way to collect user input.
+        Each component features space-themed styling that adapts to your selected theme, with subtle animations and cosmic effects.
+      </p>
+      
+      <div class="component-list">
+        <div class="component-item">
+          <span class="component-icon">⌨️</span>
+          <div class="component-details">
+            <span class="component-name">NovaInputComponent</span>
+            <span class="component-description">Text input fields for collecting various types of text data</span>
+          </div>
+        </div>
+        
+        <div class="component-item">
+          <span class="component-icon">✓</span>
+          <div class="component-details">
+            <span class="component-name">NovaCheckboxComponent</span>
+            <span class="component-description">Checkboxes for binary choices or multiple selections</span>
+          </div>
+        </div>
+        
+        <div class="component-item">
+          <span class="component-icon">⭕</span>
+          <div class="component-details">
+            <span class="component-name">NovaRadioButtonComponent</span>
+            <span class="component-description">Radio buttons for selecting one option from a list</span>
+          </div>
+        </div>
+        
+        <div class="component-item">
+          <span class="component-icon">🔄</span>
+          <div class="component-details">
+            <span class="component-name">NovaToggleComponent</span>
+            <span class="component-description">Toggle switches for binary settings with a visual on/off state</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Template-driven form example -->
+    <section class="demo-section">
+      <h2>Template-Driven Form Example</h2>
+      <p>
+        This example shows how to use Nova UI form components with Angular's template-driven forms.
+        All components implement the ControlValueAccessor interface for seamless integration.
+      </p>
+      
+      <nova-card>
+        <nova-card-header title="Profile Settings"></nova-card-header>
+        <nova-card-content>
+          <form class="template-form">
+            <div class="form-grid">
+              <div class="form-field">
+                <nova-input 
+                  label="Username" 
+                  placeholder="Enter your username"
+                  [(ngModel)]="userName"
+                  name="userName"
+                  iconLeft="👤">
+                </nova-input>
+              </div>
+              
+              <div class="form-field">
+                <nova-input 
+                  label="Email Address" 
+                  placeholder="Enter your email"
+                  type="email"
+                  [(ngModel)]="email"
+                  name="email"
+                  required="true">
+                </nova-input>
+              </div>
+              
+              <div class="form-field">
+                <nova-input 
+                  label="Password" 
+                  placeholder="Enter your password"
+                  type="password"
+                  [(ngModel)]="password"
+                  name="password">
+                </nova-input>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <h4>Gender</h4>
+              <div class="radio-group">
+                <nova-radio-button
+                  name="gender"
+                  label="Male"
+                  value="male"
+                  [(ngModel)]="gender">
+                </nova-radio-button>
+                
+                <nova-radio-button
+                  name="gender"
+                  label="Female"
+                  value="female"
+                  [(ngModel)]="gender">
+                </nova-radio-button>
+                
+                <nova-radio-button
+                  name="gender"
+                  label="Prefer not to say"
+                  value="prefer-not-to-say"
+                  [(ngModel)]="gender">
+                </nova-radio-button>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <h4>Preferences</h4>
+              <div class="checkbox-group">
+                <nova-checkbox
+                  label="I agree to the terms and conditions"
+                  [(ngModel)]="agreeTerms"
+                  name="agreeTerms"
+                  [required]="true">
+                </nova-checkbox>
+                
+                <nova-toggle
+                  label="Enable notifications"
+                  [(ngModel)]="notifications"
+                  name="notifications">
+                </nova-toggle>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <h4>Theme Preference</h4>
+              <div class="radio-group">
+                <nova-radio-button
+                  name="theme"
+                  label="Light Mode"
+                  value="light"
+                  [(ngModel)]="theme">
+                </nova-radio-button>
+                
+                <nova-radio-button
+                  name="theme"
+                  label="Dark Mode"
+                  value="dark"
+                  [(ngModel)]="theme">
+                </nova-radio-button>
+                
+                <nova-radio-button
+                  name="theme"
+                  label="System Preference"
+                  value="system"
+                  [(ngModel)]="theme">
+                </nova-radio-button>
+              </div>
+            </div>
+          </form>
+        </nova-card-content>
+        
+        <nova-card-footer>
+          <div class="template-form-values">
+            <span>Form Values:</span>
+            <pre>{{ 
+              {
+                userName: userName,
+                email: email,
+                password: password ? '********' : '',
+                gender: gender,
+                agreeTerms: agreeTerms,
+                notifications: notifications,
+                theme: theme
+              } | json 
+            }}</pre>
+          </div>
+        </nova-card-footer>
+      </nova-card>
+    </section>
+    
+    <!-- Reactive form example -->
+    <section class="demo-section">
+      <h2>Reactive Form Example</h2>
+      <p>
+        This example demonstrates using Nova UI form components with Angular's reactive forms.
+        It includes form validation and error handling.
+      </p>
+      
+      <nova-card>
+        <nova-card-header title="Registration Form"></nova-card-header>
+        <nova-card-content>
+          <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()" class="reactive-form">
+            <div class="form-grid">
+              <div class="form-field">
+                <nova-input 
+                  label="First Name" 
+                  placeholder="Enter your first name"
+                  formControlName="firstName"
+                  [errorMessage]="hasError('firstName') ? getErrorMessage('firstName') : ''">
+                </nova-input>
+              </div>
+              
+              <div class="form-field">
+                <nova-input 
+                  label="Last Name" 
+                  placeholder="Enter your last name"
+                  formControlName="lastName"
+                  [errorMessage]="hasError('lastName') ? getErrorMessage('lastName') : ''">
+                </nova-input>
+              </div>
+              
+              <div class="form-field">
+                <nova-input 
+                  label="Email Address" 
+                  placeholder="Enter your email"
+                  type="email"
+                  formControlName="email"
+                  [errorMessage]="hasError('email') ? getErrorMessage('email') : ''">
+                </nova-input>
+              </div>
+              
+              <div class="form-field">
+                <nova-input 
+                  label="Password" 
+                  placeholder="Enter your password"
+                  type="password"
+                  formControlName="password"
+                  hint="Must be at least 8 characters"
+                  [errorMessage]="hasError('password') ? getErrorMessage('password') : ''">
+                </nova-input>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <h4>Preferences</h4>
+              <div class="checkbox-group">
+                <nova-checkbox
+                  label="I agree to the terms and conditions"
+                  formControlName="agreeTerms"
+                  [errorMessage]="hasError('agreeTerms') ? 'You must agree to the terms' : ''">
+                </nova-checkbox>
+                
+                <nova-toggle
+                  label="Enable notifications"
+                  formControlName="notifications">
+                </nova-toggle>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <h4>Theme Preference</h4>
+              <div class="radio-group">
+                <nova-radio-button
+                  name="themePreference"
+                  label="Light Mode"
+                  value="light"
+                  formControlName="theme">
+                </nova-radio-button>
+                
+                <nova-radio-button
+                  name="themePreference"
+                  label="Dark Mode"
+                  value="dark"
+                  formControlName="theme">
+                </nova-radio-button>
+                
+                <nova-radio-button
+                  name="themePreference"
+                  label="System Preference"
+                  value="system"
+                  formControlName="theme">
+                </nova-radio-button>
+              </div>
+            </div>
+            
+            <div class="form-actions">
+              <nova-button 
+                variant="link" 
+                type="button"
+                (clicked)="resetForm()">
+                Reset
+              </nova-button>
+              
+              <nova-button 
+                variant="cta" 
+                type="submit"
+                [loading]="formSubmitted && reactiveForm.valid">
+                {{ formSubmitted && reactiveForm.valid ? 'Submitting...' : 'Submit' }}
+              </nova-button>
+            </div>
+          </form>
+        </nova-card-content>
+      </nova-card>
+    </section>
+    
+    <!-- Form Layouts -->
+    <section class="demo-section">
+      <h2>Form Layouts</h2>
+      <p>
+        Nova UI form components can be arranged in different layouts to suit your application's needs.
+      </p>
+      
+      <div class="form-layouts">
+        <!-- Grid Layout -->
+        <nova-card>
+          <nova-card-header title="Grid Layout"></nova-card-header>
+          <nova-card-content>
+            <div class="form-grid">
+              <nova-input label="First Name" placeholder="First name"></nova-input>
+              <nova-input label="Last Name" placeholder="Last name"></nova-input>
+              <nova-input label="Email" placeholder="Email" type="email"></nova-input>
+              <nova-input label="Phone" placeholder="Phone number" type="tel"></nova-input>
+            </div>
+          </nova-card-content>
+        </nova-card>
+        
+        <!-- Stacked Layout -->
+        <nova-card>
+          <nova-card-header title="Stacked Layout"></nova-card-header>
+          <nova-card-content>
+            <div class="form-stacked">
+              <nova-input label="Full Name" placeholder="Full name"></nova-input>
+              <nova-input label="Email" placeholder="Email" type="email"></nova-input>
+              <nova-input label="Message" placeholder="Your message"></nova-input>
+            </div>
+          </nova-card-content>
+        </nova-card>
+        
+        <!-- Inline Layout -->
+        <nova-card>
+          <nova-card-header title="Inline Layout"></nova-card-header>
+          <nova-card-content>
+            <div class="form-inline">
+              <nova-input label="Search" placeholder="Search..." iconRight="🔍"></nova-input>
+              <nova-button variant="cta">Search</nova-button>
+            </div>
+          </nova-card-content>
+        </nova-card>
+      </div>
+    </section>
+    
+    <!-- Form Components Guidelines -->
+    <section class="demo-section">
+      <h2>Form Components Guidelines</h2>
+      
+      <div class="guidelines-grid">
+        <div class="guideline-card">
+          <h3>Input Types</h3>
+          <p>
+            NovaInputComponent supports all HTML input types:
+          </p>
+          <ul class="guidelines-list">
+            <li>text (default)</li>
+            <li>email</li>
+            <li>password</li>
+            <li>number</li>
+            <li>tel</li>
+            <li>url</li>
+            <li>search</li>
+            <li>date</li>
+            <li>time</li>
+            <li>and more...</li>
+          </ul>
+        </div>
+        
+        <div class="guideline-card">
+          <h3>Validation</h3>
+          <p>
+            All form components work with Angular's form validation:
+          </p>
+          <ul class="guidelines-list">
+            <li>Required fields</li>
+            <li>Minimum/maximum length</li>
+            <li>Pattern validation</li>
+            <li>Custom validators</li>
+            <li>Error messages</li>
+          </ul>
+        </div>
+        
+        <div class="guideline-card">
+          <h3>Accessibility</h3>
+          <p>
+            Form components are built with accessibility in mind:
+          </p>
+          <ul class="guidelines-list">
+            <li>Proper labeling</li>
+            <li>Keyboard navigation</li>
+            <li>Screen reader support</li>
+            <li>Focus management</li>
+            <li>High contrast modes</li>
+          </ul>
+        </div>
+        
+        <div class="guideline-card">
+          <h3>Best Practices</h3>
+          <p>
+            Follow these guidelines for the best user experience:
+          </p>
+          <ul class="guidelines-list">
+            <li>Use clear, concise labels</li>
+            <li>Provide helpful hints when needed</li>
+            <li>Group related fields together</li>
+            <li>Use appropriate input types</li>
+            <li>Show validation errors inline</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>

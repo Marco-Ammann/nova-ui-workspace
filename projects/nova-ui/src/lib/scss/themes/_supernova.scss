@@ -1,25 +1,26 @@
 ﻿/* Supernova Theme for Nova UI 
- * Inspired by violent stellar explosions and extreme energy
+ * Inspired by the explosive death of massive stars
  */
  @use '../core/functions' as functions;
  @use '../core/mixins' as mixins;
  @use '../core/variables' as vars;
  
  // Theme colors
- $supernova-primary: #FF3D51;         // Solar flare red like explosion core
- $supernova-secondary: #424AFF;       // Electric arc blue like charged particles
- $supernova-accent1: #FF6D2E;         // Fierce orange like expanding gas shell
- $supernova-accent2: #14F4E5;         // Intense cyan like ionized elements
- $supernova-accent3: #FFD132;         // Brilliant yellow like energy burst
- $supernova-background: #07070D;      // Absolute void
- $supernova-surface: #0D0D17;         // Near-void surface
- $supernova-surface-alt: #15152A;     // Higher energy surface
+ // Supernovae produce intense reds, oranges, and yellows from nuclear fusion
+ $supernova-primary: #FF3823;       // Intense red core of the explosion
+ $supernova-secondary: #FF8E20;     // Bright orange from heated elements
+ $supernova-accent1: #FFC60A;       // Brilliant yellow from superheated gases
+ $supernova-accent2: #DB4355;       // Hot pink from nitrogen ionization
+ $supernova-accent3: #9D30E5;       // Purple from helium fusion
+ $supernova-background: #0A0910;    // Deep cosmic void
+ $supernova-surface: #151220;       // Near-void surface with slight nebula influence
+ $supernova-surface-alt: #2A1F30;   // Higher energy surface with remnant dust
  
  // Semantic colors
- $supernova-success: #0DFFBB;         // Radiant teal success
- $supernova-error: #FF2B45;           // Plasma red error
- $supernova-warning: #FFAD0D;         // Solar warning
- $supernova-info: $supernova-secondary; // Blue info
+ $supernova-success: #0DFFAA;       // Teal success indicator
+ $supernova-error: #FF2425;         // Plasma red error
+ $supernova-warning: #FFB30A;       // Solar warning
+ $supernova-info: #42A0FF;          // Cool blue info
  
  @mixin apply-supernova-theme() {
    // Apply the theme CSS variables
@@ -63,10 +64,5 @@
  
  // Apply the supernova theme by default to :root
  :root {
-   @include apply-supernova-theme();
- }
- 
- // Also apply it to the theme-supernova class for consistency
- body.theme-supernova {
    @include apply-supernova-theme();
  }

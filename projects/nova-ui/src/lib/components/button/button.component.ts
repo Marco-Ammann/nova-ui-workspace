@@ -3,15 +3,17 @@
   Input, 
   Output, 
   EventEmitter, 
-  ChangeDetectionStrategy, 
+  ChangeDetectionStrategy,
+  HostBinding,
+  ViewEncapsulation,
   ElementRef,
-  HostBinding
+  NgZone,
+  OnInit,
+  OnDestroy,
+  AfterViewInit
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-/**
- * Button appearance types
- */
 export type NovaButtonAppearance = 
   'basic' | 
   'raised' | 
@@ -22,117 +24,90 @@ export type NovaButtonAppearance =
   'mini-fab' | 
   'extended-fab';
 
-/**
- * Button variants for semantic meaning
- */
 export type NovaButtonVariant = 
   'basic' | 
   'cta' | 
   'link';
 
-/**
- * Button sizes
- */
 export type NovaButtonSize = 
   'small' | 
   'medium' | 
   'large';
 
-/**
- * Animation levels
- */
 export type NovaButtonAnimation = 
   'none' | 
   'normal' | 
   'extra';
 
-/**
- * Nova UI Button Component
- * 
- * A versatile button component with cosmic styling and multiple variants
- */
 @Component({
   selector: 'nova-button',
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   standalone: true,
   imports: [CommonModule],
   host: {
-    '[class.nova-button]': 'true',
+    'class': 'nova-button',
     '[class.nova-button--disabled]': 'disabled',
-    '[class.nova-button--loading]': 'loading',
-    '[attr.disabled]': 'disabled ? "" : null',
-    '[attr.type]': 'type'
+    '[class.nova-button--loading]': 'loading'
   }
 })
-export class NovaButtonComponent {
-  /**
-   * Visual appearance of the button
-   */
+export class NovaButtonComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() appearance: NovaButtonAppearance = 'basic';
-  
-  /**
-   * Semantic variant of the button
-   */
   @Input() variant: NovaButtonVariant = 'basic';
-  
-  /**
-   * Size of the button
-   */
   @Input() size: NovaButtonSize = 'medium';
-  
-  /**
-   * Animation level
-   */
   @Input() animation: NovaButtonAnimation = 'normal';
-  
-  /**
-   * Whether the button is disabled
-   */
   @Input() disabled = false;
-  
-  /**
-   * Whether the button is in loading state
-   */
   @Input() loading = false;
-  
-  /**
-   * Button type (HTML attribute)
-   */
   @Input() type: 'button' | 'submit' | 'reset' = 'button';
-  
-  /**
-   * Icon to display (Unicode character or text)
-   */
   @Input() icon?: string;
-  
-  /**
-   * Position of the icon
-   */
   @Input() iconPosition: 'left' | 'right' = 'left';
   
-  /**
-   * Click event emitter
-   */
   @Output() clicked = new EventEmitter<Event>();
   
-  // Apply appearance class
-  @HostBinding('class') 
+  private mouseListener?: (e: MouseEvent) => void;
+  
+  @HostBinding('class')
   get hostClasses(): string {
-    return [
-      `nova-button--${this.appearance}`,
-      `nova-button--${this.variant}`,
-      `nova-button--${this.size}`,
-      `nova-button--animation-${this.animation}`
-    ].join(' ');
+    return `nova-button nova-button--${this.appearance} nova-button--${this.variant} nova-button--${this.size} nova-button--animation-${this.animation}`;
   }
   
-  /**
-   * Handle button click
-   */
+  constructor(
+    private elementRef: ElementRef<HTMLElement>,
+    private zone: NgZone
+  ) {}
+  
+  ngOnInit(): void {
+    // Initialize
+  }
+  
+  ngAfterViewInit(): void {
+    // Add mouse move tracking for hover effects
+    if (this.animation !== 'none') {
+      this.zone.runOutsideAngular(() => {
+        this.mouseListener = (event: MouseEvent) => {
+          const rect = this.elementRef.nativeElement.getBoundingClientRect();
+          const x = ((event.clientX - rect.left) / rect.width) * 100;
+          const y = ((event.clientY - rect.top) / rect.height) * 100;
+          
+          this.elementRef.nativeElement.style.setProperty('--pointer-x', `${x}%`);
+          this.elementRef.nativeElement.style.setProperty('--pointer-y', `${y}%`);
+        };
+        
+        this.elementRef.nativeElement.addEventListener('mousemove', this.mouseListener);
+      });
+    }
+  }
+  
+  ngOnDestroy(): void {
+    // Clean up event listeners
+    if (this.mouseListener) {
+      this.elementRef.nativeElement.removeEventListener('mousemove', this.mouseListener);
+    }
+  }
+  
   onClick(event: Event): void {
-    // Don't emit click events when disabled or loading
     if (!this.disabled && !this.loading) {
       this.clicked.emit(event);
     }

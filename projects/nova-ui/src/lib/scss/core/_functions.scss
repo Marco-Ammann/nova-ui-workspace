@@ -1,12 +1,15 @@
 ﻿/* SCSS functions for Nova UI */
 @use "sass:color";
+@use "sass:math";
+@use "sass:map";
+@use "sass:string";
 
 // RGB string extraction for CSS variables
 @function nova-rgb-str($color-name) {
   @return map-get($rgb-map, $color-name);
 }
 
-// Convert a hex color to RGB values using modern color.channel
+// Convert a hex color to RGB values
 @function nova-hex-to-rgb($hex) {
   @return color.channel($hex, "red", $space: rgb), 
           color.channel($hex, "green", $space: rgb), 
@@ -18,7 +21,27 @@
   $r: color.channel($color, "red", $space: rgb);
   $g: color.channel($color, "green", $space: rgb);
   $b: color.channel($color, "blue", $space: rgb);
-  $yiq: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
+  $yiq: math.div(($r * 299) + ($g * 587) + ($b * 114), 1000);
   
   @return if($yiq >= 128, #000000, #ffffff);
+}
+
+// Create a color shade (darker)
+@function nova-shade($color, $percentage) {
+  @return color.scale($color, $lightness: -$percentage);
+}
+
+// Create a color tint (lighter)
+@function nova-tint($color, $percentage) {
+  @return color.scale($color, $lightness: $percentage);
+}
+
+// Create an alpha version of a color
+@function nova-alpha($color, $opacity) {
+  @return color.change($color, $alpha: $opacity);
+}
+
+// Get color from a pallete based on a defined weight
+@function nova-palette-color($palette, $weight) {
+  @return map.get($palette, $weight);
 }

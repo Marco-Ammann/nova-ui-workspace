@@ -1,8 +1,8 @@
-﻿// projects/nova-ui/src/lib/components/theme-toggler/theme-toggler.component.ts
-import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+﻿import { Component, ChangeDetectionStrategy, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NovaThemeService, NovaThemeBase, NovaThemeMode } from '../../services/theme.service';
-import { Observable } from 'rxjs';
+import { NovaButtonComponent } from '../button/button.component';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'nova-theme-toggler',
@@ -10,28 +10,58 @@ import { Observable } from 'rxjs';
   styleUrls: ['./theme-toggler.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule]
+  imports: [CommonModule, NovaButtonComponent]
 })
-export class NovaThemeTogglerComponent implements OnInit {
+export class NovaThemeTogglerComponent implements OnInit, OnDestroy {
   // Theme observables
   themeBase$!: Observable<NovaThemeBase>;
   themeMode$!: Observable<NovaThemeMode>;
   useSystemPreference$!: Observable<boolean>;
   
-  // Available theme bases
-  themeBases: { value: NovaThemeBase; label: string; }[] = [
-    { value: 'supernova', label: 'Supernova' },
-    { value: 'cosmic-blue', label: 'Cosmic Blue' },
-    { value: 'nebula', label: 'Nebula' },
-    { value: 'dark-matter', label: 'Dark Matter' }
+  // Current theme values
+  private currentThemeBase: NovaThemeBase = 'supernova';
+  private subscriptions: Subscription[] = [];
+  
+  // UI state
+  isExpanded = false;
+  
+  // Available theme bases with accurate colors
+  themeBases: { value: NovaThemeBase; label: string; color: string; }[] = [
+    { value: 'supernova', label: 'Supernova', color: '#FF3823' },
+    { value: 'cosmic-blue', label: 'Cosmic Blue', color: '#1E90FF' },
+    { value: 'nebula', label: 'Nebula', color: '#F956C6' },
+    { value: 'dark-matter', label: 'Dark Matter', color: '#B085FF' },
+    { value: 'black-hole', label: 'Black Hole', color: '#FF6B00' }
   ];
   
-  constructor(private themeService: NovaThemeService) { }
+  constructor(private themeService: NovaThemeService) {}
   
   ngOnInit(): void {
     this.themeBase$ = this.themeService.themeBase$;
     this.themeMode$ = this.themeService.themeMode$;
     this.useSystemPreference$ = this.themeService.useSystemPreference$;
+    
+    // Track current theme base
+    const themeBaseSub = this.themeService.themeBase$.subscribe(theme => {
+      this.currentThemeBase = theme;
+    });
+    
+    this.subscriptions.push(themeBaseSub);
+  }
+  
+  ngOnDestroy(): void {
+    // Clean up subscriptions
+    this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
+  
+  // Toggle expanded state
+  toggleExpanded(): void {
+    this.isExpanded = !this.isExpanded;
+  }
+  
+  // Close panel
+  closePanel(): void {
+    this.isExpanded = false;
   }
   
   // Set theme base (color scheme)
@@ -54,7 +84,14 @@ export class NovaThemeTogglerComponent implements OnInit {
   // Get human-readable theme label for current theme base
   getThemeLabel(): string {
     const currentThemeBase = this.themeBases.find(theme => 
-      theme.value === this.themeService['themeBaseSubject'].value);
+      theme.value === this.currentThemeBase);
     return currentThemeBase ? currentThemeBase.label : 'Custom';
+  }
+  
+  // Get color for current theme
+  getCurrentThemeColor(): string {
+    const currentThemeBase = this.themeBases.find(theme => 
+      theme.value === this.currentThemeBase);
+    return currentThemeBase ? currentThemeBase.color : '#FFFFFF';
   }
 }

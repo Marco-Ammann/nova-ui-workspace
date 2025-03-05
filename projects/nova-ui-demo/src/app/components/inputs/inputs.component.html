@@ -1,0 +1,630 @@
+<div class="page-container">
+  <h1 class="page-title">Inputs</h1>
+  <p class="page-description">
+    Nova UI provides beautifully styled input components for gathering user data
+    with cosmic-themed visual effects.
+  </p>
+
+  <div class="demo-section">
+    <h2 class="section-title">Basic Input</h2>
+    <p class="section-description">
+      The standard text input component with a label, placeholder, and optional
+      hint.
+    </p>
+
+    <div class="example-grid">
+      <div class="example-item">
+        <h3 class="example-title">Default Input</h3>
+        <p class="example-description">
+          A basic text input with a label and placeholder.
+        </p>
+        <div class="example-demo">
+          <nova-input
+            label="Username"
+            placeholder="Enter your username"
+            [(ngModel)]="username"
+          >
+          </nova-input>
+        </div>
+        <div class="example-code">
+          <pre><code>&lt;nova-input
+  label="Username"
+  placeholder="Enter your username"
+  [(ngModel)]="username"&gt;
+&lt;/nova-input&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="example-item">
+        <h3 class="example-title">With Hint</h3>
+        <p class="example-description">
+          Input with additional hint text below it.
+        </p>
+        <div class="example-demo">
+          <nova-input
+            label="Username"
+            placeholder="Enter your username"
+            hint="Choose a name between 3-20 characters"
+            [(ngModel)]="usernameWithHint"
+          >
+          </nova-input>
+        </div>
+        <div class="example-code">
+          <pre><code>&lt;nova-input
+  label="Username"
+  placeholder="Enter your username"
+  hint="Choose a name between 3-20 characters"
+  [(ngModel)]="usernameWithHint"&gt;
+&lt;/nova-input&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2 class="section-title">Input Types</h2>
+    <p class="section-description">
+      Different input types for various data needs.
+    </p>
+
+    <div class="example-grid">
+      <div class="example-item">
+        <h3 class="example-title">Email Input</h3>
+        <p class="example-description">For collecting email addresses.</p>
+        <div class="example-demo">
+          <nova-input
+            label="Email Address"
+            placeholder="name@example.com"
+            type="email"
+            [(ngModel)]="email"
+          >
+          </nova-input>
+        </div>
+        <div class="example-code">
+          <pre><code>&lt;nova-input
+  label="Email Address"
+  placeholder="name&#64;example.com"
+  type="email"
+  [(ngModel)]="email"&gt;
+&lt;/nova-input&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="example-item">
+        <h3 class="example-title">Password Input</h3>
+        <p class="example-description">For secure password entry.</p>
+        <div class="example-demo">
+          <nova-input
+            label="Password"
+            placeholder="Enter your password"
+            type="password"
+            [(ngModel)]="password"
+          >
+          </nova-input>
+        </div>
+        <div class="example-code">
+          <pre><code>&lt;nova-input
+  label="Password"
+  placeholder="Enter your password"
+  type="password"
+  [(ngModel)]="password"&gt;
+&lt;/nova-input&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="example-item">
+        <h3 class="example-title">Number Input</h3>
+        <p class="example-description">For numerical values.</p>
+        <div class="example-demo">
+          <nova-input
+            label="Age"
+            placeholder="Enter your age"
+            type="number"
+            [(ngModel)]="age"
+          >
+          </nova-input>
+        </div>
+        <div class="example-code">
+          <pre><code>&lt;nova-input
+  label="Age"
+  placeholder="Enter your age"
+  type="number"
+  [(ngModel)]="age"&gt;
+&lt;/nova-input&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2 class="section-title">Input with Icons</h2>
+    <p class="section-description">
+      Inputs can include icons on either side for visual cues.
+    </p>
+
+    <div class="example-grid">
+      <div class="example-item">
+        <h3 class="example-title">Left Icon</h3>
+        <p class="example-description">Input with an icon on the left side.</p>
+        <div class="example-demo">
+          <nova-input
+            label="Username"
+            placeholder="Enter your username"
+            iconLeft="👤"
+            [(ngModel)]="usernameWithIcon"
+          >
+          </nova-input>
+        </div>
+        <div class="example-code">
+          <pre><code>&lt;nova-input
+  label="Username"
+  placeholder="Enter your username"
+  iconLeft="👤"
+  [(ngModel)]="usernameWithIcon"&gt;
+&lt;/nova-input&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="example-item">
+        <h3 class="example-title">Right Icon</h3>
+        <p class="example-description">Input with an icon on the right side.</p>
+        <div class="example-demo">
+          <nova-input
+            label="Email Address"
+            placeholder="name@example.com"
+            iconRight="✉️"
+            [(ngModel)]="emailWithIcon"
+          >
+          </nova-input>
+        </div>
+        <div class="example-code">
+          <pre><code>&lt;nova-input
+  label="Email Address"
+  placeholder="name&#64;example.com"
+  iconRight="✉️"
+  [(ngModel)]="emailWithIcon"&gt;
+&lt;/nova-input&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="example-item">
+        <h3 class="example-title">Both Icons</h3>
+        <p class="example-description">Input with icons on both sides.</p>
+        <div class="example-demo">
+          <nova-input
+            label="Search"
+            placeholder="Search for cosmic entities..."
+            iconLeft="🔍"
+            iconRight="✨"
+            [(ngModel)]="searchWithIcons"
+          >
+          </nova-input>
+        </div>
+        <div class="example-code">
+          <pre><code>&lt;nova-input
+  label="Search"
+  placeholder="Search for cosmic entities..."
+  iconLeft="🔍"
+  iconRight="✨"
+  [(ngModel)]="searchWithIcons"&gt;
+&lt;/nova-input&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2 class="section-title">Input States</h2>
+    <p class="section-description">Various states for input components.</p>
+
+    <div class="example-grid">
+      <div class="example-item">
+        <h3 class="example-title">Required</h3>
+        <p class="example-description">
+          Indicates a required field with an asterisk.
+        </p>
+        <div class="example-demo">
+          <nova-input
+            label="Username"
+            placeholder="Enter your username"
+            [required]="true"
+            [(ngModel)]="requiredUsername"
+          >
+          </nova-input>
+        </div>
+        <div class="example-code">
+          <pre><code>&lt;nova-input
+  label="Username"
+  placeholder="Enter your username"
+  [required]="true"
+  [(ngModel)]="requiredUsername"&gt;
+&lt;/nova-input&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="example-item">
+        <h3 class="example-title">Disabled</h3>
+        <p class="example-description">A non-interactive, disabled input.</p>
+        <div class="example-demo">
+          <nova-input
+            label="Username"
+            placeholder="Enter your username"
+            [disabled]="true"
+            [(ngModel)]="disabledUsername"
+          >
+          </nova-input>
+        </div>
+        <div class="example-code">
+          <pre><code>&lt;nova-input
+  label="Username"
+  placeholder="Enter your username"
+  [disabled]="true"
+  [(ngModel)]="disabledUsername"&gt;
+&lt;/nova-input&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="example-item">
+        <h3 class="example-title">Read-only</h3>
+        <p class="example-description">
+          Non-editable input for display purposes.
+        </p>
+        <div class="example-demo">
+          <nova-input
+            label="Username"
+            [readonly]="true"
+            [(ngModel)]="readonlyUsername"
+          >
+          </nova-input>
+        </div>
+        <div class="example-code">
+          <pre><code>&lt;nova-input
+  label="Username"
+  [readonly]="true"
+  [(ngModel)]="readonlyUsername"&gt;
+&lt;/nova-input&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2 class="section-title">Forms and Validation</h2>
+    <p class="section-description">
+      The input component works with Angular's form validation system to display
+      error states.
+    </p>
+
+    <div class="example-card">
+      <h3 class="example-title">Reactive Form Example</h3>
+
+      <!-- Live Demo -->
+      <form
+        [formGroup]="loginForm"
+        (ngSubmit)="onSubmit()"
+        class="example-form"
+      >
+        <nova-input
+          label="Email"
+          placeholder="Enter your email"
+          type="email"
+          formControlName="email"
+        >
+        </nova-input>
+
+        <nova-input
+          label="Password"
+          placeholder="Enter your password"
+          type="password"
+          formControlName="password"
+        >
+        </nova-input>
+
+        <div class="form-actions">
+          <nova-button
+            type="submit"
+            variant="cta"
+            [disabled]="!loginForm.valid"
+          >
+            Login
+          </nova-button>
+        </div>
+      </form>
+
+      <!-- Code Example -->
+      <div class="example-code">
+        <pre><code class="language-typescript">// login-form.component.ts
+  import { Component } from '@angular/core';
+  import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+  
+  @Component({
+    selector: 'app-login-form',
+    template: `
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <nova-input
+          label="Email"
+          type="email"
+          formControlName="email">
+        </nova-input>
+  
+        <nova-input
+          label="Password"
+          type="password"
+          formControlName="password">
+        </nova-input>
+  
+        <nova-button type="submit" [disabled]="!loginForm.valid">
+          Login
+        </nova-button>
+      </form>
+    `
+  })
+  export class LoginFormComponent {
+    loginForm: FormGroup;
+    
+    constructor(private fb: FormBuilder) {
+      this.loginForm = this.fb.group({
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(8)]]
+      });
+    }
+    
+    onSubmit() {
+      if (this.loginForm.valid) {
+        // Handle form submission
+        console.log(this.loginForm.value);
+      }
+    }
+  }
+</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2 class="section-title">Input Grid Layout</h2>
+    <p class="section-description">
+      Organize input fields in a responsive grid layout.
+    </p>
+
+    <div class="example-card">
+      <h3 class="example-title">Form Grid Example</h3>
+      <div class="example-form-grid">
+        <nova-input
+          label="First Name"
+          placeholder="Enter first name"
+          [(ngModel)]="firstName"
+        >
+        </nova-input>
+
+        <nova-input
+          label="Last Name"
+          placeholder="Enter last name"
+          [(ngModel)]="lastName"
+        >
+        </nova-input>
+
+        <nova-input
+          label="Email"
+          placeholder="Enter email"
+          type="email"
+          [(ngModel)]="formEmail"
+        >
+        </nova-input>
+
+        <nova-input
+          label="Phone"
+          placeholder="Enter phone number"
+          [(ngModel)]="phone"
+        >
+        </nova-input>
+      </div>
+      <div class="example-code">
+        <pre><code>&lt;div class="form-grid"&gt;
+  &lt;nova-input
+    label="First Name"
+    placeholder="Enter first name"
+    [(ngModel)]="firstName"&gt;
+  &lt;/nova-input&gt;
+  
+  &lt;nova-input
+    label="Last Name"
+    placeholder="Enter last name"
+    [(ngModel)]="lastName"&gt;
+  &lt;/nova-input&gt;
+  
+  &lt;nova-input
+    label="Email"
+    placeholder="Enter email"
+    type="email"
+    [(ngModel)]="email"&gt;
+  &lt;/nova-input&gt;
+  
+  &lt;nova-input
+    label="Phone"
+    placeholder="Enter phone number"
+    [(ngModel)]="phone"&gt;
+  &lt;/nova-input&gt;
+&lt;/div&gt;
+
+/* CSS */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2 class="section-title">API Reference</h2>
+    <p class="section-description">
+      The complete API reference for the NovaInputComponent.
+    </p>
+
+    <h3 class="subsection-title">Selector</h3>
+    <p><code>nova-input</code></p>
+
+    <h3 class="subsection-title">Inputs</h3>
+    <table class="api-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Default</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>label</td>
+          <td>string | undefined</td>
+          <td>undefined</td>
+          <td>The label text displayed above the input.</td>
+        </tr>
+        <tr>
+          <td>placeholder</td>
+          <td>string</td>
+          <td>''</td>
+          <td>Placeholder text shown when the input is empty.</td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td>string</td>
+          <td>'text'</td>
+          <td>The HTML input type ('text', 'email', 'password', etc.).</td>
+        </tr>
+        <tr>
+          <td>disabled</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>Whether the input is disabled.</td>
+        </tr>
+        <tr>
+          <td>readonly</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>Whether the input is read-only.</td>
+        </tr>
+        <tr>
+          <td>required</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>Whether the input is required.</td>
+        </tr>
+        <tr>
+          <td>hint</td>
+          <td>string | undefined</td>
+          <td>undefined</td>
+          <td>Helper text displayed below the input.</td>
+        </tr>
+        <tr>
+          <td>iconLeft</td>
+          <td>string | undefined</td>
+          <td>undefined</td>
+          <td>Icon to display on the left side of the input.</td>
+        </tr>
+        <tr>
+          <td>iconRight</td>
+          <td>string | undefined</td>
+          <td>undefined</td>
+          <td>Icon to display on the right side of the input.</td>
+        </tr>
+        <tr>
+          <td>autocomplete</td>
+          <td>string | undefined</td>
+          <td>undefined</td>
+          <td>Value for the HTML autocomplete attribute.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="subsection-title">Outputs</h3>
+    <table class="api-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>blur</td>
+          <td>EventEmitter&lt;FocusEvent&gt;</td>
+          <td>Emitted when the input loses focus.</td>
+        </tr>
+        <tr>
+          <td>focus</td>
+          <td>EventEmitter&lt;FocusEvent&gt;</td>
+          <td>Emitted when the input receives focus.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="subsection-title">NgModel Support</h3>
+    <p>
+      The input component implements ControlValueAccessor, allowing it to work
+      with ngModel and reactive forms.
+    </p>
+  </div>
+
+  <div class="demo-section">
+    <h2 class="section-title">Styling</h2>
+    <p class="section-description">
+      Customize the input component with CSS variables and custom styles.
+    </p>
+
+    <h3 class="subsection-title">CSS Variables</h3>
+    <p>
+      The input component uses the following CSS variables from the theme
+      system:
+    </p>
+
+    <table class="api-table">
+      <thead>
+        <tr>
+          <th>Variable</th>
+          <th>Purpose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>--nova-primary</td>
+          <td>Used for focus states and active label color</td>
+        </tr>
+        <tr>
+          <td>--nova-error</td>
+          <td>Used for error states and validation messages</td>
+        </tr>
+        <tr>
+          <td>--nova-on-surface</td>
+          <td>Text color for input and label</td>
+        </tr>
+        <tr>
+          <td>--nova-surface-alt</td>
+          <td>Background color for the input field</td>
+        </tr>
+        <tr>
+          <td>--nova-font-family</td>
+          <td>Font family for input text</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="subsection-title">Custom CSS</h3>
+    <p>You can customize input appearance with CSS:</p>
+
+    <div class="code-block">
+      /* Custom input styling */ nova-input.custom-input .nova-input__field {
+      border-radius: 2rem; background-color: rgba(var(--nova-surface-alt-rgb),
+      0.3); border-width: 2px; } /* Custom label styling */
+      nova-input.custom-input .nova-input__label { font-size: 0.8rem;
+      text-transform: uppercase; letter-spacing: 0.05em; } /* Custom focus
+      effect */ nova-input.custom-input .nova-input__focus-effect::before {
+      background: radial-gradient( circle at center,
+      rgba(var(--nova-secondary-rgb), 0.2), transparent 70% ); }
+    </div>
+  </div>
+</div>

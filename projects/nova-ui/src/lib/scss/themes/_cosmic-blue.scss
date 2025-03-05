@@ -1,25 +1,26 @@
 ﻿/* Cosmic Blue Theme for Nova UI 
- * Inspired by celestial ice and deep space nebulae
+ * Inspired by hot blue stars and interstellar ice
  */
  @use '../core/functions' as functions;
  @use '../core/mixins' as mixins;
  @use '../core/variables' as vars;
  
  // Theme colors
- $cosmic-blue-primary: #3DD9FF;       // Electric ice blue like young blue stars
- $cosmic-blue-secondary: #5271FF;     // Deep cobalt blue like cosmic dust clouds
- $cosmic-blue-accent1: #26EEFF;       // Bright neon blue like stellar cores
- $cosmic-blue-accent2: #A6CFFF;       // Pale blue like distant galaxies
- $cosmic-blue-accent3: #497BE8;       // Royal blue like cosmic background radiation
- $cosmic-blue-background: #050E21;    // Deep space abyss 
- $cosmic-blue-surface: #0D1A38;       // Dark blue surface with depth
- $cosmic-blue-surface-alt: #162A4F;   // Slightly lighter cosmic surface
+ // The hottest stars are blue giants, surrounded by cosmic dust
+ $cosmic-blue-primary: #1E90FF;     // Brilliant blue like O-type stars
+ $cosmic-blue-secondary: #36D6FF;   // Bright cyan like young blue stars
+ $cosmic-blue-accent1: #78A9FF;     // Softer blue like B-type stars
+ $cosmic-blue-accent2: #00C8E6;     // Turquoise from cosmic ice
+ $cosmic-blue-accent3: #7070FB;     // Violet-blue from stellar corona
+ $cosmic-blue-background: #041425;  // Deep space abyss 
+ $cosmic-blue-surface: #0A1E35;     // Dark blue surface with depth
+ $cosmic-blue-surface-alt: #132F50; // Blue atmosphere
  
  // Semantic colors
- $cosmic-blue-success: #00FFD0;       // Cryogenic mint success
- $cosmic-blue-error: #FF5678;         // Warm red contrast for errors
- $cosmic-blue-warning: #FFD25F;       // Bright star gold for warnings
- $cosmic-blue-info: $cosmic-blue-secondary;  // Blue info
+ $cosmic-blue-success: #00E5B8;     // Cryogenic mint success
+ $cosmic-blue-error: #FF556A;       // Warm red contrast for errors
+ $cosmic-blue-warning: #FFD15F;     // Bright star gold for warnings
+ $cosmic-blue-info: #4CA3FF;        // Blue info
  
  @mixin apply-cosmic-blue-theme() {
    // Apply the theme CSS variables
