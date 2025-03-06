@@ -20,8 +20,6 @@ import {
     NovaCardComponent,
     NovaCardHeaderComponent,
     NovaCardContentComponent,
-    NovaCardFooterComponent,
-    NovaThemeTogglerComponent
   ],
   template: `
     <div class="overview-page">

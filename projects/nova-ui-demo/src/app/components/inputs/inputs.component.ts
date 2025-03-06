@@ -22,7 +22,6 @@ import {
     NovaCardComponent,
     NovaCardHeaderComponent,
     NovaCardContentComponent,
-    NovaCardFooterComponent
   ],
   template: `
     <div class="component-page">
