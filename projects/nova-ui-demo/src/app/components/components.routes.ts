@@ -7,7 +7,7 @@ export const routes: Routes = [
   },
   { 
     path: 'themes', 
-    loadComponent: () => import('./themes/theme-showcase.component').then(c => c.ThemeShowcaseComponent)
+    loadComponent: () => import('./theme-showcase/theme-showcase.component').then(c => c.ThemeShowcaseComponent)
   },
   { 
     path: 'buttons', 
