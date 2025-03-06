@@ -41,7 +41,10 @@
   </div>
   
   <div class="nova-input__bottom-container">
-    <div *ngIf="errorMessage" class="nova-input__error">{{ errorMessage }}</div>
+    <div *ngIf="errorMessage" class="nova-input__error">
+      <div class="nova-input__error-icon">⚠</div>
+      <div class="nova-input__error-text">{{ errorMessage }}</div>
+    </div>
     <div *ngIf="hint && !errorMessage" class="nova-input__hint">{{ hint }}</div>
   </div>
 </div>

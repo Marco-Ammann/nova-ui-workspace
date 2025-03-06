@@ -1,84 +1,55 @@
-﻿<!-- Main container with sidenav state class -->
-<div class="app-container" [class.sidenav-open]="sidenavOpen">
+﻿<div class="app-container" [class.sidenav-open]="sidenavOpen">
   <!-- Header -->
   <header class="app-header">
-    <div class="header-left">
-      <button class="menu-toggle" (click)="toggleSidenav()" aria-label="Toggle navigation menu">
-        <span class="menu-icon">☰</span>
-      </button>
-      <h1 class="app-title">
-        <span class="nova-text-gradient">Nova UI</span>
-      </h1>
-    </div>
-    <div class="header-right">
-      <nova-theme-toggler></nova-theme-toggler>
-    </div>
+    <button class="menu-toggle" (click)="toggleSidenav()" aria-label="Toggle menu">☰</button>
+    <h1 class="app-title"><span class="nova-text-gradient">Nova UI</span></h1>
+    <nova-theme-toggler></nova-theme-toggler>
   </header>
 
-  <!-- Main content with sidenav -->
+  <!-- Main Content -->
   <div class="app-content">
     <!-- Sidenav -->
     <aside #sidenav class="app-sidenav" [class.open]="sidenavOpen">
       <div class="sidenav-header">
-        <h2 class="sidenav-title">Components</h2>
-        <button *ngIf="isMobile" class="sidenav-close" (click)="closeSidenav()" aria-label="Close navigation">✕</button>
+        <h2>Components</h2>
+        <button *ngIf="isMobile" class="sidenav-close" (click)="closeSidenav()">✕</button>
       </div>
       
-      <nav class="sidenav-nav">
-        <a 
-          *ngFor="let item of navItems" 
-          [routerLink]="['/components', item.route]" 
-          routerLinkActive="active"
-          class="nav-item"
-          (click)="onNavItemClick()">
+      <nav>
+        <a *ngFor="let item of navItems" 
+           [routerLink]="['/components', item.route]" 
+           routerLinkActive="active"
+           class="nav-item"
+           (click)="onNavItemClick()">
           <span class="nav-icon">{{ item.icon }}</span>
-          <span class="nav-label">{{ item.name }}</span>
+          <span>{{ item.name }}</span>
         </a>
         
         <div class="nav-divider"></div>
         
-        <div class="nav-group">
-          <h3 class="nav-group-title">Themes</h3>
-          <a 
-            *ngFor="let theme of themeOptions" 
-            class="nav-item theme-item"
-            [class.active]="currentTheme === theme.value"
-            (click)="setTheme(theme.value)">
+        <div class="theme-section">
+          <h3>Themes</h3>
+          <a *ngFor="let theme of themeOptions" 
+             [class.active]="currentTheme === theme.value"
+             (click)="setTheme(theme.value)"
+             class="theme-item">
             <span class="theme-dot" [style.background]="theme.color"></span>
-            <span class="theme-info">
-              <span class="theme-name">{{ theme.label }}</span>
-              <span class="theme-description">{{ theme.description }}</span>
-            </span>
+            <span>{{ theme.label }}</span>
           </a>
         </div>
       </nav>
       
-      <!-- Swipe hint for mobile -->
-      <div class="swipe-hint" *ngIf="isMobile">
-        <span class="swipe-icon">👈</span>
-        <span class="swipe-text">Swipe to close</span>
-      </div>
-      
       <div class="sidenav-footer">
-        <p class="version-info">Nova UI v1.0.0 - Cosmic Component Library</p>
+        <p>Nova UI v1.0.0</p>
       </div>
     </aside>
 
-    <!-- Main content area -->
+    <!-- Content Area -->
     <main class="main-content">
       <router-outlet></router-outlet>
     </main>
   </div>
 </div>
 
-<!-- Backdrop for mobile - closes sidenav when clicked -->
-<div class="sidenav-backdrop" 
-     [class.visible]="sidenavOpen && isMobile" 
-     (click)="closeSidenav()">
-</div>
-
-<!-- Edge swipe indicator for mobile -->
-<div class="edge-swipe-indicator" *ngIf="isMobile && !sidenavOpen">
-  <div class="swipe-line"></div>
-  <div class="swipe-dot"></div>
-</div>
+<!-- Backdrop -->
+<div class="sidenav-backdrop" [class.visible]="sidenavOpen && isMobile" (click)="closeSidenav()"></div>

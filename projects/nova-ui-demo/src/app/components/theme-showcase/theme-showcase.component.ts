@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { 
   NovaCardComponent, 
@@ -8,7 +8,9 @@ import {
   NovaThemeService,
   NovaThemeBase
 } from 'nova-ui';
+import { Subscription } from 'rxjs';
 
+// Theme information interface with scientific descriptions
 interface ThemeInfo {
   name: string;
   value: NovaThemeBase;
@@ -34,8 +36,10 @@ interface ThemeInfo {
   templateUrl: './theme-showcase.component.html',
   styleUrls: ['./theme-showcase.component.scss']
 })
-export class ThemeShowcaseComponent implements OnInit {
+export class ThemeShowcaseComponent implements OnInit, OnDestroy {
   currentTheme!: NovaThemeBase;
+  currentThemeInfo: ThemeInfo | null = null;
+  private themeSubscription: Subscription | null = null;
   
   // Comprehensive theme information with scientific descriptions
   themes: ThemeInfo[] = [
@@ -96,16 +100,30 @@ export class ThemeShowcaseComponent implements OnInit {
     }
   ];
   
-  constructor(private themeService: NovaThemeService) {}
+  constructor(
+    private themeService: NovaThemeService,
+    private cdr: ChangeDetectorRef
+  ) {}
   
   ngOnInit(): void {
     // Get current theme
     this.currentTheme = this.themeService.getThemeBase();
+    this.updateCurrentThemeInfo();
     
     // Subscribe to theme changes
-    this.themeService.themeBase$.subscribe(theme => {
+    this.themeSubscription = this.themeService.themeBase$.subscribe(theme => {
       this.currentTheme = theme;
+      this.updateCurrentThemeInfo();
+      this.cdr.markForCheck();
     });
+  }
+  
+  ngOnDestroy(): void {
+    // Clean up subscription
+    if (this.themeSubscription) {
+      this.themeSubscription.unsubscribe();
+      this.themeSubscription = null;
+    }
   }
   
   // Set theme when clicking on a theme card
@@ -116,5 +134,35 @@ export class ThemeShowcaseComponent implements OnInit {
   // Check if theme is current
   isCurrentTheme(theme: NovaThemeBase): boolean {
     return this.currentTheme === theme;
+  }
+  
+  // Get current theme's name
+  getCurrentThemeName(): string {
+    return this.currentThemeInfo?.name || '';
+  }
+  
+  // Get current theme's description
+  getCurrentThemeDescription(): string {
+    return this.currentThemeInfo?.description || '';
+  }
+  
+  // Get current theme's primary color
+  getCurrentThemePrimaryColor(): string {
+    return this.currentThemeInfo?.primaryColor || '';
+  }
+  
+  // Get current theme's secondary color
+  getCurrentThemeSecondaryColor(): string {
+    return this.currentThemeInfo?.secondaryColor || '';
+  }
+  
+  // Get current theme's accent colors
+  getCurrentThemeAccentColors(): string[] {
+    return this.currentThemeInfo?.accentColors || [];
+  }
+  
+  // Helper method to update current theme info
+  private updateCurrentThemeInfo(): void {
+    this.currentThemeInfo = this.themes.find(t => t.value === this.currentTheme) || null;
   }
 }

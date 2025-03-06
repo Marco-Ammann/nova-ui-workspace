@@ -1,148 +1,127 @@
 <div class="theme-showcase">
-  <h1 class="page-title">Cosmic Themes</h1>
-  <p class="page-description">
-    Nova UI features five scientifically-inspired cosmic themes, each with light and dark variants.
-    Explore the different themes below to see how they reflect actual astronomical phenomena.
+  <h1 class="nova-page-title">Cosmic Themes</h1>
+  <p class="nova-page-description">
+    Explore Nova UI's five scientifically-inspired cosmic themes, each with light and dark variants.
   </p>
   
   <!-- Current theme display -->
-  <section class="demo-section">
-    <h2>Current Theme: {{ themes.find(t => t.value === currentTheme)?.name }}</h2>
-    <p>{{ themes.find(t => t.value === currentTheme)?.description }}</p>
-    
-    <div class="color-grid">
-      <div class="color-card primary">
-        <div class="color-sample" [style.background]="themes.find(t => t.value === currentTheme)?.primaryColor"></div>
-        <div class="color-info">
-          <span class="color-name">Primary</span>
-          <span class="color-value">{{ themes.find(t => t.value === currentTheme)?.primaryColor }}</span>
-        </div>
-      </div>
+  <nova-card>
+    <nova-card-header [title]="'Current Theme: ' + getCurrentThemeName()"></nova-card-header>
+    <nova-card-content>
+      <p>{{ getCurrentThemeDescription() }}</p>
       
-      <div class="color-card secondary">
-        <div class="color-sample" [style.background]="themes.find(t => t.value === currentTheme)?.secondaryColor"></div>
-        <div class="color-info">
-          <span class="color-name">Secondary</span>
-          <span class="color-value">{{ themes.find(t => t.value === currentTheme)?.secondaryColor }}</span>
+      <div class="color-grid">
+        <div class="color-card primary">
+          <div class="color-sample" [style.background]="getCurrentThemePrimaryColor()"></div>
+          <div class="color-info">
+            <span class="color-name">Primary</span>
+            <span class="color-value">{{ getCurrentThemePrimaryColor() }}</span>
+          </div>
         </div>
-      </div>
-      
-      <ng-container *ngIf="themes.find(t => t.value === currentTheme)?.accentColors as accents">
-        <div *ngFor="let color of accents; let i = index" class="color-card accent">
+        
+        <div class="color-card secondary">
+          <div class="color-sample" [style.background]="getCurrentThemeSecondaryColor()"></div>
+          <div class="color-info">
+            <span class="color-name">Secondary</span>
+            <span class="color-value">{{ getCurrentThemeSecondaryColor() }}</span>
+          </div>
+        </div>
+        
+        <div *ngFor="let color of getCurrentThemeAccentColors(); let i = index" class="color-card accent">
           <div class="color-sample" [style.background]="color"></div>
           <div class="color-info">
             <span class="color-name">Accent {{ i + 1 }}</span>
             <span class="color-value">{{ color }}</span>
           </div>
         </div>
-      </ng-container>
-      
-      <div class="color-card background">
-        <div class="color-sample" [style.background]="themes.find(t => t.value === currentTheme)?.background"></div>
-        <div class="color-info">
-          <span class="color-name">Background</span>
-          <span class="color-value">{{ themes.find(t => t.value === currentTheme)?.background }}</span>
-        </div>
       </div>
-      
-      <div class="color-card surface">
-        <div class="color-sample" [style.background]="themes.find(t => t.value === currentTheme)?.surface"></div>
-        <div class="color-info">
-          <span class="color-name">Surface</span>
-          <span class="color-value">{{ themes.find(t => t.value === currentTheme)?.surface }}</span>
-        </div>
-      </div>
-    </div>
-  </section>
+    </nova-card-content>
+  </nova-card>
   
   <!-- All available themes -->
-  <section class="demo-section">
-    <h2>Available Themes</h2>
-    <p>Click on any theme card to apply it to the UI. Each theme has been designed based on real astronomical phenomena.</p>
-    
-    <div class="themes-grid">
-      <nova-card 
-        *ngFor="let theme of themes" 
-        [class.active-theme]="isCurrentTheme(theme.value)"
-        [hoverable]="true"
-        (click)="setTheme(theme.value)">
-        
-        <nova-card-header [title]="theme.name"></nova-card-header>
-        
-        <nova-card-content>
-          <div class="theme-colors">
-            <div class="theme-color primary" [style.background]="theme.primaryColor"></div>
-            <div class="theme-color secondary" [style.background]="theme.secondaryColor"></div>
-            <div *ngFor="let color of theme.accentColors" 
-                 class="theme-color accent" 
-                 [style.background]="color"></div>
-          </div>
+  <nova-card>
+    <nova-card-header title="Available Themes"></nova-card-header>
+    <nova-card-content>
+      <p>Click on any theme card to apply it. Each theme is based on real astronomical phenomena.</p>
+      
+      <div class="themes-grid">
+        <nova-card 
+          *ngFor="let theme of themes" 
+          [class.active-theme]="isCurrentTheme(theme.value)"
+          [hoverable]="true"
+          (click)="setTheme(theme.value)">
           
-          <p class="theme-description">{{ theme.description }}</p>
+          <nova-card-header [title]="theme.name"></nova-card-header>
           
-          <div class="theme-inspiration">
-            <h4>Astronomical Inspiration</h4>
-            <p>{{ theme.inspiration }}</p>
-          </div>
-          
-          <div class="theme-action">
-            <nova-button 
-              variant="cta" 
-              size="small"
-              [disabled]="isCurrentTheme(theme.value)">
-              {{ isCurrentTheme(theme.value) ? 'Active Theme' : 'Apply Theme' }}
-            </nova-button>
-          </div>
-        </nova-card-content>
-      </nova-card>
-    </div>
-  </section>
+          <nova-card-content>
+            <div class="theme-colors">
+              <div class="theme-color primary" [style.background]="theme.primaryColor"></div>
+              <div class="theme-color secondary" [style.background]="theme.secondaryColor"></div>
+              <div *ngFor="let color of theme.accentColors" 
+                   class="theme-color accent" 
+                   [style.background]="color"></div>
+            </div>
+            
+            <p class="theme-description">{{ theme.description }}</p>
+            
+            <div class="theme-inspiration">
+              <h4>Astronomical Inspiration</h4>
+              <p>{{ theme.inspiration }}</p>
+            </div>
+            
+            <div class="theme-action">
+              <nova-button 
+                variant="cta" 
+                size="small"
+                [disabled]="isCurrentTheme(theme.value)">
+                {{ isCurrentTheme(theme.value) ? 'Active Theme' : 'Apply Theme' }}
+              </nova-button>
+            </div>
+          </nova-card-content>
+        </nova-card>
+      </div>
+    </nova-card-content>
+  </nova-card>
   
   <!-- Theme usage instructions -->
-  <section class="demo-section">
-    <h2>Using Themes in Your Application</h2>
-    
-    <div class="usage-guide">
-      <div class="usage-card">
-        <h3>1. Set Theme Programmatically</h3>
-        <p>Use the NovaThemeService to set themes in your components:</p>
-        <div class="code-example">
-          <pre><code>constructor(private themeService: NovaThemeService) {}
+  <nova-card>
+    <nova-card-header title="Using Themes in Your Application"></nova-card-header>
+    <nova-card-content>
+      <div class="usage-guide">
+        <div class="usage-card">
+          <h3>1. Set Theme Programmatically</h3>
+          <p>Use the NovaThemeService to set themes:</p>
+          <pre><code>constructor(private themeService: NovaThemeService) {{ '{' }}{{ '}' }}
 
-// Set theme base (color palette)
-setTheme(theme: NovaThemeBase): void {
+// Set theme base
+setTheme(theme: NovaThemeBase): void {{ '{' }}
   this.themeService.setThemeBase(theme);
-}
+{{ '}' }}
 
 // Toggle between light and dark mode
-toggleMode(): void {
+toggleMode(): void {{ '{' }}
   this.themeService.toggleThemeMode();
-}</code></pre>
+{{ '}' }}</code></pre>
         </div>
-      </div>
-      
-      <div class="usage-card">
-        <h3>2. Add Theme Toggler Component</h3>
-        <p>Use the built-in theme toggler component in your application:</p>
-        <div class="code-example">
+        
+        <div class="usage-card">
+          <h3>2. Add Theme Toggler Component</h3>
+          <p>Use the built-in theme toggler in your app:</p>
           <pre><code>&lt;nova-theme-toggler&gt;&lt;/nova-theme-toggler&gt;</code></pre>
         </div>
-        <p>The toggler provides a user-friendly interface for changing themes and dark/light modes.</p>
-      </div>
-      
-      <div class="usage-card">
-        <h3>3. Create Custom Theme</h3>
-        <p>You can create your own custom theme by extending Nova UI themes:</p>
-        <div class="code-example">
+        
+        <div class="usage-card">
+          <h3>3. Create Custom Theme</h3>
+          <p>Create your own custom theme by extending Nova UI themes:</p>
           <pre><code>/* Custom theme */
-:root {
+:root {{ '{' }}
   --nova-primary: #your-color;
   --nova-secondary: #your-color;
   --nova-accent1: #your-color;
   /* Add all required CSS variables */
-}</code></pre>
+{{ '}' }}</code></pre>
         </div>
       </div>
-    </div>
-  </section>
+    </nova-card-content>
+  </nova-card>
 </div>

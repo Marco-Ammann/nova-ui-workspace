@@ -1,36 +1,31 @@
 <div class="page-container">
   <h1 class="page-title">Checkboxes</h1>
   <p class="page-description">
-    Nova UI checkboxes provide a cosmic-styled selection control that allows users to select multiple options from a set.
+    Nova UI checkboxes provide cosmic-styled selection controls for multiple options.
   </p>
 
-  <div class="demo-section">
-    <h2 class="section-title">Basic Checkbox</h2>
-    <p class="section-description">
-      The standard checkbox component with label text.
-    </p>
+  <!-- Basic Checkbox -->
+  <section class="demo-section">
+    <h2>Basic Checkbox</h2>
+    <p>The standard checkbox component with label text.</p>
 
     <div class="example-grid">
       <div class="example-item">
-        <h3 class="example-title">Default Checkbox</h3>
-        <p class="example-description">A simple checkbox with a label.</p>
+        <h3>Default Checkbox</h3>
         <div class="example-demo">
           <nova-checkbox
             label="Subscribe to newsletter"
             [(ngModel)]="newsletter">
           </nova-checkbox>
         </div>
-        <div class="example-code">
-          <pre><code>&lt;nova-checkbox
+        <pre><code>&lt;nova-checkbox
   label="Subscribe to newsletter"
   [(ngModel)]="newsletter"&gt;
 &lt;/nova-checkbox&gt;</code></pre>
-        </div>
       </div>
 
       <div class="example-item">
-        <h3 class="example-title">With Hint</h3>
-        <p class="example-description">Checkbox with additional hint text below it.</p>
+        <h3>With Hint</h3>
         <div class="example-demo">
           <nova-checkbox
             label="Enable notifications"
@@ -38,47 +33,35 @@
             [(ngModel)]="notifications">
           </nova-checkbox>
         </div>
-        <div class="example-code">
-          <pre><code>&lt;nova-checkbox
+        <pre><code>&lt;nova-checkbox
   label="Enable notifications"
   hint="You'll receive updates about new features"
   [(ngModel)]="notifications"&gt;
 &lt;/nova-checkbox&gt;</code></pre>
-        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="demo-section">
-    <h2 class="section-title">Checkbox States</h2>
-    <p class="section-description">
-      Various states for checkbox components.
-    </p>
+  <!-- Checkbox States -->
+  <section class="demo-section">
+    <h2>Checkbox States</h2>
+    <p>Various states for checkbox components.</p>
 
     <div class="example-grid">
       <div class="example-item">
-        <h3 class="example-title">Checked</h3>
-        <p class="example-description">A checkbox in the checked state.</p>
+        <h3>Checked</h3>
         <div class="example-demo">
           <nova-checkbox
             label="Checked checkbox"
             [(ngModel)]="checkedState">
           </nova-checkbox>
         </div>
-        <div class="example-code">
-          <pre><code>&lt;nova-checkbox
-  label="Checked checkbox"
-  [(ngModel)]="checkedState"&gt;
-&lt;/nova-checkbox&gt;
-
-// Component:
+        <pre><code>// Component:
 checkedState = true;</code></pre>
-        </div>
       </div>
 
       <div class="example-item">
-        <h3 class="example-title">Indeterminate</h3>
-        <p class="example-description">A checkbox in the indeterminate state, useful for tri-state selections.</p>
+        <h3>Indeterminate</h3>
         <div class="example-demo">
           <nova-checkbox
             label="Indeterminate checkbox"
@@ -86,114 +69,54 @@ checkedState = true;</code></pre>
             [(ngModel)]="indeterminateState">
           </nova-checkbox>
         </div>
-        <div class="example-code">
-          <pre><code>&lt;nova-checkbox
-  label="Indeterminate checkbox"
-  [indeterminate]="isIndeterminate"
-  [(ngModel)]="indeterminateState"&gt;
-&lt;/nova-checkbox&gt;
-
-// Component:
+        <pre><code>// Component:
 isIndeterminate = true;
 indeterminateState = false;</code></pre>
-        </div>
       </div>
 
       <div class="example-item">
-        <h3 class="example-title">Required</h3>
-        <p class="example-description">A checkbox marked as required with an asterisk.</p>
+        <h3>Disabled</h3>
         <div class="example-demo">
           <nova-checkbox
-            label="I agree to the terms and conditions"
-            [required]="true"
-            [(ngModel)]="termsAgreed">
-          </nova-checkbox>
-        </div>
-        <div class="example-code">
-          <pre><code>&lt;nova-checkbox
-  label="I agree to the terms and conditions"
-  [required]="true"
-  [(ngModel)]="termsAgreed"&gt;
-&lt;/nova-checkbox&gt;</code></pre>
-        </div>
-      </div>
-
-      <div class="example-item">
-        <h3 class="example-title">Disabled Unchecked</h3>
-        <p class="example-description">A disabled checkbox in the unchecked state.</p>
-        <div class="example-demo">
-          <nova-checkbox
-            label="Disabled unchecked checkbox"
+            label="Disabled checkbox"
             [disabled]="true"
             [(ngModel)]="disabledUnchecked">
           </nova-checkbox>
         </div>
-        <div class="example-code">
-          <pre><code>&lt;nova-checkbox
-  label="Disabled unchecked checkbox"
-  [disabled]="true"
-  [(ngModel)]="disabledUnchecked"&gt;
-&lt;/nova-checkbox&gt;
-
-// Component:
-disabledUnchecked = false;</code></pre>
-        </div>
-      </div>
-
-      <div class="example-item">
-        <h3 class="example-title">Disabled Checked</h3>
-        <p class="example-description">A disabled checkbox in the checked state.</p>
-        <div class="example-demo">
-          <nova-checkbox
-            label="Disabled checked checkbox"
-            [disabled]="true"
-            [(ngModel)]="disabledChecked">
-          </nova-checkbox>
-        </div>
-        <div class="example-code">
-          <pre><code>&lt;nova-checkbox
-  label="Disabled checked checkbox"
-  [disabled]="true"
-  [(ngModel)]="disabledChecked"&gt;
-&lt;/nova-checkbox&gt;
-
-// Component:
-disabledChecked = true;</code></pre>
-        </div>
+        <pre><code>[disabled]="true"</code></pre>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="demo-section">
-    <h2 class="section-title">Checkbox Group Example</h2>
-    <p class="section-description">
-      A group of related checkboxes for selecting multiple options.
-    </p>
+  <!-- Checkbox Group Example -->
+  <section class="demo-section">
+    <h2>Checkbox Group Example</h2>
+    <p>A group of related checkboxes for selecting multiple options.</p>
 
     <div class="example-card">
-      <h3 class="example-title">Notification Preferences</h3>
-      <div class="example-checkbox-group">
+      <h3>Notification Preferences</h3>
+      <div class="checkbox-group">
         <nova-checkbox
           label="Email notifications"
-          [(ngModel)]="notificationPrefs.email"
+          [(ngModel)]="notificationPrefs['email']"
           (change)="updateParentCheckbox()">
         </nova-checkbox>
         
         <nova-checkbox
           label="Push notifications"
-          [(ngModel)]="notificationPrefs.push"
+          [(ngModel)]="notificationPrefs['push']"
           (change)="updateParentCheckbox()">
         </nova-checkbox>
         
         <nova-checkbox
           label="SMS notifications"
-          [(ngModel)]="notificationPrefs.sms"
+          [(ngModel)]="notificationPrefs['sms']"
           (change)="updateParentCheckbox()">
         </nova-checkbox>
         
         <nova-checkbox
           label="In-app notifications"
-          [(ngModel)]="notificationPrefs.inApp"
+          [(ngModel)]="notificationPrefs['inApp']"
           (change)="updateParentCheckbox()">
         </nova-checkbox>
         
@@ -206,41 +129,31 @@ disabledChecked = true;</code></pre>
           </nova-checkbox>
         </div>
       </div>
-      <div class="example-code">
-        <pre><code>// Component code
-notificationPrefs = {
+      
+      <pre><code>// Component code
+notificationPrefs = {{ '{' }}
   email: false,
   push: false,
   sms: false,
   inApp: false
-};
-allNotificationsSelected = false;
-someNotificationsSelected = false;
+{{ '}' }};
 
-updateParentCheckbox() {
+// Parent checkbox logic
+updateParentCheckbox() {{ '{' }}
   const values = Object.values(this.notificationPrefs);
   this.allNotificationsSelected = values.every(v => v);
   this.someNotificationsSelected = values.some(v => v) && !this.allNotificationsSelected;
-}
-
-toggleAllNotifications() {
-  Object.keys(this.notificationPrefs).forEach(key => {
-    this.notificationPrefs[key] = this.allNotificationsSelected;
-  });
-  this.someNotificationsSelected = false;
-}</code></pre>
-      </div>
+{{ '}' }}</code></pre>
     </div>
-  </div>
+  </section>
 
-  <div class="demo-section">
-    <h2 class="section-title">Forms and Validation</h2>
-    <p class="section-description">
-      The checkbox component works with Angular's form validation system.
-    </p>
+  <!-- Forms and Validation -->
+  <section class="demo-section">
+    <h2>Forms and Validation</h2>
+    <p>The checkbox component works with Angular's form validation system.</p>
 
     <div class="example-card">
-      <h3 class="example-title">Reactive Form Example</h3>
+      <h3>Reactive Form Example</h3>
       <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="example-form">
         <nova-input
           label="Email"
@@ -266,48 +179,17 @@ toggleAllNotifications() {
           </nova-button>
         </div>
       </form>
-      <div class="example-code">
-        <pre><code>// Component code
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-@Component({...})
-export class YourComponent {
-  signupForm: FormGroup;
-  
-  constructor(private fb: FormBuilder) {
-    this.signupForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      subscribe: [false],
-      agreeTerms: [false, Validators.requiredTrue]
-    });
-  }
-  
-  onSubmit() {
-    if (this.signupForm.valid) {
-      // Handle form submission
-      console.log(this.signupForm.value);
-    }
-  }
-}</code></pre>
-      </div>
     </div>
-  </div>
+  </section>
 
-  <div class="demo-section">
-    <h2 class="section-title">API Reference</h2>
-    <p class="section-description">
-      The complete API reference for the NovaCheckboxComponent.
-    </p>
-
-    <h3 class="subsection-title">Selector</h3>
-    <p><code>nova-checkbox</code></p>
-
-    <h3 class="subsection-title">Inputs</h3>
+  <!-- API Reference -->
+  <section class="demo-section">
+    <h2>API Reference</h2>
+    
     <table class="api-table">
       <thead>
         <tr>
-          <th>Name</th>
+          <th>Property</th>
           <th>Type</th>
           <th>Default</th>
           <th>Description</th>
@@ -315,134 +197,36 @@ export class YourComponent {
       </thead>
       <tbody>
         <tr>
-          <td>label</td>
+          <td><code>label</code></td>
           <td>string</td>
           <td>''</td>
           <td>The text label for the checkbox.</td>
         </tr>
         <tr>
-          <td>disabled</td>
+          <td><code>disabled</code></td>
           <td>boolean</td>
           <td>false</td>
           <td>Whether the checkbox is disabled.</td>
         </tr>
         <tr>
-          <td>required</td>
+          <td><code>required</code></td>
           <td>boolean</td>
           <td>false</td>
           <td>Whether the checkbox is required.</td>
         </tr>
         <tr>
-          <td>indeterminate</td>
+          <td><code>indeterminate</code></td>
           <td>boolean</td>
           <td>false</td>
           <td>Whether the checkbox is in an indeterminate state.</td>
         </tr>
         <tr>
-          <td>name</td>
-          <td>string</td>
-          <td>undefined</td>
-          <td>The name attribute for the checkbox input.</td>
-        </tr>
-        <tr>
-          <td>value</td>
-          <td>any</td>
-          <td>undefined</td>
-          <td>The value attribute for the checkbox input.</td>
-        </tr>
-        <tr>
-          <td>hint</td>
+          <td><code>hint</code></td>
           <td>string</td>
           <td>undefined</td>
           <td>Helper text displayed below the checkbox.</td>
         </tr>
       </tbody>
     </table>
-
-    <h3 class="subsection-title">Outputs</h3>
-    <table class="api-table">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>change</td>
-          <td>EventEmitter&lt;boolean&gt;</td>
-          <td>Emitted when the checkbox is toggled, with the new state.</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h3 class="subsection-title">NgModel Support</h3>
-    <p>
-      The checkbox component implements ControlValueAccessor, allowing it to work with ngModel and reactive forms.
-    </p>
-  </div>
-
-  <div class="demo-section">
-    <h2 class="section-title">Styling</h2>
-    <p class="section-description">
-      Customize the checkbox component with CSS variables and custom styles.
-    </p>
-
-    <h3 class="subsection-title">CSS Variables</h3>
-    <p>The checkbox component uses the following CSS variables from the theme system:</p>
-
-    <table class="api-table">
-      <thead>
-        <tr>
-          <th>Variable</th>
-          <th>Purpose</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>--nova-primary</td>
-          <td>Color for the checkbox when checked</td>
-        </tr>
-        <tr>
-          <td>--nova-primary-rgb</td>
-          <td>RGB values for the primary color, used for glow effects</td>
-        </tr>
-        <tr>
-          <td>--nova-on-surface</td>
-          <td>Color for the label text</td>
-        </tr>
-        <tr>
-          <td>--nova-surface-alt</td>
-          <td>Background color for the unchecked checkbox</td>
-        </tr>
-        <tr>
-          <td>--nova-error</td>
-          <td>Color for the required marker</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h3 class="subsection-title">Custom CSS</h3>
-    <p>You can customize checkbox appearance with CSS:</p>
-
-    <div class="code-block">
-/* Custom checkbox styling */
-nova-checkbox.custom-checkbox .nova-checkbox__box {
-  border-radius: 0.125rem;
-  border-width: 2px;
-}
-
-/* Custom label styling */
-nova-checkbox.custom-checkbox .nova-checkbox__label {
-  font-weight: 500;
-}
-
-/* Custom checked state styling */
-nova-checkbox.custom-checkbox.nova-checkbox--checked .nova-checkbox__box {
-  background-color: var(--nova-accent2);
-  border-color: var(--nova-accent2);
-}
-</div>
-  </div>
+  </section>
 </div>
